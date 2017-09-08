@@ -1,0 +1,61 @@
+//
+// Component:       Variables
+// Description:     Defines all color and style related values as variables
+//                  to allow easy customization for the most common cases.
+//
+// ========================================================================
+
+
+// Global variables
+// ========================================================================
+@firstColor:                                    #00B7CC;                        //green-light
+@secondColor:                                   #28767F;                        //green-dark
+
+@whiteColor:                                    #FFFFFF;                        //white
+@blackColor:                                    #191919;                        //black
+
+@subWhite:                                      darken(@whiteColor, 20%);
+@subBlack:                                      lighten(@blackColor, 20%);
+
+@firstHover:                                    darken(@firstColor, 10%);
+@secondHover:                                   darken(@secondColor, 10%);
+
+@firstText:                                     @blackColor;
+@secondText:                                    @whiteColor;
+
+@back:                                          #262626;                        //black-light
+@backNav:                                       @blackColor;                    //black-dark
+@backMenu:                                      #333333;                        //gray-dark
+@backContrast:                                  #595959;
+
+@infoColor:                                     #2d7091;                        //blue by default
+@infoBack:                                      lighten(@infoColor, 30%);
+@infoHover:                                     darken(@infoColor, 10%);
+
+@successColor:                                  #659f13;                        //green by default
+@successBack:                                   lighten(@successColor, 30%);
+@successHover:                                  darken(@successColor, 10%);
+
+@warningColor:                                  #e28327;                        //orange by default
+@warningBack:                                   lighten(@warningColor, 30%);
+@warningHover:                                  darken(@warningColor, 10%);
+
+@dangerColor:                                   #d85030;                        //red by default
+@dangerBack:                                    lighten(@dangerColor, 30%);
+@dangerHover:                                   darken(@dangerColor, 10%);
+
+@mutedBack:                                     #f9f9f9;                        //gray by default
+@mutedColor:                                    #999999;                        //other gray : default is #999999
+
+//
+// Breakpoints
+//
+@breakpoint-small:                              480px;
+@breakpoint-medium:                             768px;
+@breakpoint-large:                              960px;
+@breakpoint-xlarge:                             1220px;
+
+@breakpoint-mini-max:                           (@breakpoint-small - 1);
+@breakpoint-small-max:                          (@breakpoint-medium - 1);
+@breakpoint-medium-max:                         (@breakpoint-large - 1);
+@breakpoint-large-max:                          (@breakpoint-xlarge - 1);

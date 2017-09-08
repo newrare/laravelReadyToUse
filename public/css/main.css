@@ -1,0 +1,58 @@
+#buttonLink:hover {
+    text-decoration: none
+}
+
+.myNavBarMarg {
+    height: 40px
+}
+
+.myHomeView {
+    min-height: 450px
+}
+
+.mySpanSpace {
+    margin: 0px 2px 0px 2px;
+    padding: 0px 2px 0px 2px
+}
+
+.mySpanZero {
+    margin: 0px;
+    padding: 0px
+}
+
+.myFirstColor {
+    color: #00B7CC
+}
+
+.myBlackColor {
+    color: #191919
+}
+
+.myBackgroundColor {
+    background-color: #262626
+}
+
+.myMuted {
+    color: #444444
+}
+
+.myPadding {
+    padding: 15px
+}
+
+.myContrastColor {
+    background-color: #595959
+}
+
+.myLinkNoColor:hover {
+    color: #00B7CC
+}
+
+.myBodyFilter {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    background-color: rgba(38, 38, 38, 0.9); /* Equal #262626 : @back in less */
+    z-index: -1
+}

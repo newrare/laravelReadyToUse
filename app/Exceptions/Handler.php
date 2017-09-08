@@ -6,6 +6,13 @@ use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+use App\Http\Classes\Reply;
+use App\Http\Classes\ViewElement;
+
+use Request;
+use Response;
+use Session;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -44,7 +51,57 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        //not found
+        if($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException)
+        {
+            return self::reply("404");
+        }
+
+        //bad method
+        if($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException)
+        {
+            return self::reply("405");
+        }
+
+        //other error
+        if($_SERVER["SERVER_PORT"] == 80)
+        {
+            //only for the Prod
+            return self::reply("503");
+        }
+        else
+        {
+            //only for the Dev : print all errors
+            if($exception instanceof ModelNotFoundException)
+            {
+                $exception = new NotFoundHttpException($e->getMessage(), $exception);
+            }
+
+            return parent::render($request, $exception);
+        }
+    }
+
+    private static function reply($code)
+    {
+        $result = ViewElement::getData("pageError");
+
+        if(Request::isJson())
+        {
+            return Response::json(
+                Reply::json($code, "pageError", $result),
+                $code
+            );
+        }
+        else
+        {
+            $error = ViewElement::getData("error");
+
+            $result["messageError"] = $error[$code];
+
+            view()->share("data", $result);
+
+            return response(view("pageError"), $code);
+        }
     }
 
     /**
