@@ -7,5 +7,5 @@
     {{ $newCode }}<br /><br />
 
     Best Regards,<br />
-    The CollectFull team.
+    The laravelreadyToUse team.
 @stop

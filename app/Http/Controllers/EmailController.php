@@ -17,7 +17,7 @@ class EmailController extends Controller
         {
             if(Session::has("idUser"))
             {
-                return Reply::redirect("item", 400);
+                return Reply::redirect("service", 400);
             }
             else
             {
@@ -43,11 +43,11 @@ class EmailController extends Controller
             //save it
             Record::save($User, "Email is valid.");
 
-            return Reply::redirect("item", 202);
+            return Reply::redirect("service", 202);
         }
         elseif(Session::has("idUser"))
         {
-            return Reply::redirect("item", 400);
+            return Reply::redirect("service", 400);
         }
         else
         {

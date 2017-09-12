@@ -18,6 +18,7 @@ class ViewElement
             "accountOption",
             "contact",
             "lost",
+            "service",
         );
     }
 
@@ -35,7 +36,6 @@ class ViewElement
                 "404"   => trans("error.404"),
                 "405"   => trans("error.405"),
                 "409"   => trans("error.409"),
-                "452"   => trans("error.452"),
                 "503"   => trans("error.503")
             );
         }
@@ -43,7 +43,7 @@ class ViewElement
         {
             return array(
                 "active"            => $_SERVER['REQUEST_URI'],
-                "account"           => trans("collection.titlePage"),
+                "service"           => trans("service.titlePage"),
                 "accountOption"     => trans("accountOption.titlePage"),
                 "home"              => trans("template.home"),
                 "logOut"            => trans("template.logOut"),
@@ -91,54 +91,27 @@ class ViewElement
                 "titleMessage"      => trans("home.titleMessage"),
                 "titleAction"       => trans("home.titleAction"),
                 "soon"              => trans("home.soon"),
-                "textCollectFull"   => trans("home.textCollectFull"),
+                "textApplication"   => trans("home.textApplication"),
                 "textAndroid"       => trans("home.textAndroid"),
-                "subCollection"     => trans("home.subCollection"),
-                "textCollection"    => trans("home.textCollection"),
-                "subWishList"       => trans("home.subWishList"),
-                "textWishList"      => trans("home.textWishList"),
-                "subShare"          => trans("home.subShare"),
-                "textShare"         => trans("home.textShare"),
+                "subService"        => trans("home.subService"),
+                "textService"       => trans("home.textService"),
                 "subCloud"          => trans("home.subCloud"),
                 "textCloud"         => trans("home.textCloud"),
-                "subStats"          => trans("home.subStats"),
-                "textStats"         => trans("home.textStats"),
-                "subFilter"         => trans("home.subFilter"),
-                "textFilter"        => trans("home.textFilter"),
-                "subRanking"        => trans("home.subRanking"),
-                "textRanking"       => trans("home.textRanking"),
-                "subTrophy"         => trans("home.subTrophy"),
-                "textTrophy"        => trans("home.textTrophy"),
                 "subLang"           => trans("home.subLang"),
                 "textLang"          => trans("home.textLang"),
                 "subDatabase"       => trans("home.subDatabase"),
                 "textDatabase"      => trans("home.textDatabase"),
-                "subCreate"         => trans("home.subCreate"),
-                "textCreate"        => trans("home.textCreate"),
-                "subChange"         => trans("home.subChange"),
-                "textChange"        => trans("home.textChange"),
                 "subApi"            => trans("home.subApi"),
                 "textApi"           => trans("home.textApi"),
                 "subSocial"         => trans("home.subSocial"),
                 "textSocial"        => trans("home.textSocial"),
                 "subResponsive"     => trans("home.subResponsive"),
                 "textResponsive"    => trans("home.textResponsive"),
-                "subSlide"          => trans("home.subSlide"),
                 "subFaq"            => trans("faq.subFaq"),
                 "faqQ1"             => trans("faq.q1"),
                 "faqR1"             => trans("faq.r1"),
                 "faqQ2"             => trans("faq.q2"),
                 "faqR2"             => trans("faq.r2"),
-                "faqQ3"             => trans("faq.q3"),
-                "faqR3"             => trans("faq.r3"),
-                "faqQ4"             => trans("faq.q4"),
-                "faqR4"             => trans("faq.r4"),
-                "faqQ5"             => trans("faq.q5"),
-                "faqR5"             => trans("faq.r5"),
-                "faqQ6"             => trans("faq.q6"),
-                "faqR6"             => trans("faq.r6"),
-                "faqQ7"             => trans("faq.q7"),
-                "faqR7"             => trans("faq.r7"),
                 "subAboutUs"        => trans("home.subAboutUs"),
                 "textAboutUs"       => trans("home.textAboutUs"),
                 "subContact"        => trans("contact.subContact"),
@@ -213,6 +186,13 @@ class ViewElement
                 "titleMessage"  => trans("lost.titleMessage"),
                 "email"         => trans("account.email"),
                 "buttonSend"    => trans("button.send")
+            );
+        }
+        elseif($view == "service")
+        {
+            return array(
+                "titlePage"     => trans("service.titlePage"),
+                "titleMessage"  => trans("service.titleMessage"),
             );
         }
         else

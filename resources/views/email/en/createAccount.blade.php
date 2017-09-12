@@ -4,8 +4,8 @@
     Hello {{ $userLogin }},<br /><br />
 
     To validate your Email, click on this link:<br />
-    <a href="http://www.collectFull.com/email/{{ $mailEncrypt }}">http://www.collectFull.com/email/{{ $mailEncrypt }}</a><br /><br />
+    <a href="#/email/{{ $mailEncrypt }}">#/email/{{ $mailEncrypt }}</a><br /><br />
 
     Best Regards,<br />
-    The CollectFull team.
+    The laravelReadyToUse team.
 @stop

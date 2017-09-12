@@ -33,7 +33,7 @@ class AccountController extends Controller
                 $email = trans("accountOption.emailNoValid");
             }
 
-            if($avatar == "http://www.collectFull.com/image/97.png")
+            if($avatar == "#/image/97.png")
             {
                 $avatar = null;
             }
@@ -74,14 +74,14 @@ class AccountController extends Controller
             //test if idUser exist
             if(!User::find(Session::get("idUser")))
             {
-                return Reply::redirect("/item", 400);
+                return Reply::redirect("service", 400);
             }
 
             $User = User::find(Session::get("idUser"));
 
             SendMail::validEmailAccount($User->email);
 
-            return Reply::redirect("/account", 204);
+            return Reply::redirect("account", 204);
         }
         else
         {
@@ -113,8 +113,8 @@ class AccountController extends Controller
         $User->password         = Hash::make(Input::get("pass"));
         $User->email            = Input::get("email");
         $User->emailIsValid     = 0;
-        $User->socialNetwork    = "CollectFull";
-        $User->urlAvatar        = "http://www.collectFull.com/image/97.png";
+        $User->socialNetwork    = "laravelReadyTouse";
+        $User->urlAvatar        = "";
         $User->dateRegistration = date("Y-m-d");
         $User->lang             = Session::get("lang");
         $User->isAdmin          = 0;
@@ -130,7 +130,7 @@ class AccountController extends Controller
         SendMail::validEmailAccount($User->email);
 
         //return collection
-        return Reply::redirect("/item", 202);
+        return Reply::redirect("service", 202);
     }
 
     //PUT /account/<idUser>
@@ -145,7 +145,7 @@ class AccountController extends Controller
         //test if idUser exist
         if(!User::find($idUser))
         {
-            return Reply::redirect("/item", 400);
+            return Reply::redirect("service", 400);
         }
 
         $User = User::find($idUser);
@@ -153,7 +153,7 @@ class AccountController extends Controller
         //test if userSession is same to idUser (or admin)
         if( ($User->isAdmin == 0) && (Session::get("idUser") != $idUser) )
         {
-            return Reply::redirect("/item", 400);
+            return Reply::redirect("service", 400);
         }
 
         //rules for check input
@@ -201,7 +201,7 @@ class AccountController extends Controller
         }
         else
         {
-            $User->urlAvatar = "http://www.collectFull.com/image/97.png";
+            $User->urlAvatar = "";
         }
 
         $Validation = Validator::make(Input::all(), $rules);
@@ -218,11 +218,11 @@ class AccountController extends Controller
             //save new image
             $timeNoCache = time();
 
-            $pathImage = "/home/prod/collectFull/public/image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
+            $pathImage = "#/public/image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
 
             Image::make(Input::get("userUrlAvatar"))->resize(97, 97)->save($pathImage);
 
-            $User->urlAvatar = "http://www.collectFull.com/image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
+            $User->urlAvatar = "#/image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
         }
 
         //update User and save it
@@ -247,7 +247,7 @@ class AccountController extends Controller
             SendMail::validEmailAccount($User->email);
         }
 
-        return Reply::redirect("/account", 202);
+        return Reply::redirect("account", 202);
     }
 
     //DELETE /account/<idUser>
@@ -262,7 +262,7 @@ class AccountController extends Controller
         //test if idUser exist
         if(!User::find($idUser))
         {
-            return Reply::redirect("/item", 400);
+            return Reply::redirect("service", 400);
         }
 
         //get userSession and UserToKill
@@ -272,7 +272,7 @@ class AccountController extends Controller
         //test if UserSession is same to idUser (or if UserSession is admin)
         if( ($UserSession->isAdmin == 0) && (Session::get("idUser") != $idUser) )
         {
-            return Reply::redirect("/item", 400);
+            return Reply::redirect("service", 400);
         }
 
         //remove User

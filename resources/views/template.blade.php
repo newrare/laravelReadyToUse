@@ -1,5 +1,10 @@
 <!doctype html>
-<html lang="{{ $shareData['langValue'] }}">
+
+@if(isset($data['reply']['imageIntro']))
+    <html lang="{{ $shareData['langValue'] }}" class="uk-cover-background uk-height-viewport" style="background-image: url({{ $data['reply']['imageIntro'] }})">
+@else
+    <html lang="{{ $shareData['langValue'] }}">
+@endif
 
 <!-- resultIfHtml -->
     <head>
@@ -30,6 +35,10 @@
     </head>
 
     <body>
+        @if(isset($data['reply']['imageIntro']))
+            <div class="myBodyFilter"></div>
+        @endif
+
         <!-- titleBar -->
             <div class="uk-container uk-container-center uk-margin-small-top uk-margin-small-bottom">
                 <div class="uk-clearfix">
@@ -37,7 +46,7 @@
                         <!-- logoAndTitle -->
                             <a href="/"><img class="uk-icon-spin" src="/image/72.png" alt="Logo" id="loadLogo" /></a>
 
-                            <strong class="myFirstColor uk-hidden-small">laravelReadyToUse</strong><span class="uk-text-bold uk-text-primary uk-hidden-small">laravelReadyTouse</span>
+                            <strong class="myFirstColor uk-hidden-small">laravelReadyToUse</strong><span class="uk-text-bold uk-text-primary uk-hidden-small">Application</span>
                         <!-- /logoAndTitle -->
                     </div>
 

@@ -20,7 +20,7 @@ class ConnectionController extends Controller
     {
         if(Session::has("userLogin"))
         {
-            return Reply::redirect("/item", 200);
+            return Reply::redirect("service", 200);
         }
         else
         {
@@ -40,7 +40,7 @@ class ConnectionController extends Controller
 
         if($Validation->fails())
         {
-            return Reply::redirect("/connection", 400, $Validation);
+            return Reply::redirect("connection", 400, $Validation);
         }
 
         $User = User::where("login", Input::get("login"))->first();
@@ -54,7 +54,7 @@ class ConnectionController extends Controller
 
             App::setLocale($User->lang);
 
-            return Reply::redirect("/item", 202);
+            return Reply::redirect("service", 202);
         }
         else
         {
@@ -75,7 +75,7 @@ class ConnectionController extends Controller
 
             if(strpos($_SERVER["HTTP_USER_AGENT"], "Mobile Safari/534.30") !== false)
             {
-                return Reply::redirect("/connection", 202);
+                return Reply::redirect("connection", 202);
             }
 
             return Reply::redirect("/", 202);

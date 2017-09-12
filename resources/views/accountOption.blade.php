@@ -62,18 +62,6 @@
                 </div>
             <!-- userUrlAvatar-->
 
-            <!-- userSharing -->
-                <div class="uk-form-row">
-                    {!! Form::label("userSharing", $data["sharing"], array("class" => "uk-form-label", "id" => "userSharing")) !!}
-
-                    {!! Form::select("userSharing", array("0" => $data["no"], "1" => $data["yes"]), $data["reply"]["userSharing"], array("class" => $errors->has("userSharing") ? "uk-form-danger uk-width-1-1 uk-form-select" : "uk-width-1-1 uk-form-select", "id" => "userSharing")) !!}
-
-                    @if($errors->has("userLang"))
-                        <div class="uk-badge uk-badge-danger"><i class="uk-icon-caret-up"></i> {{ $shareData["error"] }} : {{ $errors->first("userSharing") }}</div>
-                    @endif
-                </div>
-            <!-- /userSharing -->
-
             <!-- userLang -->
                 <div class="uk-form-row">
                     {!! Form::label("userLang", $data["lang"], array("class" => "uk-form-label", "id" => "userLang")) !!}

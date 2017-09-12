@@ -9,6 +9,5 @@
         "404"   => "This element does not exist",
         "405"   => "This method does not exist",
         "409"   => "This element is in conflict with our data",
-        "452"   => "This collection is not shared",
         "503"   => "Service Unavailable"
     );

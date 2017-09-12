@@ -9,5 +9,5 @@
     <br /><br />
 
     Cordialement,<br />
-    L'équipe collectFull.
+    L'équipe laravelreadyToUse.
 @stop

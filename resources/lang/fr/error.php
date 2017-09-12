@@ -9,6 +9,5 @@
         "404"   => "Cet élément n'existe pas",
         "405"   => "Cette méthode n'existe pas",
         "409"   => "Cet élément est en conflit avec vos données",
-        "452"   => "Cette collection n'est pas partagée",
         "503"   => "Service indisponible"
     );

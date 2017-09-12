@@ -1,8 +1,8 @@
 @if(session()->has("userLogin"))
-    @if($shareData["active"] == "/item")
-        <li class="uk-active"><a href="/item"><i class="uk-icon-th-list"></i> {{ $shareData["account"] }}</a></li>
+    @if($shareData["active"] == "/service")
+        <li class="uk-active"><a href="/service"><i class="uk-icon-th-list"></i> {{ $shareData["service"] }}</a></li>
     @else
-        <li><a href="/item"><i class="uk-icon-th-list"></i> {{ $shareData["account"] }}</a></li>
+        <li><a href="/service"><i class="uk-icon-th-list"></i> {{ $shareData["service"] }}</a></li>
     @endif
 @else
     @if($shareData["active"] == "/")

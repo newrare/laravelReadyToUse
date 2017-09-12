@@ -68,6 +68,6 @@ class GoogleController extends Controller
         Session::put("userLogin", $User->login);
 
         //return collection
-        return Reply::redirect("/item", 202);
+        return Reply::redirect("service", 202);
     }
 }
