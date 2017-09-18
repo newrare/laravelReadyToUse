@@ -72,7 +72,7 @@
         }
         else
         {
-            print "Error, " . $table . " in " . $value . " :" . $Connection->error;
+            print "Error, " . $table . " in " . $value . " :" . $Connection->error . "\n";
         }
 
         $Connection->close();
