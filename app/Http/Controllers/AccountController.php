@@ -33,7 +33,7 @@ class AccountController extends Controller
                 $email = trans("accountOption.emailNoValid");
             }
 
-            if($avatar == "#/image/97.png")
+            if(Tools::testUrl($avatar) !== true)
             {
                 $avatar = null;
             }
@@ -113,8 +113,8 @@ class AccountController extends Controller
         $User->password         = Hash::make(Input::get("pass"));
         $User->email            = Input::get("email");
         $User->emailIsValid     = 0;
-        $User->socialNetwork    = "laravelReadyTouse";
-        $User->urlAvatar        = "";
+        $User->socialNetwork    = env("APP_NAME");
+        $User->urlAvatar        = null;
         $User->dateRegistration = date("Y-m-d");
         $User->lang             = Session::get("lang");
         $User->isAdmin          = 0;
@@ -163,7 +163,7 @@ class AccountController extends Controller
         );
 
         //rules only if userPass is defined
-        if(Input::has("userPass"))
+        if(Input::get("userPass") !== null)
         {
             $rules["userPass"] = "min:8|max:20";
 
@@ -174,7 +174,7 @@ class AccountController extends Controller
         $imageError     = "";
         $updateImage    = 0;
 
-        if(Input::has("userUrlAvatar"))
+        if(Input::get("userUrlAvatar") !== null)
         {
             if(Input::get("userUrlAvatar") != $User->urlAvatar)
             {
@@ -201,7 +201,7 @@ class AccountController extends Controller
         }
         else
         {
-            $User->urlAvatar = "";
+            $User->urlAvatar = null;
         }
 
         $Validation = Validator::make(Input::all(), $rules);
@@ -218,11 +218,11 @@ class AccountController extends Controller
             //save new image
             $timeNoCache = time();
 
-            $pathImage = "#/public/image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
+            $pathImage = env("APP_ENV") ."public/image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
 
-            Image::make(Input::get("userUrlAvatar"))->resize(97, 97)->save($pathImage);
+            Image::make(Input::get("userUrlAvatar"))->resize(96, 96)->save($pathImage);
 
-            $User->urlAvatar = "#/image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
+            $User->urlAvatar = env("APP_URL") . "image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
         }
 
         //update User and save it
