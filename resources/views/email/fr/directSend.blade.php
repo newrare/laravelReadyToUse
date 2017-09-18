@@ -9,5 +9,5 @@
     <br /><br />
 
     Cordialement,<br />
-    L'équipe laravelreadyToUse.
+    L'équipe {{ env('APP_NAME') }}.
 @stop

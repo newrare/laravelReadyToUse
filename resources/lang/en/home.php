@@ -1,7 +1,7 @@
 <?php
     return array(
         "titlePage"         => "Home",
-        "titleMessage"      => "Welcome to laravelReadyToUse",
+        "titleMessage"      => "Welcome to " . env("APP_NAME"),
         "titleAction"       => "Information",
         "soon"              => "Coming soon",
         "textApplication"   => "Use this Framework to start your project more quickly.",
@@ -21,7 +21,7 @@
         "subResponsive"     => "multi screens",
         "textResponsive"    => "We use a Responsive technology to intelligently adapt the display of the application. No matter whether you use a SmartPhone, tablet, computer or TV, presenting application remain optimum.",
         "subAboutUs"        => "About us",
-        "textAboutUs"       => "laravelReadyToUse is the result of several reflections. The application is available on GitHub in free access. The goal is to provide a performent framework pre-installed and configured with many tools and pages already available.",
+        "textAboutUs"       => env("APP_NAME") . " is the result of several reflections. The application is available on GitHub in free access. The goal is to provide a performent framework pre-installed and configured with many tools and pages already available.",
         "subLegal"          => "Legal Information",
-        "textLegal"         => "laravelReadyToUse using a private servers. The domain laravelReadyToUse is also filed in a Registrar. We respect the recommendations of the CNIL. When you register on the application, we ask for a username and an email address: These elements remain confidential and private. You can at any time contact us to request the modification or deletion of personal data."
+        "textLegal"         => env("APP_NAME") . " using a private servers. The domain " . env("APP_NAME") . " is also filed in a Registrar. We respect the recommendations of the CNIL. When you register on the application, we ask for a username and an email address: These elements remain confidential and private. You can at any time contact us to request the modification or deletion of personal data."
     );

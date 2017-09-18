@@ -28,7 +28,7 @@
 // Variables
 // ========================================================================
 
-@tab-border:                                    @firstColor;
+@tab-border:                                    @codeLink;
 @tab-border-width:                              1px;
 @tab-padding-horizontal:                        12px;
 @tab-padding-vertical:                          8px;
@@ -36,14 +36,14 @@
 @tab-padding-bottom:                            @tab-padding-vertical;
 @tab-margin-horizontal:                         5px;
 @tab-margin-vertical:                           5px;
-@tab-color:                                     @firstColor;
-@tab-hover-border:                              @secondColor;
-@tab-hover-background:                          @firstHover;
-@tab-hover-color:                               @whiteColor;
-@tab-active-border:                             @firstColor;
-@tab-active-background:                         @back;
-@tab-active-color:                              @secondColor;
-@tab-disabled-color:                            @mutedColor;
+@tab-color:                                     @codeLink;
+@tab-hover-border:                              @tab-border;
+@tab-hover-background:                          @codePanel;
+@tab-hover-color:                               lighten(@tab-border, 10%);
+@tab-active-border:                             @tab-border;
+@tab-active-background:                         @codePanel;
+@tab-active-color:                              darken(@tab-border, 10%);
+@tab-disabled-color:                            @codeMuted;
 
 
 /* ========================================================================

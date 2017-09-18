@@ -11,20 +11,21 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>laravelReadyToUse</title>
+        <title>{{ env("APP_NAME") }}</title>
 
+        <link rel="shortcut icon" href="favicon.ico" />
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" href="favicon.png" />
 
         <!-- css -->
             <!-- lessProd -->
                 {!! HTML::style("/css/less.css") !!}
             <!-- /lessProd -->
 
-            <!-- loadMoreCss -->
-            @if(isset($data["reply"]["loadCss"]))
-                {!! HTML::style($data["reply"]["loadCss"]) !!}
-            @endif
-            <!-- /loadMoreCss -->
+            <!-- lessDev
+                <link rel="stylesheet/less" type="text/css" href="/css/less/main.less">
+                {!! HTML::script("/js/less.min.js") !!}
+            /lessDev -->
 
             {!! HTML::style("/css/main.css") !!}
         <!-- /css -->
@@ -46,7 +47,7 @@
                         <!-- logoAndTitle -->
                             <a href="/"><img class="uk-icon-spin" src="/image/72.png" alt="Logo" id="loadLogo" /></a>
 
-                            <strong class="myFirstColor uk-hidden-small">laravelReadyToUse</strong><span class="uk-text-bold uk-text-primary uk-hidden-small">Application</span>
+                            <strong class="myFirstColor uk-hidden-small">{{ env("APP_NAME") }}</strong><span class="uk-text-bold uk-text-muted uk-hidden-small">Web</span>
                         <!-- /logoAndTitle -->
                     </div>
 
@@ -70,7 +71,7 @@
                                                 <ul class="uk-nav uk-nav-dropdown">
                                                     <li><a href="/"><i class="uk-icon-home"></i> {{ $shareData["home"] }}</a></li>
                                                     <li><a href="/account"><i class="uk-icon-cog"></i> {{ $shareData["accountOption"] }}</a></li>
-                                                    <li><a href="/connection/off/edit"><i class="uk-icon-sign-out"></i> {{ $shareData["logOut"] }}</a></li>
+                                                    <li><a href="/connection/off/edit"><i class="uk-icon-power-off"></i> {{ $shareData["logOut"] }}</a></li>
                                                 </ul>
                                             </div>
                                         @else
@@ -110,6 +111,7 @@
 
                                 <div class="uk-navbar-flip">
                                     <ul class="uk-navbar-nav">
+                                        <li><a href="https://github.com/newrare/laravelReadyToUse" target="_blank"><i class="uk-icon-github"></i></a></li>
                                         <li><a href="https://twitter.com/" target="_blank"><i class="uk-icon-twitter"></i></a></li>
                                         <li><a href="https://fr-fr.facebook.com/" target="_blank"><i class="uk-icon-facebook"></i></a></li>
                                     </ul>
@@ -180,16 +182,6 @@
                 {!! HTML::script("/js/messageDone.js") !!}
             @endif
         <!-- /message -->
-
-        <!-- loadMoreJavascript -->
-            @if(isset($data["reply"]["loadJavascript"]))
-                {!! HTML::script($data["reply"]["loadJavascript"]) !!}
-            @endif
-
-            @if(isset($data["reply"]["loadMore"]))
-                {!! HTML::script($data["reply"]["loadMore"]) !!}
-            @endif
-        <!-- /loadMoreJavascript -->
 
         {!! HTML::script("/js/main.js") !!}
     <!-- /js -->

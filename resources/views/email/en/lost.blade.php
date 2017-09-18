@@ -7,5 +7,5 @@
     {{ $newCode }}<br /><br />
 
     Best Regards,<br />
-    The laravelreadyToUse team.
+    The {{ env('APP_NAME') }} team.
 @stop

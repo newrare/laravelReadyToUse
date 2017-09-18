@@ -21,24 +21,24 @@
 
 @datepicker-nav-height:                         20px;
 @datepicker-nav-margin-bottom:                  15px;
-@datepicker-nav-color:                          @firstColor;
-@datepicker-nav-hover-color:                    @secondColor;
+@datepicker-nav-color:                          @codeLink;
+@datepicker-nav-hover-color:                    lighten(@datepicker-nav-color, 10%);
 @datepicker-previous-icon:                      "\f053";
 @datepicker-next-icon:                          "\f054";
 
 @datepicker-table-width:                        30px;
 @datepicker-table-height:                       24px;
-@datepicker-table-color:                        @secondColor;
+@datepicker-table-color:                        @codeLink;
 
-@datepicker-table-hover-background:             @firstColor;
-@datepicker-table-hover-color:                  @firstText;
-@datepicker-table-onclick-background:           @secondColor;
-@datepicker-table-onclick-color:                @firstText;
+@datepicker-table-hover-background:             @codeLink;
+@datepicker-table-hover-color:                  @codeLight;
+@datepicker-table-onclick-background:           @datepicker-table-hover-background;
+@datepicker-table-onclick-color:                darken(@datepicker-table-hover-color, 10%);
 
-@datepicker-table-active-background:            @firstColor;
-@datepicker-table-active-color:                 @secondText;
+@datepicker-table-active-background:            darken(@codeLink, 10%);
+@datepicker-table-active-color:                 @codeLight;
 
-@datepicker-table-muted-color:                  @mutedColor;
+@datepicker-table-muted-color:                  @codeMuted;
 
 
 /* ========================================================================

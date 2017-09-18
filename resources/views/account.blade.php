@@ -14,7 +14,7 @@
 
     <br />
 
-    <div class="uk-panel uk-panel-box">
+    <div class="uk-panel">
         {!! Form::open(array("url" => "/account", "class" => "uk-form uk-form-stacked")) !!}
             <!-- login -->
                 <div class="uk-form-row">
@@ -56,7 +56,7 @@
 
             <div class="uk-grid uk-text-center uk-grid-small" data-uk-grid-margin="">
                 <li class="uk-width-small-1-1">
-                    {!! Form::submit($data["buttonRegister"], array("class" => "uk-button uk-button-large uk-contrast uk-width-1-1")) !!}
+                    {!! Form::submit($data["buttonRegister"], array("class" => "uk-button uk-button-secondary uk-button-large uk-contrast uk-width-1-1")) !!}
                 </li>
             </div>
 

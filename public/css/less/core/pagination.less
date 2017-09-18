@@ -31,18 +31,18 @@
 @pagination-padding-vertical:                   3px;
 @pagination-padding-horizontal:                 5px;
 @pagination-line-height:                        20px;
-@pagination-background:                         @backNav;
-@pagination-color:                              @firstColor;
-@pagination-hover-background:                   @firstHover;
-@pagination-hover-color:                        @whiteColor;
-@pagination-onclick-background:                 @firstHover;
-@pagination-onclick-color:                      @blackColor;
+@pagination-background:                         @codeBackground;
+@pagination-color:                              @codeDark;
+@pagination-hover-background:                   @codeLink;
+@pagination-hover-color:                        @codeLight;
+@pagination-onclick-background:                 @pagination-hover-background;
+@pagination-onclick-color:                      darken(@pagination-hover-color, 10%);
 
-@pagination-active-background:                  @secondColor;
-@pagination-active-color:                       @whiteColor;
+@pagination-active-background:                  darken(@codeLink, 10%);
+@pagination-active-color:                       @codeLight;
 
-@pagination-disabled-background:                @mutedBack;
-@pagination-disabled-color:                     @mutedColor;
+@pagination-disabled-background:                @codeMuted;
+@pagination-disabled-color:                     darken(@pagination-disabled-background, 10%);
 
 
 /* ========================================================================

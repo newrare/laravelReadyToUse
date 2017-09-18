@@ -65,47 +65,47 @@
 @nav-parent-icon-width:                         20px;
 @nav-parent-icon-margin-right:                  -10px;
 
-@nav-side-color:                                @firstColor;
+@nav-side-color:                                @codeLink;
 @nav-side-hover-background:                     rgba(0,0,0,0.05);
-@nav-side-hover-color:                          @whiteColor;
-@nav-side-active-background:                    @secondColor;
-@nav-side-active-color:                         @whiteColor;
-@nav-side-header-color:                         @secondColor;
-@nav-side-divider-border:                       @firstColor;
+@nav-side-hover-color:                          @codeLight;
+@nav-side-active-background:                    darken(@nav-side-color, 10%);
+@nav-side-active-color:                         lighten(@nav-side-hover-color, 10%);
+@nav-side-header-color:                         @codeDark;
+@nav-side-divider-border:                       @codeMuted;
 @nav-side-divider-border-width:                 1px;
-@nav-side-nested-color:                         @whiteColor;
-@nav-side-nested-hover-color:                   @firstHover;
+@nav-side-nested-color:                         @codeDark;
+@nav-side-nested-hover-color:                   @codeLink;
 
-@nav-dropdown-color:                            @firstColor;
-@nav-dropdown-hover-background:                 @firstHover;
-@nav-dropdown-hover-color:                      @whiteColor;
-@nav-dropdown-header-color:                     @secondColor;
-@nav-dropdown-divider-border:                   @firstColor;
+@nav-dropdown-color:                            @codeLight;
+@nav-dropdown-hover-background:                 @codeLink;
+@nav-dropdown-hover-color:                      @codeLight;
+@nav-dropdown-header-color:                     @codeLink;
+@nav-dropdown-divider-border:                   @codeMuted;
 @nav-dropdown-divider-border-width:             1px;
-@nav-dropdown-nested-color:                     @whiteColor;
-@nav-dropdown-nested-hover-color:               @firstHover;
+@nav-dropdown-nested-color:                     @codeLight;
+@nav-dropdown-nested-hover-color:               @nav-dropdown-nested-color;
 
-@nav-navbar-color:                              @firstColor;
-@nav-navbar-hover-background:                   @firstHover;
-@nav-navbar-hover-color:                        @whiteColor;
-@nav-navbar-header-color:                       @secondColor;
-@nav-navbar-divider-border:                     @firstColor;
+@nav-navbar-color:                              @codeLink;
+@nav-navbar-hover-background:                   lighten(@nav-navbar-color, 10%);
+@nav-navbar-hover-color:                        @codeLight;
+@nav-navbar-header-color:                       @codeDark;
+@nav-navbar-divider-border:                     @codeMuted;
 @nav-navbar-divider-border-width:               1px;
-@nav-navbar-nested-color:                       @whiteColor;
-@nav-navbar-nested-hover-color:                 @firstHover;
+@nav-navbar-nested-color:                       @codeLight;
+@nav-navbar-nested-hover-color:                 @nav-navbar-nested-color;
 
 @nav-offcanvas-padding-vertical:                10px;
 @nav-offcanvas-padding-horizontal:              15px;
-@nav-offcanvas-color:                           @firstColor;
-@nav-offcanvas-hover-background:                @firstHover;
-@nav-offcanvas-hover-color:                     @whiteColor;
-@nav-offcanvas-active-background:               @secondColor;
-@nav-offcanvas-active-color:                    @whiteColor;
-@nav-offcanvas-header-color:                    @secondColor;
-@nav-offcanvas-divider-border:                  @firstColor;
+@nav-offcanvas-color:                           @codeLink;
+@nav-offcanvas-hover-background:                lighten(@nav-offcanvas-color, 10%);
+@nav-offcanvas-hover-color:                     @codeLight;
+@nav-offcanvas-active-background:               darken(@nav-offcanvas-color, 10%);
+@nav-offcanvas-active-color:                    @codeLight;
+@nav-offcanvas-header-color:                    @codeDark;
+@nav-offcanvas-divider-border:                  @codeMuted;
 @nav-offcanvas-divider-border-width:            1px;
-@nav-offcanvas-nested-color:                    @whiteColor;
-@nav-offcanvas-nested-hover-color:              @firstHover;
+@nav-offcanvas-nested-color:                    @codeLight;
+@nav-offcanvas-nested-hover-color:              @nav-offcanvas-nested-color;
 
 
 /* ========================================================================

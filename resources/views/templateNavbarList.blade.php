@@ -20,8 +20,8 @@
 
 @if(!session()->has("userLogin"))
     @if($shareData["active"] == "/connection")
-         <li class="uk-active"><a href="/connection"><i class="uk-icon-sign-in"></i> {{ $shareData['buttonConnection'] }}</a></li>
+         <li class="uk-active"><a href="/connection"><i class="uk-icon-check-circle"></i> {{ $shareData['buttonConnection'] }}</a></li>
     @else
-        <li><a href="/connection"><i class="uk-icon-sign-in"></i> {{ $shareData['buttonConnection'] }}</a></li>
+        <li><a href="/connection"><i class="uk-icon-check-circle"></i> {{ $shareData['buttonConnection'] }}</a></li>
     @endif
 @endif

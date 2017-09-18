@@ -45,24 +45,24 @@
 
 @form-height:                                   30px;
 @form-padding:                                  4px 6px;
-@form-border:                                   @secondColor;
+@form-border:                                   @codeMuted;
 @form-border-width:                             1px;
-@form-background:                               @backMenu;
-@form-color:                                    @secondColor;
+@form-background:                               @codeBackground;
+@form-color:                                    @codeLink;
 
-@form-focus-border:                             @firstColor;
-@form-focus-background:                         @back;
-@form-focus-color:                              @whiteColor;
+@form-focus-border:                             @codeLink;
+@form-focus-background:                         @codePanel;
+@form-focus-color:                              @codeDark;
 
-@form-disabled-border:                          @mutedColor;
-@form-disabled-background:                      @mutedBack;
-@form-disabled-color:                           @mutedColor;
+@form-disabled-border:                          @form-border;
+@form-disabled-background:                      @codeMuted;
+@form-disabled-color:                           darken(@form-disabled-background, 30%);
 
-@form-placeholder-color:                        @mutedColor;
+@form-placeholder-color:                        darken(@form-background, 10%);
 
 @form-gutter:                                   15px;
 
-@form-legend-border:                            @secondColor;
+@form-legend-border:                            @codeDark;
 @form-legend-border-width:                      1px;
 @form-legend-font-size:                         18px;
 @form-legend-line-height:                       30px;
@@ -75,14 +75,14 @@
 @form-large-font-size:                          16px;
 
 @form-danger-border:                            @dangerColor;
-@form-danger-background:                        @dangerBack;
+@form-danger-background:                        lighten(@form-danger-border, 30%);
 @form-danger-color:                             @dangerColor;
 
 @form-success-border:                           @successColor;
-@form-success-background:                       @successBack;
+@form-success-background:                       lighten(@form-success-border, 30%);
 @form-success-color:                            @successColor;
 
-@form-blank-border:                             @firstColor;
+@form-blank-border:                             lighten(@form-border, 10%);
 @form-blank-border-style:                       dashed;
 
 @form-mini-width:                               40px;
@@ -105,7 +105,7 @@
 
 @form-icon-width:                               30px;
 @form-icon-font-size:                           14px;
-@form-icon-color:                               @firstColor;
+@form-icon-color:                               @codeLink;
 
 
 /* ========================================================================

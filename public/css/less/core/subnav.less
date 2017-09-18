@@ -24,23 +24,23 @@
 @subnav-margin-horizontal:                      10px;
 @subnav-margin-vertical:                        @subnav-margin-horizontal;
 
-@subnav-color:                                  @firstColor;
-@subnav-hover-color:                            @secondColor;
+@subnav-color:                                  @codeLink;
+@subnav-hover-color:                            lighten(@subnav-color, 10%);
 @subnav-hover-text-decoration:                  none;
-@subnav-active-color:                           @secondColor;
+@subnav-active-color:                           darken(@subnav-color, 10%);
 
 @subnav-line-border-height:                     10px;
-@subnav-line-border:                            @firstColor;
+@subnav-line-border:                            @codeMuted;
 @subnav-line-border-width:                      1px;
 
 @subnav-pill-padding-vertical:                  3px;
 @subnav-pill-padding-horizontal:                9px;
-@subnav-pill-hover-background:                  @firstHover;
-@subnav-pill-hover-color:                       @whiteColor;
-@subnav-pill-active-background:                 @secondColor;
-@subnav-pill-active-color:                      @whiteColor;
+@subnav-pill-hover-background:                  lighten(@codeLink, 10%);
+@subnav-pill-hover-color:                       @codeDark;
+@subnav-pill-active-background:                 darken(@codeLink, 10%);
+@subnav-pill-active-color:                      @codeLight;
 
-@subnav-disabled-color:                         @mutedColor;
+@subnav-disabled-color:                         @codeMuted;
 
 
 /* ========================================================================

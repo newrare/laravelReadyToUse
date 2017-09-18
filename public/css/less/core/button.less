@@ -60,41 +60,41 @@
 @button-large-padding-horizontal:               15px;
 
 @button-font-size:                              1rem;
-@button-background:                             @firstColor;
-@button-color:                                  @firstText;
-@button-hover-background:                       @firstHover;
-@button-hover-color:                            @secondText;
-@button-active-background:                      @secondColor;
-@button-active-color:                           @secondText;
+@button-background:                             @codeLink;
+@button-color:                                  @codeLight;
+@button-hover-background:                       darken(@button-background, 10%);
+@button-hover-color:                            @button-color;
+@button-active-background:                      darken(@button-hover-background, 10%);
+@button-active-color:                           @button-color;
 
-@button-primary-background:                     @secondColor;
-@button-primary-color:                          @secondText;
-@button-primary-hover-background:               @secondHover;
-@button-primary-hover-color:                    @secondText;
-@button-primary-active-background:              @secondColor;
-@button-primary-active-color:                   @secondText;
+@button-primary-background:                     @codeContrast;
+@button-primary-color:                          @codeLight;
+@button-primary-hover-background:               lighten(@button-primary-background, 20%);
+@button-primary-hover-color:                    @button-primary-color;
+@button-primary-active-background:              @button-primary-hover-background;
+@button-primary-active-color:                   @button-primary-color;
 
 @button-success-background:                     @successColor;
-@button-success-color:                          @whiteColor;
-@button-success-hover-background:               @successHover;
-@button-success-hover-color:                    @whiteColor;
-@button-success-active-background:              @successColor;
-@button-success-active-color:                   @whiteColor;
+@button-success-color:                          @codeLight;
+@button-success-hover-background:               darken(@button-success-background, 10%);
+@button-success-hover-color:                    @button-success-color;
+@button-success-active-background:              darken(@button-success-hover-background, 10%);
+@button-success-active-color:                   @button-success-color;
 
 @button-danger-background:                      @dangerColor;
-@button-danger-color:                           @whiteColor;
-@button-danger-hover-background:                @dangerHover;
-@button-danger-hover-color:                     @whiteColor;
-@button-danger-active-background:               @dangerColor;
-@button-danger-active-color:                    @whiteColor;
+@button-danger-color:                           @codeLight;
+@button-danger-hover-background:                darken(@button-danger-background, 10%);
+@button-danger-hover-color:                     @button-danger-color;
+@button-danger-active-background:               darken(@button-danger-hover-background, 10%);
+@button-danger-active-color:                    @button-danger-color;
 
-@button-disabled-background:                    @mutedBack;
-@button-disabled-color:                         @mutedColor;
+@button-disabled-background:                    @codeMuted;
+@button-disabled-color:                         darken(@button-disabled-background, 30%);
 
-@button-link-color:                             @firstColor;
-@button-link-hover-color:                       @secondColor;
+@button-link-color:                             @codeLink;
+@button-link-hover-color:                       lighten(@button-link-color, 10%);
 @button-link-hover-text-decoration:             none;
-@button-link-disabled-color:                    @mutedColor;
+@button-link-disabled-color:                    @codeMuted;
 
 
 /* ========================================================================

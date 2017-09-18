@@ -11,33 +11,33 @@
 // Variables
 // ========================================================================
 
-@base-body-background:                          @back;
+@base-body-background:                          @codeBackground;
 @base-body-font-family:                         "Helvetica Neue", Helvetica, Arial, sans-serif;
 @base-body-font-weight:                         normal;
 @base-body-font-size:                           14px;
 @base-body-line-height:                         20px;
-@base-body-color:                               @whiteColor;
+@base-body-color:                               @codeDark;
 
-@base-link-color:                               @firstColor;
+@base-link-color:                               @codeLink;
 @base-link-text-decoration:                     none;
-@base-link-hover-color:                         @secondColor;
+@base-link-hover-color:                         lighten(@base-link-color, 10%);
 @base-link-hover-text-decoration:               none;
 
-@base-code-color:                               @secondColor;
+@base-code-color:                               @codeLink;
 @base-code-font-size:                           12px;
 @base-code-font-family:                         Consolas, monospace, serif;
-@base-em-color:                                 @secondColor;
-@base-ins-background:                           @secondColor;
-@base-ins-color:                                @whiteColor;
-@base-mark-background:                          @secondColor;
-@base-mark-color:                               @blackColor;
+@base-em-color:                                 @codeMuted;
+@base-ins-background:                           @codeMuted;
+@base-ins-color:                                @codeDark;
+@base-mark-background:                          @codeMuted;
+@base-mark-color:                               @codeDark;
 @base-quote-font-style:                         italic;
 
 @base-margin-vertical:                          15px;
 
 @base-heading-font-family:                      "Helvetica Neue", Helvetica, Arial, sans-serif;
 @base-heading-font-weight:                      normal;
-@base-heading-color:                            @secondColor;
+@base-heading-color:                            @codeLink;
 @base-heading-text-transform:                   none;
 @base-heading-margin-top:                       25px;
 @base-h1-font-size:                             36px;
@@ -56,25 +56,25 @@
 @base-list-padding-left:                        30px;
 
 @base-hr-margin-vertical:                       @base-margin-vertical;
-@base-hr-border:                                @firstColor;
+@base-hr-border:                                @codeMuted;
 @base-hr-border-width:                          1px;
 
 @base-blockquote-padding-left:                  15px;
-@base-blockquote-border:                        @firstColor;
+@base-blockquote-border:                        @codeMuted;
 @base-blockquote-border-width:                  5px;
 @base-blockquote-font-size:                     16px;
 @base-blockquote-line-height:                   22px;
 @base-blockquote-font-style:                    italic;
 
 @base-pre-padding:                              10px;
-@base-pre-background:                           @subWhite;
-@base-pre-color:                                @blackColor;
+@base-pre-background:                           @codePanel;
+@base-pre-color:                                @codeDark;
 @base-pre-font-size:                            12px;
 @base-pre-line-height:                          18px;
 @base-pre-font-family:                          @base-code-font-family;
 
-@base-selection-background:                     @firstColor;
-@base-selection-color:                          @whiteColor;
+@base-selection-background:                     @codeLink;
+@base-selection-color:                          @codeLight;
 
 
 /* ========================================================================

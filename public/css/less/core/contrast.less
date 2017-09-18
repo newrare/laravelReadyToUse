@@ -9,8 +9,8 @@
 // Variables
 // ========================================================================
 
-@contrast-color:                                @firstColor;
-@contrast-inverted-color:                       @whiteColor;
+@contrast-color:                                @codeLight;
+@contrast-inverted-color:                       @codeDark;
 
 //
 // Components
@@ -79,12 +79,12 @@
 @contrast-button-active-background:             fade(@contrast-color, 70%);
 @contrast-button-active-color:                  @contrast-inverted-color;
 
-@contrast-button-primary-background:            @secondColor;
-@contrast-button-primary-color:                 @contrast-color;
-@contrast-button-primary-hover-background:      @secondHover;
-@contrast-button-primary-hover-color:           @contrast-color;
-@contrast-button-primary-active-background:     @secondColor;
-@contrast-button-primary-active-color:          @contrast-color;
+@contrast-button-primary-background:            @codeLink;
+@contrast-button-primary-color:                 @codeLight;
+@contrast-button-primary-hover-background:      lighten(@contrast-button-primary-background, 10%);
+@contrast-button-primary-hover-color:           @contrast-button-primary-color;
+@contrast-button-primary-active-background:     @contrast-button-primary-hover-background;
+@contrast-button-primary-active-color:          darken(@contrast-button-primary-color, 10%);
 
 @contrast-icon-hover-color:                     fade(@contrast-color, 70%);
 @contrast-icon-hover-hover-color:               @contrast-color;
@@ -97,7 +97,7 @@
 @contrast-icon-button-active-color:             @contrast-inverted-color;
 
 @contrast-text-muted-color:                     fade(@contrast-color, 60%);
-@contrast-text-primary-color:                   @secondColor;
+@contrast-text-primary-color:                   @codeLink;
 
 
 /* ========================================================================

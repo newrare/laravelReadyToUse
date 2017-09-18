@@ -36,34 +36,34 @@
 // Variables
 // ========================================================================
 
-@navbar-background:                             @backContrast;
-@navbar-color:                                  @whiteColor;
-@navbar-link-color:                             @firstColor;
-@navbar-link-hover-color:                       @secondColor;
+@navbar-background:                             @codeNavbar;
+@navbar-color:                                  @codeLight;
+@navbar-link-color:                             @codeLink;
+@navbar-link-hover-color:                       lighten(@navbar-link-color, 10%);
 
 @navbar-nav-height:                             40px;
 @navbar-nav-line-height:                        @navbar-nav-height;
 @navbar-nav-padding-horizontal:                 15px;
-@navbar-nav-color:                              @firstColor;
+@navbar-nav-color:                              @codeLight;
 @navbar-nav-font-size:                          14px;
 @navbar-nav-font-weight:                        normal;
 @navbar-nav-font-family:                        "Helvetica Neue", Helvetica, Arial, sans-serif;
-@navbar-nav-hover-background:                   @firstHover;
-@navbar-nav-hover-color:                        @whiteColor;
-@navbar-nav-onclick-background:                 @firstHover;
-@navbar-nav-onclick-color:                      @blackColor;
-@navbar-nav-active-background:                  @secondColor;
-@navbar-nav-active-color:                       @whiteColor;
+@navbar-nav-hover-background:                   @codeLink;
+@navbar-nav-hover-color:                        @codeLight;
+@navbar-nav-onclick-background:                 @navbar-nav-hover-background;
+@navbar-nav-onclick-color:                      darken(@navbar-nav-hover-color, 10%);
+@navbar-nav-active-background:                  darken(@codeLink, 10%);
+@navbar-nav-active-color:                       @codeLight;
 @navbar-nav-subtitle-font-size:                 10px;
 @navbar-nav-subtitle-offset:                    2px;
 
 @navbar-brand-font-size:                        18px;
-@navbar-brand-color:                            @firstColor;
-@navbar-brand-hover-color:                      @firstColor;
+@navbar-brand-color:                            @codeLink;
+@navbar-brand-hover-color:                      lighten(@navbar-brand-color, 10%);
 
 @navbar-toggle-font-size:                       18px;
-@navbar-toggle-color:                           @firstColor;
-@navbar-toggle-hover-color:                     @firstHover;
+@navbar-toggle-color:                           @codeLink;
+@navbar-toggle-hover-color:                     lighten(@navbar-toggle-color, 10%);
 @navbar-toggle-icon:                            "\f0c9";
 @navbar-toggle-icon-alt:                        "\f002";
 

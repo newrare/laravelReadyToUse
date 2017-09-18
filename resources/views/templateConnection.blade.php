@@ -32,7 +32,7 @@
 
         <div class="uk-grid uk-text-center uk-grid-small" data-uk-grid-margin="">
             <li class="uk-width-small-1-2">
-                {!! Form::submit($data["buttonConnection"], array("class" => "uk-button uk-button-large uk-width-1-1")) !!}
+                {!! Form::submit($data["buttonConnection"], array("class" => "uk-button uk-button-secondary uk-button-large uk-width-1-1")) !!}
             </li>
 
             <li class="uk-width-small-1-2">

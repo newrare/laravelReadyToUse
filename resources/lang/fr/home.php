@@ -1,7 +1,7 @@
 <?php
     return array(
         "titlePage"         => "Accueil",
-        "titleMessage"      => "Bienvenue sur laravelReadyToUse",
+        "titleMessage"      => "Bienvenue sur " . env("APP_NAME"),
         "titleAction"       => "Information",
         "soon"              => "Prochainement",
         "textApplication"   => "Utiliser ce Framework pour démarrer plus rapidement votre projet.",
@@ -19,10 +19,10 @@
         "subSocial"         => "Réseaux sociaux",
         "textSocial"        => "Connectez-vous sur vos collections à l'aide de votre compte Google ou Twitter. Partager votre expérience sur Facebook ou autre réseaux.",
         "subResponsive"     => "Multi écrans",
-        "textResponsive"    => "Nous utilisons une technologie Responsive permettant d'addapter intéligement l'affichage de l'application. Peut importe que vous utilisiez un SmartPhone, une tablette, un ordinateur ou une TV, la présentation de laravelReadyToUse restera optimum.",
+        "textResponsive"    => "Nous utilisons une technologie Responsive permettant d'addapter intéligement l'affichage de l'application. Peut importe que vous utilisiez un SmartPhone, une tablette, un ordinateur ou une TV, la présentation de " . env("APP_NAME") . " restera optimum.",
         "subSlide"          => "Visuels",
         "subAboutUs"        => "Qui sommes-nous&nbsp;?",
-        "textAboutUs"       => "laravelReadyToUse est le fruit de plusieurs réflexions. L'application est disponible sur GitHub en accès libre. Le but est de proposer un Framework performent pré-installé et configuré avec un grand nombre d'outils et pages déjà disponibles.",
+        "textAboutUs"       => env("APP_NAME") . " est le fruit de plusieurs réflexions. L'application est disponible sur GitHub en accès libre. Le but est de proposer un Framework performent pré-installé et configuré avec un grand nombre d'outils et pages déjà disponibles.",
         "subLegal"          => "Informations légales",
-        "textLegal"         => "laravelReadyToUse utilise des serveurs privés. Le nom de domaine laravelReadyToUse est déposé également chez un Registrar. Nous respectons les recommendations du CNIL. Lorsque vous vous enregistrez sur l'application, nous vous demandons un identifiant ainsi qu'une adresse Email : Ces éléments restent confidentiels et privés. Vous pouvez à n'importe quel moment nous contacter pour demander la modification ou suppression de vos données personnelles."
+        "textLegal"         => env("APP_NAME") . " utilise des serveurs privés. Le nom de domaine " . env("APP_NAME") . " est déposé également chez un Registrar. Nous respectons les recommendations du CNIL. Lorsque vous vous enregistrez sur l'application, nous vous demandons un identifiant ainsi qu'une adresse Email : Ces éléments restent confidentiels et privés. Vous pouvez à n'importe quel moment nous contacter pour demander la modification ou suppression de vos données personnelles."
     );

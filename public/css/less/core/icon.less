@@ -32,21 +32,21 @@
 @icon-medium-vertical-align:                    -16%;
 @icon-large-vertical-align:                     -22%;
 
-@icon-hover-color:                              @firstHover;
-@icon-hover-hover-color:                        @whiteColor;
+@icon-hover-color:                              @codeLight;
+@icon-hover-hover-color:                        @codeLight;
 
 @icon-button-width:                             35px;
 @icon-button-height:                            @icon-button-width;
 @icon-button-border-radius:                     100%;
-@icon-button-background:                        @firstColor;
+@icon-button-background:                        @codeLink;
 @icon-button-font-size:                         round((@icon-button-width * 0.5));
-@icon-button-color:                             @blackColor;
+@icon-button-color:                             @codeLight;
 
-@icon-button-hover-background:                  @firstHover;
-@icon-button-hover-color:                       @whiteColor;
+@icon-button-hover-background:                  darken(@icon-button-background, 10%);
+@icon-button-hover-color:                       @icon-button-color;
 
-@icon-button-active-background:                 @secondColor;
-@icon-button-active-color:                      @whiteColor;
+@icon-button-active-background:                 @icon-button-hover-background;
+@icon-button-active-color:                      darken(@icon-button-color, 10%);
 
 
 /* ========================================================================

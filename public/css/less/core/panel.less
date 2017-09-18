@@ -44,48 +44,48 @@
 @panel-title-font-size:                         18px;
 @panel-title-line-height:                       24px;
 @panel-title-font-weight:                       normal;
-@panel-title-color:                             @firstColor;
+@panel-title-color:                             @codeLink;
 @panel-title-text-transform:                    none;
 
 @panel-teaser-margin-bottom:                    @panel-title-margin-bottom;
 
 @panel-box-padding:                             15px;
-@panel-box-background:                          @backNav;
-@panel-box-color:                               @whiteColor;
-@panel-box-hover-color:                         @panel-box-color;
-@panel-box-title-color:                         @firstColor;
+@panel-box-background:                          @codePanel;
+@panel-box-color:                               @codeDark;
+@panel-box-hover-color:                         lighten(@panel-box-color, 10%);
+@panel-box-title-color:                         @codeLink;
 @panel-box-badge-top:                           10px;
 @panel-box-badge-right:                         @panel-box-badge-top;
 @panel-box-teaser-margin:                       -@panel-box-padding;
 
-@panel-box-primary-background:                  @backContrast;
-@panel-box-primary-color:                       @whiteColor;
-@panel-box-primary-hover-color:                 @panel-box-primary-color;
-@panel-box-primary-title-color:                 @firstColor;
+@panel-box-primary-background:                  @codeLink;
+@panel-box-primary-color:                       @codeDark;
+@panel-box-primary-hover-color:                 lighten(@panel-box-primary-color, 10%);
+@panel-box-primary-title-color:                 @codeLight;
 
-@panel-box-secondary-background:                @secondColor;
-@panel-box-secondary-color:                     @whiteColor;
-@panel-box-secondary-hover-color:               @panel-box-secondary-color;
-@panel-box-secondary-title-color:               @blackColor;
+@panel-box-secondary-background:                @codeContrast;
+@panel-box-secondary-color:                     @codeLight;
+@panel-box-secondary-hover-color:               darken(@panel-box-secondary-color, 10%);
+@panel-box-secondary-title-color:               @codeLink;
 
 @panel-hover-padding:                           15px;
-@panel-hover-color:                             @whiteColor;
-@panel-hover-hover-background:                  @firstHover;
-@panel-hover-hover-color:                       @whiteColor;
+@panel-hover-color:                             @codeMuted;
+@panel-hover-hover-background:                  @codeBackground;
+@panel-hover-hover-color:                       @codeDark;
 @panel-hover-badge-top:                         10px;
 @panel-hover-badge-right:                       @panel-hover-badge-top;
 @panel-hover-teaser-margin:                     -@panel-hover-padding;
 
 @panel-header-title-padding:                    10px;
-@panel-header-title-border:                     @firstColor;
+@panel-header-title-border:                     @codeMuted;
 @panel-header-title-border-width:               1px;
-@panel-header-title-color:                      @secondColor;
+@panel-header-title-color:                      @codeMuted;
 
 @panel-space-padding:                           30px;
 
 @panel-divider-gutter:                          25px;
 @panel-divider-gutter-large:                    35px;
-@panel-divider-border:                          @firstColor;
+@panel-divider-border:                          @codeMuted;
 @panel-divider-border-width:                    1px;
 
 @panel-body-padding:                            @panel-box-padding;
