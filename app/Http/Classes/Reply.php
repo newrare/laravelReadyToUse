@@ -95,8 +95,15 @@ class Reply
 
         if(Request::isJson())
         {
+            $reply = array();
+
+            if($code == 400)
+            {
+                $reply = $Validation->messages();
+            }
+
             return Response::json(
-                self::json($code, "", array()),
+                self::json($code, "", array(), $reply),
                 $code
             );
         }
