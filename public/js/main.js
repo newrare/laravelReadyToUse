@@ -5,7 +5,7 @@ $(window).load(function(){
 
 //link
 $("a").click(function() {
-    if($(this).attr("id") != "buttonLink")
+    if( ($(this).attr("id") != "buttonLink") && (!$(this).hasClass("uk-close")) )
     {
         $("#loadLogo").addClass("uk-icon-spin");
     }
