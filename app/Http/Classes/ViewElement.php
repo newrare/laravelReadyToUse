@@ -19,6 +19,8 @@ class ViewElement
             "contact",
             "lost",
             "service",
+            "blog",
+            "blogCreate"
         );
     }
 
@@ -60,6 +62,10 @@ class ViewElement
                 "langValue"         => trans("template.langValue"),
                 "contact"           => trans("contact.subContact"),
                 "lostPassword"      => trans("lost.titlePage"),
+                "remove"            => trans("template.remove"),
+                "edit"              => trans("template.edit"),
+                "add"               => trans("template.add"),
+                "blog"              => trans("blog.titlePage")
             );
         }
         elseif($view == "pageError")
@@ -193,6 +199,25 @@ class ViewElement
             return array(
                 "titlePage"     => trans("service.titlePage"),
                 "titleMessage"  => trans("service.titleMessage"),
+            );
+        }
+        elseif($view == "blog")
+        {
+            return array(
+                "titlePage"     => trans("blog.titlePage"),
+                "titleMessage"  => trans("blog.titleMessage")
+            );
+        }
+        elseif($view == "blogCreate")
+        {
+            return array(
+                "titlePage"     => trans("blog.titlePage"),
+                "addNews"       => trans("blog.addNews"),
+                "messageTitle"  => trans("blog.messageTitle"),
+                "message"       => trans("blog.message"),
+                "lang"          => trans("blog.lang"),
+                "urlImage"      => trans("blog.urlImage"),
+                "urlVideo"      => trans("blog.urlVideo")
             );
         }
         else

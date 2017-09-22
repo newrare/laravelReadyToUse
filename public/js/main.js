@@ -23,3 +23,22 @@ $(".uk-button").click(function() {
 $(".onClickForm").click(function(){
     $(this).closest("form").submit();
 });
+
+//button remove (AJAX METHOD DELETE)
+$(".uk-icon-trash").click(function(){
+    var urlId = $(this).attr("name");
+
+    $.ajax({
+        url         : urlId,
+        contentType : "application/json",
+        type        : "DELETE",
+        success : function(data){
+            console.info(data);
+        },
+        error : function(data){
+            console.warn(data);
+        }
+    });
+
+    location.reload();
+});

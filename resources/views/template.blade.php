@@ -168,9 +168,6 @@
             {!! HTML::script("/js/sticky.min.js") !!}
             {!! HTML::script("/js/notify.min.js") !!}
             {!! HTML::script("/js/tooltip.min.js") !!}
-            {!! HTML::script("/js/datepicker.min.js") !!}
-            {!! HTML::script("/js/slideshow.min.js") !!}
-            {!! HTML::script("/js/slideshow-fx.min.js") !!}
         <!-- /engine and css -->
 
         <!-- message -->

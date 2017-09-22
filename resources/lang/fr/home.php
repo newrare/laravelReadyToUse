@@ -5,7 +5,6 @@
         "titleAction"       => "Information",
         "soon"              => "Prochainement",
         "textApplication"   => "Utiliser ce Framework pour démarrer plus rapidement votre projet.",
-        "textAndroid"       => "Retrouvez cette application depuis n'importe quel navigateur Web ou SmartPhone Android.",
         "subService"        => "Mes services",
         "textService"       => "Proposez un grand nombre de services à vos utilisateurs. Une fois connecté, la gestion des services est simplifiées et centralisée.",
         "subCloud"          => "Cloud",

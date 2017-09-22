@@ -18,6 +18,12 @@
     <li><a href="/contact"><i class="uk-icon-envelope"></i> {{ $shareData["contact"] }}</a></li>
 @endif
 
+@if($shareData["active"] == "/blog")
+    <li class="uk-active"><a href="/blog"><i class="uk-icon-book"></i> {{ $shareData['blog'] }}</a></li>
+@else
+    <li><a href="/blog"><i class="uk-icon-book"></i> {{ $shareData['blog'] }}</a></li>
+@endif
+
 @if(!session()->has("userLogin"))
     @if($shareData["active"] == "/connection")
          <li class="uk-active"><a href="/connection"><i class="uk-icon-check-circle"></i> {{ $shareData['buttonConnection'] }}</a></li>

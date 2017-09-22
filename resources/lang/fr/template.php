@@ -13,5 +13,6 @@
         "save"              => "Sauvegarder",
         "langValue"         => "fr",
         "my"                => "Moi",
-        "googleConnection"  => "Connexion avec Google"
+        "googleConnection"  => "Connexion avec Google",
+        "add"               => "Ajouter"
     );

@@ -51,6 +51,19 @@
                     isAdmin             TINYINT
                 )";
             }
+            elseif($table == "blog")
+            {
+                $sql = "CREATE TABLE IF NOT EXISTS blog (
+                    id                  INT(1) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                    idUser              INT(1),
+                    lang                CHAR(2),
+                    message             TEXT,
+                    messageDate         DATE,
+                    messageTitle        VARCHAR(255),
+                    urlImage            TEXT,
+                    urlVideo            TEXT
+                )";
+            }
             else
             {
                 print "Error, this table is not support by this script.\n";

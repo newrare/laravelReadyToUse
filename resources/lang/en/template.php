@@ -14,5 +14,6 @@
         "save"              => "Save",
         "langValue"         => "en",
         "my"                => "My",
-        "googleConnection"  => "Sign up with Google"
+        "googleConnection"  => "Sign up with Google",
+        "add"               => "Add"
     );
