@@ -29,7 +29,7 @@ class BlogController extends Controller
         }
 
         //get Blog list
-        $ListBlog = Blog::orderBy("id", "desc")->get();
+        $ListBlog = Blog::where("lang", Session::get("lang"))->orderBy("id", "desc")->get();
 
         //parse Blog list
         foreach ($ListBlog as $Blog)
