@@ -29,7 +29,14 @@ class BlogController extends Controller
         }
 
         //get Blog list
-        $ListBlog = Blog::where("lang", Session::get("lang"))->orderBy("id", "desc")->get();
+        if($isAdmin == 1)
+        {
+            $ListBlog = Blog::orderBy("id", "desc")->get();
+        }
+        else
+        {
+            $ListBlog = Blog::where("lang", Session::get("lang"))->orderBy("id", "desc")->get();
+        }
 
         //parse Blog list
         foreach ($ListBlog as $Blog)
