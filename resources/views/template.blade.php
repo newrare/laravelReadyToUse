@@ -8,14 +8,23 @@
 
 <!-- resultIfHtml -->
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- info and bot -->
+            <meta http-equiv="content-type" content="text/html"; charset="UTF-8" />
+
+            
+        <!-- -->
+
+        <!-- forCssSize -->
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- /forCssSize-->
 
         <title>{{ env("APP_NAME") }}</title>
 
-        <link rel="shortcut icon" href="favicon.ico" />
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" href="favicon.png" />
+        <!-- faviconForAll -->
+            <link rel="shortcut icon" href="favicon.ico" />
+            <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+            <link rel="icon" type="image/png" href="favicon.png" />
+        <!-- /faviconForAll -->
 
         <!-- css -->
             <!-- lessProd -->
