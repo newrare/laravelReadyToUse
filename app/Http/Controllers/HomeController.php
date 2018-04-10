@@ -13,20 +13,17 @@ class HomeController extends Controller
     //GET /
     public function index()
     {
-        $mailValue  = "";
-        $imageIntro = "/image/intro.jpg";
+        $mailValue = "";
 
         if(Session::has("idUser"))
         {
             $User = User::find(Session::get("idUser"));
 
-            $mailValue  = $User->email;
-            $imageIntro = "";
+            $mailValue = $User->email;
         }
 
         $reply = array(
-            "imageIntro"    => $imageIntro,
-            "mailValue"     => $mailValue
+            "mailValue" => $mailValue
         );
 
         return Reply::make("home", 200, $reply);

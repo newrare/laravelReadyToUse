@@ -1,18 +1,10 @@
 <!doctype html>
 
-@if(isset($data['reply']['imageIntro']))
-    <html lang="{{ $shareData['langValue'] }}" class="uk-cover-background uk-height-viewport" style="background-image: url({{ $data['reply']['imageIntro'] }})">
-@else
-    <html lang="{{ $shareData['langValue'] }}">
-@endif
-
-<!-- resultIfHtml -->
+<html lang="{{ $shareData['langValue'] }}">
     <head>
-        <!-- info and bot -->
+        <!-- info -->
             <meta http-equiv="content-type" content="text/html"; charset="UTF-8" />
-
-            
-        <!-- -->
+        <!-- /info-->
 
         <!-- forCssSize -->
             <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,137 +12,133 @@
 
         <title>{{ env("APP_NAME") }}</title>
 
-        <!-- faviconForAll -->
+        <!-- favicon -->
             <link rel="shortcut icon" href="favicon.ico" />
             <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
             <link rel="icon" type="image/png" href="favicon.png" />
-        <!-- /faviconForAll -->
+        <!-- /favicon -->
 
         <!-- css -->
-            <!-- lessProd -->
-                {!! HTML::style("/css/less.css") !!}
-            <!-- /lessProd -->
+            @if($shareData["active"] == "/" and !session()->has("userLogin"))
+                {!! HTML::style("/css/area.css") !!}
+            @endif
 
-            <!-- lessDev
-                <link rel="stylesheet/less" type="text/css" href="/css/less/main.less">
-                {!! HTML::script("/js/less.min.js") !!}
-            /lessDev -->
-
-            {!! HTML::style("/css/main.css") !!}
+            {!! HTML::style("/css/uikit-3.0.0-beta.42.min.css") !!}
         <!-- /css -->
 
-        @if(!isset($noRedirectJavascript))
-            <noscript><meta http-equiv="refresh" content="1; URL=/notJavascript"></noscript>
-        @endif
+        <!-- ifjavascriptIsNotActived -->
+            @if(!isset($noRedirectJavascript))
+                <noscript><meta http-equiv="refresh" content="1; URL=/notJavascript"></noscript>
+            @endif
+        <!-- /ifjavascriptIsNotActived -->
     </head>
 
-    <body>
-        @if(isset($data['reply']['imageIntro']))
-            <div class="myBodyFilter"></div>
-        @endif
+    <body style="min-width: 320px">
+        <!-- homeIntroBackground -->
+            @if($shareData["active"] == "/" and !session()->has("userLogin"))
+                <div class="area" uk-height-viewport="offset-top: true">
+                    <ul class="circles">
+                        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                    </ul>
+                </div>
+            @endif
+        <!-- /homeIntroBackground -->
 
         <!-- titleBar -->
-            <div class="uk-container uk-container-center uk-margin-small-top uk-margin-small-bottom">
-                <div class="uk-clearfix">
-                    <div class="uk-float-left">
-                        <!-- logoAndTitle -->
-                            <a href="/"><img class="uk-icon-spin" src="/image/72.png" alt="Logo" id="loadLogo" /></a>
-
-                            <strong class="myFirstColor uk-hidden-small">{{ env("APP_NAME") }}</strong><span class="uk-text-bold uk-text-muted uk-hidden-small">Web</span>
-                        <!-- /logoAndTitle -->
-                    </div>
-
-                    <div class="uk-float-right">
-                        <div class="uk-vertical-align" style="height: 70px">
-                            <div class="uk-vertical-align-middle">
-                                <a class="uk-button uk-button-link "href="/blog"><i class="uk-icon-book"></i></a>
-
-                                <!-- loginOrLanguage -->
-                                    <div class="uk-button-dropdown" data-uk-dropdown="{pos:'top-right'}">
-                                        @if(session()->has("userLogin"))
-                                            <button class="uk-button uk-button-large uk-button-link uk-hidden-small" id="buttonLink">
-                                                <i class="uk-icon-user"></i> {{ session("userLogin") }} <i class="uk-icon-caret-down"></i>
-                                            </button>
-
-                                            <button class="uk-button uk-button-large uk-button-link uk-visible-small" id="buttonLink">
-                                                <i class="uk-icon-user"></i> <i class="uk-icon-caret-down"></i>
-                                            </button>
-
-                                            <div class="uk-dropdown uk-dropdown-small">
-                                                <ul class="uk-nav uk-nav-dropdown">
-                                                    <li><a href="/"><i class="uk-icon-home"></i> {{ $shareData["home"] }}</a></li>
-                                                    <li><a href="/account"><i class="uk-icon-cog"></i> {{ $shareData["accountOption"] }}</a></li>
-                                                    <li><a href="/connection/off/edit"><i class="uk-icon-power-off"></i> {{ $shareData["logOut"] }}</a></li>
-                                                </ul>
-                                            </div>
-                                        @else
-                                            <button class="uk-button uk-button-large uk-button-link uk-hidden-small" id="buttonLink">
-                                                {{ $shareData["language"] }} <i class="uk-icon-caret-down"></i>
-                                            </button>
-
-                                            <button class="uk-button uk-button-large uk-button-link uk-visible-small" id="buttonLink">
-                                                <i class="uk-icon-flag"></i> <i class="uk-icon-caret-down"></i>
-                                            </button>
-
-                                            <div class="uk-dropdown uk-dropdown-small">
-                                                <ul class="uk-nav uk-nav-dropdown">
-                                                    <li><a href="/lang/en/edit"><i class="uk-icon-flag"></i> English</a></li>
-                                                    <li><a href="/lang/fr/edit"><i class="uk-icon-flag"></i> Français</a></li>
-                                                </ul>
-                                            </div>
-                                        @endif
-                                    </div>
-                                <!-- loginOrLanguage -->
-                            </div>
+            <div class="uk-container">
+                <nav class="uk-navbar" uk-navbar>
+                    <!-- logoAndTitle -->
+                        <div class="uk-navbar-left">
+                            <a class="uk-navbar-item uk-logo uk-padding-remove-left" href="/"><img src="/image/72.png" alt="Logo"/></a>
+                            <strong class="uk-text-primary uk-visible@s">{{ env("APP_NAME") }}</strong>
                         </div>
-                    </div>
-                </div>
+                    <!-- /logoAndTitle -->
+
+                    <!-- loginOrLanguage -->
+                        <div class="uk-navbar-right">
+                            @if(session()->has("userLogin"))
+                                <button class="uk-button uk-button-text uk-text-capitalize" type="button">
+                                    <span uk-icon="triangle-down"></span> {{ session("userLogin") }}
+                                </button>
+
+                                <div uk-dropdown="mode: hover">
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <li><a href="/"                     ><span uk-icon="home"       ></span> {{ $shareData["home"] }}</a></li>
+                                        <li><a href="/account"              ><span uk-icon="cog"        ></span> {{ $shareData["accountOption"] }}</a></li>
+                                        <li><a href="/connection/off/edit"  ><span uk-icon="sign-out"   ></span> {{ $shareData["logOut"] }}</a></li>
+                                    </ul>
+                                </div>
+                            @else
+                                <button class="uk-button uk-button-text uk-text-capitalize" type="button">
+                                    <span uk-icon="triangle-down"></span> {{ $shareData["language"] }}
+                                </button>
+
+                                <div uk-dropdown="mode: hover">
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <li><a href="/lang/en/edit"><span uk-icon="location"></span> English</a></li>
+                                        <li><a href="/lang/fr/edit"><span uk-icon="location"></span> Français</a></li>
+                                    </ul>
+                                </div>
+                            @endif
+                        </div>
+                    <!-- /loginOrLanguage -->
+                </nav>
             </div>
         <!-- /titleBar -->
 
         <!-- navbar -->
-            <div class="uk-grid">
-                <div class="uk-width-1-1">
-                    <div data-uk-sticky>
-                        <nav class="uk-navbar uk-margin-remove">
-                            <div class="uk-container uk-container-center">
-                                <ul class="uk-navbar-nav uk-hidden-small">
-                                    @include("templateNavbarList")
-                                </ul>
+            <div class="uk-navbar-container" data-uk-sticky><div data-uk-sticky>
+                <div class="uk-container">
+                    <nav class="uk-navbar" uk-navbar>
+                        <! dynamicLeftMenuForSmallDevice >
+                            <div class="uk-navbar-left uk-hidden@s">
+                                <div class="uk-offcanvas-content">
+                                    <a href="#offcanvas" uk-toggle><span uk-navbar-toggle-icon></span><span class="uk-margin-small-left">{{ $shareData["menu"] }}</span></a>
 
-                                <div class="uk-navbar-flip">
-                                    <ul class="uk-navbar-nav">
-                                        <li><a href="https://github.com/newrare/laravelReadyToUse" target="_blank"><i class="uk-icon-github"></i></a></li>
-                                        <li><a href="https://twitter.com/" target="_blank"><i class="uk-icon-twitter"></i></a></li>
-                                        <li><a href="https://fr-fr.facebook.com/" target="_blank"><i class="uk-icon-facebook"></i></a></li>
-                                    </ul>
+                                    <div id="offcanvas" uk-offcanvas>
+                                        <div class="uk-offcanvas-bar">
+                                            <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+                                            <ul class="uk-nav uk-nav-default">
+                                                @include("templateNavbarList")
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <a id="buttonLink" href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
-
-                                <div class="uk-navbar-brand uk-navbar-center uk-visible-small"><a id="buttonLink" href="#offcanvas" data-uk-offcanvas>{{ $shareData["menu"] }}</a></div>
                             </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+                        <! /dynamicLeftMenuForSmallDevice >
 
-            <div id="offcanvas" class="uk-offcanvas">
-                <div class="uk-offcanvas-bar">
-                    <ul class="uk-nav uk-nav-offcanvas">
-                        @include("templateNavbarList")
-                    </ul>
+                        <div class="uk-navbar-left uk-visible@s">
+                            <ul class="uk-navbar-nav">
+                                @include("templateNavbarList")
+                            </ul>
+                        </div>
+
+                        <div class="uk-navbar-right">
+                            <ul class="uk-navbar-nav">
+                                <li><a                                  href="https://github.com/newrare/laravelReadyToUse"  target="_blank" uk-icon="github"    ></a></li>
+                                <li><a                                  href="https://twitter.com/"                          target="_blank" uk-icon="twitter"   ></a></li>
+                                <li><a class="uk-padding-remove-right"  href="https://fr-fr.facebook.com/"                   target="_blank" uk-icon="facebook"  ></a></li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
-            </div>
+            </div></div>
         <!-- /navbar -->
 
         <!-- content -->
-            <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+            @if($shareData["active"] == "/")
+                <div class="uk-container uk-margin-top">
+            @else
+                <div class="uk-container uk-margin-top uk-margin-large-bottom">
+            @endif
+
+            <!-- divInIf -->
                 @yield("content")
             </div>
         <!-- /content -->
 
-        <!-- message -->
+        <!-- messageAlert -->
             <div class="uk-hidden" id="messageError">
                 {{ $data["messageError"] or null }}
 
@@ -166,29 +154,29 @@
                     {{ session("messageDone") }}
                 @endif
             </div>
-        <!-- /message -->
+        <!-- /messageAlert -->
     </body>
 
     <!-- js -->
-        <!-- engine and css -->
+        <!-- engineAndCss -->
             {!! HTML::script("/js/jquery-2.1.4.min.js") !!}
 
-            {!! HTML::script("/js/uikit.min.js") !!}
-            {!! HTML::script("/js/sticky.min.js") !!}
-            {!! HTML::script("/js/notify.min.js") !!}
-            {!! HTML::script("/js/tooltip.min.js") !!}
-        <!-- /engine and css -->
+            {!! HTML::script("/js/uikit-3.0.0-beta.42.min.js") !!}
+            {!! HTML::script("/js/uikit-icons-3.0.0-beta.42.min.js") !!}
+        <!-- /engineAndCss -->
 
-        <!-- message -->
-            @if( isset($data["messageError"]) || session("messageError") )
-                {!! HTML::script("/js/messageError.js") !!}
+        <!-- mainJs -->
+            {!! HTML::script("/js/main.js") !!}
+        <!-- /mainJs -->
+
+        <!-- ifMessageAlert -->
+            @if (isset($data["messageError"]) || session("messageError") )
+                <script>messageError();</script>
             @endif
 
-            @if( isset($data["messageDone"]) || session("messageDone") )
-                {!! HTML::script("/js/messageDone.js") !!}
+            @if (isset($data["messageDone"]) || session("messageDone") )
+                <script>messageDone();</script>
             @endif
-        <!-- /message -->
-
-        {!! HTML::script("/js/main.js") !!}
+        <!-- /ifMessageAlert -->
     <!-- /js -->
 </html>

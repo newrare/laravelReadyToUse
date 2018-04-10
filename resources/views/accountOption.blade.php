@@ -1,88 +1,88 @@
 @extends("template")
 
 @section("content")
-    <article class="uk-article">
-        <h1 class="uk-article-title"><i class="uk-icon-cog"></i> {{ $data["titlePage"] }}</h1>
-        <p class="uk-article-meta">{{ $data["titleMessage"] }}</p>
-    </article>
+    <h1 class="uk-heading-bullet uk-margin-remove">{{ $data["titlePage"] }}</h1>
+    <small>{{ $data["titleMessage"] }}</small>
 
-    <br />
+    <!-- avatar -->
+        @if(isset($data["reply"]["userUrlAvatar"]))
+            <div class="uk-container uk-margin-top">
+                <img class="uk-border-circle" src="{{ $data['reply']['userUrlAvatar'] }}" alt="Avatar" onError="this.src='/image/72.png';" />
+            </div>
+        @endif
+    <!-- /avatar -->
 
-    <div class="uk-bloc">
-        <!-- avatar -->
-            @if(isset($data["reply"]["userUrlAvatar"]))
-                <img class="uk-border-circle" src="{{ $data['reply']['userUrlAvatar'] }}" alt="Avatar" onError="this.onerror=null; this.src='/image/96.png';" />
-            @endif
-        <!-- /avatar -->
-
-        <hr />
-
+    <div class="uk-card uk-card-default uk-card-body uk-box-shadow-medium uk-margin-top">
         {!! Form::open(array("url" => $data["reply"]["urlUpdate"], "method" => "PUT", "class" => "uk-form uk-form-stacked")) !!}
             <!-- userEmailIsValid -->
                 @if($data["reply"]["userEmailIsValid"] == 0)
-                    <a class="uk-button uk-button-success uk-button-mini" href="/account/email/edit">{{ $data["clickForValidEmail"] }}</a>
+                    <a class="uk-button uk-button-link" href="/account/email/edit">{{ $data["clickForValidEmail"] }}</a>
 
-                    <br /><br />
+                    <hr />
                 @endif
             <!-- /userEmailIsValid -->
 
             <!-- userEmail -->
-                <div class="uk-form-row">
+                <div class="uk-margin">
                     {!! Form::label("userEmail", $data["reply"]["email"], array("class" => "uk-form-label", "id" => "userEmail")) !!}
 
-                    {!! Form::text("userEmail", $data["reply"]["userEmail"], array("class" => $errors->has("userEmail") ? "uk-form-danger uk-width-1-1" : "uk-width-1-1", "id" => "userEmail")) !!}
+                    {!! Form::text("userEmail", $data["reply"]["userEmail"], array("class" => $errors->has("userEmail") ? "uk-input uk-form-danger" : "uk-input", "id" => "userEmail")) !!}
 
                     @if($errors->has("userEmail"))
-                        <div class="uk-badge uk-badge-danger"><i class="uk-icon-caret-up"></i> {{ $shareData["error"] }} : {{ $errors->first("userEmail") }}</div>
+                        <p class="uk-text-small uk-text-danger uk-margin-small-top uk-margin-small-bottom">
+                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("userEmail") }}
+                        </p>
                     @endif
                 </div>
             <!-- /userEmail -->
 
             <!-- userPass -->
-                <div class="uk-form-row">
+                <div class="uk-margin">
                     {!! Form::label("userPass", $data["connectionPass"], array("class" => "uk-form-label", "id" => "userPass")) !!}
 
-                    {!! Form::password("userPass", array("placeholder" => "X X X X X X X X", "class" => $errors->has("userPass") ? "uk-form-danger uk-width-1-1" : "uk-width-1-1", "id" => "userPass")) !!}
+                    {!! Form::password("userPass", array("placeholder" => "X X X X X X X X", "class" => $errors->has("userPass") ? "uk-input uk-form-danger" : "uk-input", "id" => "userPass")) !!}
 
                     @if($errors->has("userPass"))
-                        <div class="uk-badge uk-badge-danger"><i class="uk-icon-caret-up"></i> {{ $shareData["error"] }} : {{ $errors->first("userPass") }}</div>
+                        <p class="uk-text-small uk-text-danger uk-margin-small-top uk-margin-small-bottom">
+                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("userPass") }}
+                        </p>
                     @endif
                 </div>
             <!-- /userPass -->
 
             <!-- userUrlAvatar -->
-                <div class="uk-form-row">
+                <div class="uk-margin">
                     {!! Form::label("userUrlAvatar", $data["avatar"], array("class" => "uk-form-label", "id" => "userUrlAvatar")) !!}
 
-                    {!! Form::text("userUrlAvatar", $data["reply"]["userUrlAvatar"], array("class" => $errors->has("userUrlAvatar") ? "uk-form-danger uk-width-1-1" : "uk-width-1-1", "id" => "userUrlAvatar")) !!}
+                    {!! Form::text("userUrlAvatar", $data["reply"]["userUrlAvatar"], array("class" => $errors->has("userUrlAvatar") ? "uk-input uk-form-danger" : "uk-input", "id" => "userUrlAvatar")) !!}
 
                     @if($errors->has("userUrlAvatar"))
-                        <div class="uk-badge uk-badge-danger"><i class="uk-icon-caret-up"></i> {{ $shareData["error"] }} : {{ $errors->first("userUrlAvatar") }}</div>
+                        <p class="uk-text-small uk-text-danger uk-margin-small-top uk-margin-small-bottom">
+                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("userUrlAvatar") }}
+                        </p>
                     @endif
                 </div>
             <!-- userUrlAvatar-->
 
             <!-- userLang -->
-                <div class="uk-form-row">
+                <div class="uk-margin">
                     {!! Form::label("userLang", $data["lang"], array("class" => "uk-form-label", "id" => "userLang")) !!}
 
-                    {!! Form::select("userLang", array("fr" => "Français", "en" => "English"), $data["reply"]["userLang"], array("class" => $errors->has("userLang") ? "uk-form-danger uk-width-1-1 uk-form-select" : "uk-width-1-1 uk-form-select", "id" => "userLang")) !!}
+                    {!! Form::select("userLang", array("fr" => "Français", "en" => "English"), $data["reply"]["userLang"], array("class" => $errors->has("userLang") ? "uk-select uk-form-danger" : "uk-select", "id" => "userLang")) !!}
 
                     @if($errors->has("userLang"))
-                        <div class="uk-badge uk-badge-danger"><i class="uk-icon-caret-up"></i> {{ $shareData["error"] }} : {{ $errors->first("userLang") }}</div>
+                        <p class="uk-text-small uk-text-danger uk-margin-small-top uk-margin-small-bottom">
+                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("userLang") }}
+                        </p>
                     @endif
                 </div>
             <!-- /userLang -->
 
-            <br />
-
-            <div class="uk-grid uk-text-center uk-grid-small" data-uk-grid-margin="">
-                <li class="uk-width-small-1-1">
-                    {!! Form::submit($shareData["save"], array("class" => "uk-button uk-button-large uk-width-1-1")) !!}
-                </li>
-            </div>
+            <!-- formValidation -->
+                <div class="uk-container uk-text-center uk-width-1-1">
+                    {!! Form::submit($shareData["save"], array("class" => "uk-button uk-button-primary")) !!}
+                </div>
+            <!-- /formValidation -->
         {!! Form::close() !!}
-
-        <hr />
     </div>
 @stop

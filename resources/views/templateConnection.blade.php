@@ -1,67 +1,59 @@
-<div class="uk-bloc">
-    <hr />
+@if($shareData["active"] == "/")
+    <div class="uk-container">
+@else
+    <div class="uk-card uk-card-default uk-card-body uk-box-shadow-medium uk-margin-top">
+@endif
 
+<!-- divInIf -->
     {!! Form::open(array("url" => "/connection", "class" => "uk-form uk-form-stacked")) !!}
         <!-- accessName -->
-            <div class="uk-form-row">
+            <div class="uk-margin">
                 {!! Form::label("login", $data["connectionLogin"], array("class" => "uk-form-label", "id" => "login")) !!}
 
-                {!! Form::text("login", "", array("class" => $errors->has("login") ? "uk-form-danger uk-width-1-1" : "uk-width-1-1", "id" => "login")) !!}
+                {!! Form::text("login", "", array("class" => $errors->has("login") ? "uk-input uk-form-danger" : "uk-input", "id" => "login")) !!}
 
                 @if($errors->has("login"))
-                    <div class="uk-badge uk-badge-danger"><i class="uk-icon-caret-up"></i> {{ $shareData["error"] }} : {{ $errors->first("login") }}</div>
+                    <p class="uk-text-small uk-text-danger uk-margin-small-top">
+                        <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("login") }}
+                    </p>
                 @endif
             </div>
         <!-- /accessName -->
 
         <!-- accessPassword -->
-            <div class="uk-form-row">
+            <div class="uk-margin">
                 {!! Form::label("pass", $data["connectionPass"], array("class" => "uk-form-label", "id" => "pass")) !!}
 
-                {!! Form::password("pass", array("class" => $errors->has("pass") ? "uk-form-danger uk-width-1-1" : "uk-width-1-1", "id" => "pass")) !!}
+                {!! Form::password("pass", array("class" => $errors->has("pass") ? "uk-input uk-form-danger" : "uk-input", "id" => "pass")) !!}
 
                 @if($errors->has("pass"))
-                    <div class="uk-badge uk-badge-danger"><i class="uk-icon-caret-up"></i> {{ $shareData["error"] }} : {{ $errors->first("pass") }}</div>
+                     <p class="uk-text-small uk-text-danger uk-margin-small-top uk-margin-small-bottom">
+                        <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("pass") }}
+                    </p>
                 @endif
+
+                <small class="uk-margin-small-top"><a href="/lost">{{ $shareData["lostPassword"] }}</a></small>
             </div>
         <!-- /accessPassword -->
 
-        <small><a href="/lost">{{ $shareData["lostPassword"] }}</a></small>
+        <!-- formValidationOrGoogle -->
+            <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    {!! Form::submit($data["buttonConnection"], array("class" => "uk-button uk-button-primary uk-width-1-1")) !!}
+                </div>
 
-        <br /><br />
-
-        <div class="uk-grid uk-text-center uk-grid-small" data-uk-grid-margin="">
-            <li class="uk-width-small-1-2">
-                {!! Form::submit($data["buttonConnection"], array("class" => "uk-button uk-button-secondary uk-button-large uk-width-1-1")) !!}
-            </li>
-
-            <li class="uk-width-small-1-2">
-                <a href="/google" class="uk-button uk-button-large uk-button-danger uk-width-1-1">
-                    {{ $shareData["googleConnection"] }}
-                </a>
-            </li>
-        </div>
+                <div>
+                    <a href="/google" class="uk-button uk-button-danger uk-width-1 uk-text-nowrap">{{ $shareData["googleConnection"] }}</a>
+                </div>
+            </div>
+        <!-- /formValidationOrGoogle -->
     {!! Form::close() !!}
 
-    <br />
+    <!-- orCreateNewAccount -->
+        <hr class="uk-divider-icon" />
 
-    <div class="uk-grid uk-text-center uk-grid-collapse" data-uk-grid-margin="">
-        <li class="uk-width-4-10"><hr /></li>
-
-        <li class="uk-width-2-10"><div class="uk-badge uk-badge-notification">{{ $shareData["or"] }}</div></li>
-
-        <li class="uk-width-4-10"><hr /></li>
-    </div>
-
-    <br />
-
-    <div class="uk-grid uk-text-center uk-grid-small" data-uk-grid-margin="">
-        <li class="uk-width-small-1-1">
-            <a href="/account" class="uk-button uk-button-large uk-button-primary uk-width-1-1">
-                <i class="uk-icon-plus-circle"></i> {{ $shareData["buttonAddAccount"] }}
-            </a>
-        </li>
-    </div>
-
-    <hr />
+        <div class="uk-container uk-text-center uk-width-1-1 uk-margin-small">
+            <a href="/account" class="uk-button uk-button-default"><span uk-icon="icon: plus-circle"></span> {{ $shareData["buttonAddAccount"] }}</a>
+        </div>
+    <!-- /orCreateNewAccount -->
 </div>

@@ -1,44 +1,54 @@
-//load page completed
-$(window).load(function(){
-    $("#loadLogo").removeClass("uk-icon-spin");
-});
+//function message OK
+function messageDone()
+{
+    $message = $("div#messageDone").text();
+    $message = $message.trim();
 
-//link
-$("a").click(function() {
-    if( ($(this).attr("id") != "buttonLink") && (!$(this).hasClass("uk-close")) )
+    if($message.length === 0)
     {
-        $("#loadLogo").addClass("uk-icon-spin");
+        $message = "OK";
     }
-});
 
-//button
-$(".uk-button").click(function() {
-    if($(this).attr("id") != "buttonLink")
+    UIkit.notification({
+        message : "<span uk-icon='icon: check'></span> " + $message,
+        status  : "success",
+        timeout : "4000",
+        pos     : "top-center"
+    });
+
+    return true;
+}
+
+//function message KO
+function messageError()
+{
+    $message = $("div#messageError").text();
+    $message = $message.trim();
+
+    if($message.length === 0)
     {
-        $("#loadLogo").addClass("uk-icon-spin");
+        $message = "KO";
     }
-});
 
-//onClickForm
-$(".onClickForm").click(function(){
-    $(this).closest("form").submit();
-});
+    UIkit.notification({
+        message : "<span uk-icon='icon: bolt'></span> " + $message,
+        status  : "danger",
+        timeout : "4000",
+        pos     : "top-center"
+    });
+
+    return true;
+}
 
 //button remove (AJAX METHOD DELETE)
-$(".uk-icon-trash").click(function(){
+$(".ajaxTrash").click(function(){
     var urlId = $(this).attr("name");
 
     $.ajax({
         url         : urlId,
         contentType : "application/json",
         type        : "DELETE",
-        success : function(data){
-            console.info(data);
-        },
-        error : function(data){
-            console.warn(data);
-        }
+        error       : function(data) { console.warn(data); messageError(); },
+        success     : function(data) { console.info(data); location.reload(); messageDone(); }
     });
-
-    location.reload();
 });

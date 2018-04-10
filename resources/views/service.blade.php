@@ -1,8 +1,6 @@
 @extends("template")
 
 @section("content")
-    <article class="uk-article">
-        <h1 class="uk-article-title"><i class="uk-icon-th-list"></i> {{ $data["titlePage"] }}</h1>
-        <p class="uk-article-meta">{{ $data["titleMessage"] }}</p>
-    </article>
+    <h1 class="uk-heading-bullet uk-margin-remove">{{ $data["titlePage"] }}</h1>
+    <small>{{ $data["titleMessage"] }}</small>
 @stop

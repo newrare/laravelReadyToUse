@@ -1,65 +1,58 @@
 @extends("template")
 
 @section("content")
-    <article class="uk-article">
-        <h1 class="uk-article-title"><i class="uk-icon-user"></i> {{ $data["titlePage"] }}</h1>
-        <p class="uk-article-meta">
-            @if(isset($data["reply"]["isCreate"]))
-                {{ $data["titleCreate"] }}
-            @else
-                {{ $data["titleMessage"] }}
-            @endif
-        </p>
-    </article>
+    <h1 class="uk-heading-bullet uk-margin-remove">{{ $data["titlePage"] }}</h1>
+    <small>{{ $data["titleMessage"] }}</small>
 
-    <br />
-
-    <div class="uk-panel">
+    <div class="uk-card uk-card-default uk-card-body uk-box-shadow-medium uk-margin-top">
         {!! Form::open(array("url" => "/account", "class" => "uk-form uk-form-stacked")) !!}
             <!-- login -->
-                <div class="uk-form-row">
+                <div class="uk-margin">
                     {!! Form::label("login", $data["connectionLogin"], array("class" => "uk-form-label", "id" => "login")) !!}
 
-                    {!! Form::text("login", "", array("class" => $errors->has("login") ? "uk-form-danger uk-width-1-1" : "uk-width-1-1", "id" => "login")) !!}
+                    {!! Form::text("login", "", array("class" => $errors->has("login") ? "uk-input uk-form-danger" : "uk-input", "id" => "login")) !!}
 
                     @if($errors->has("login"))
-                        <div class="uk-badge uk-badge-danger"><i class="uk-icon-caret-up"></i> {{ $shareData["error"] }} : {{ $errors->first("login") }}</div>
+                        <p class="uk-text-small uk-text-danger uk-margin-small-top">
+                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("login") }}
+                        </p>
                     @endif
                 </div>
             <!-- /login -->
 
             <!-- pass -->
-                <div class="uk-form-row">
+                <div class="uk-margin">
                     {!! Form::label("pass", $data["connectionPass"], array("class" => "uk-form-label", "id" => "pass")) !!}
 
-                    {!! Form::password("pass", array("class" => $errors->has("pass") ? "uk-form-danger uk-width-1-1" : "uk-width-1-1", "id" => "pass")) !!}
+                    {!! Form::password("pass", array("class" => $errors->has("pass") ? "uk-input uk-form-danger" : "uk-input", "id" => "pass")) !!}
 
                     @if($errors->has("pass"))
-                        <div class="uk-badge uk-badge-danger"><i class="uk-icon-caret-up"></i> {{ $shareData["error"] }} : {{ $errors->first("pass") }}</div>
+                        <p class="uk-text-small uk-text-danger uk-margin-small-top">
+                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("pass") }}
+                        </p>
                     @endif
                 </div>
             <!-- /pass -->
 
             <!-- email -->
-                <div class="uk-form-row">
+                <div class="uk-margin">
                     {!! Form::label("email", $data["registerEmail"], array("class" => "uk-form-label", "id" => "email")) !!}
 
-                    {!! Form::text("email", "", array("class" => $errors->has("email") ? "uk-form-danger uk-width-1-1" : "uk-width-1-1", "id" => "email")) !!}
+                    {!! Form::text("email", "", array("class" => $errors->has("email") ? "uk-input uk-form-danger" : "uk-input", "id" => "email")) !!}
 
                     @if($errors->has("email"))
-                        <div class="uk-badge uk-badge-danger"><i class="uk-icon-caret-up"></i> {{ $shareData["error"] }} : {{ $errors->first("email") }}</div>
+                        <p class="uk-text-small uk-text-danger uk-margin-small-top">
+                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("email") }}
+                        </p>
                     @endif
                 </div>
             <!-- /email -->
 
-            <hr />
-
-            <div class="uk-grid uk-text-center uk-grid-small" data-uk-grid-margin="">
-                <li class="uk-width-small-1-1">
-                    {!! Form::submit($data["buttonRegister"], array("class" => "uk-button uk-button-secondary uk-button-large uk-contrast uk-width-1-1")) !!}
-                </li>
-            </div>
-
+            <!-- formValidation -->
+                <div class="uk-container uk-text-center uk-width-1-1">
+                    {!! Form::submit($data["buttonRegister"], array("class" => "uk-button uk-button-primary")) !!}
+                </div>
+            <!-- /formValidation -->
         {!! Form::close() !!}
     </div>
 @stop

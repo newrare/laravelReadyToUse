@@ -1,33 +1,33 @@
 @if(session()->has("userLogin"))
     @if($shareData["active"] == "/service")
-        <li class="uk-active"><a href="/service"><i class="uk-icon-th-list"></i> {{ $shareData["service"] }}</a></li>
+        <li class="uk-active"><a href="/service" class="uk-padding-remove-left"><span class="uk-icon uk-margin-small-right" uk-icon="icon: list"></span>{{ $shareData["service"] }}</a></li>
     @else
-        <li><a href="/service"><i class="uk-icon-th-list"></i> {{ $shareData["service"] }}</a></li>
+        <li><a href="/service" class="uk-padding-remove-left"><span class="uk-icon uk-margin-small-right" uk-icon="icon: list"></span>{{ $shareData["service"] }}</a></li>
     @endif
 @else
     @if($shareData["active"] == "/")
-        <li class="uk-active"><a href="/"><i class="uk-icon-home"></i> {{ $shareData["home"] }}</a></li>
+        <li class="uk-active"><a href="/" class="uk-padding-remove-left"><span class="uk-icon uk-margin-small-right" uk-icon="icon: home"></span>{{ $shareData["home"] }}</a></li>
     @else
-        <li><a href="/"><i class="uk-icon-home"></i> {{ $shareData["home"] }}</a></li>
+        <li><a href="/" class="uk-padding-remove-left"><span class="uk-icon uk-margin-small-right" uk-icon="icon: home"></span>{{ $shareData["home"] }}</a></li>
     @endif
 @endif
 
 @if($shareData["active"] == "/contact")
-    <li class="uk-active"><a href="/contact"><i class="uk-icon-envelope"></i> {{ $shareData["contact"] }}</a></li>
+    <li class="uk-active"><a href="/contact"><span class="uk-icon uk-margin-small-right" uk-icon="icon: mail"></span>{{ $shareData["contact"] }}</a></li>
 @else
-    <li><a href="/contact"><i class="uk-icon-envelope"></i> {{ $shareData["contact"] }}</a></li>
+    <li><a href="/contact"><span class="uk-icon uk-margin-small-right" uk-icon="icon: mail"></span>{{ $shareData["contact"] }}</a></li>
 @endif
 
 @if($shareData["active"] == "/blog")
-    <li class="uk-active"><a href="/blog"><i class="uk-icon-book"></i> {{ $shareData['blog'] }}</a></li>
+    <li class="uk-active"><a href="/blog"><span class="uk-icon uk-margin-small-right" uk-icon="icon: calendar"></span>{{ $shareData['blog'] }}</a></li>
 @else
-    <li><a href="/blog"><i class="uk-icon-book"></i> {{ $shareData['blog'] }}</a></li>
+    <li><a href="/blog"><span class="uk-icon uk-margin-small-right" uk-icon="icon: calendar"></span>{{ $shareData['blog'] }}</a></li>
 @endif
 
 @if(!session()->has("userLogin"))
     @if($shareData["active"] == "/connection")
-         <li class="uk-active"><a href="/connection"><i class="uk-icon-check-circle"></i> {{ $shareData['buttonConnection'] }}</a></li>
+         <li class="uk-active"><a href="/connection"><span class="uk-icon uk-margin-small-right" uk-icon="icon: sign-in"></span>{{ $shareData['buttonConnection'] }}</a></li>
     @else
-        <li><a href="/connection"><i class="uk-icon-check-circle"></i> {{ $shareData['buttonConnection'] }}</a></li>
+        <li><a href="/connection"><span class="uk-icon uk-margin-small-right" uk-icon="icon: sign-in"></span>{{ $shareData['buttonConnection'] }}</a></li>
     @endif
 @endif
