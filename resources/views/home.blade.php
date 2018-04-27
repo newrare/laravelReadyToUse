@@ -35,7 +35,7 @@
             @endif
 
             <div class="uk-child-width-1-3@s uk-grid-small uk-grid-match" uk-grid>
-                <div>
+                <div uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
                     <div class="uk-card uk-card-default uk-card-body uk-text-center">
                         <span class="uk-icon uk-text-primary" uk-icon="icon: list; ratio: 3"></span>
                         <h3 class="uk-card-title uk-margin-remove-top">{{ $data["subService"] }}</h3>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
                     <div class="uk-card uk-card-default uk-card-body uk-text-center">
                         <span class="uk-icon uk-text-primary" uk-icon="icon: world; ratio: 3"></span>
                         <h3 class="uk-card-title uk-margin-remove-top">{{ $data["subLang"] }}</h3>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
                     <div class="uk-card uk-card-default uk-card-body uk-text-center">
                         <span class="uk-icon uk-text-primary" uk-icon="icon: cloud-upload; ratio: 3"></span>
                         <h3 class="uk-card-title uk-margin-remove-top">{{ $data["subCloud"] }}</h3>
@@ -75,7 +75,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
                     <div class="uk-card uk-card-default uk-card-body uk-text-center">
                         <span class="uk-icon uk-text-primary" uk-icon="icon: phone; ratio: 3"></span>
                         <h3 class="uk-card-title uk-margin-remove-top">{{ $data["subResponsive"] }}</h3>
@@ -102,7 +102,7 @@
 
             <div class="uk-box-shadow-bottom uk-box-shadow-small uk-width-1-1@s uk-text-center">
                 <div class="uk-background-default uk-padding-large">
-                    <img class="uk-border-circle" src="/image/team.jpg" alt="Team">
+                    <img class="uk-border-circle" src="/image/team.jpg" alt="Team" />
 
                     <p>{{ $data["textAboutUs"] }}</p>
                 </div>
@@ -118,7 +118,7 @@
 </div>
 
 <!-- bottomLegal -->
-    <div class="uk-background-secondary uk-margin-xlarge-top">
+    <div class="uk-background-secondary uk-margin-xlarge-top" uk-scrollspy="cls: uk-animation-fade; target: > div; delay: 300">
         <div class="uk-container uk-container-center">
             <h4 class="uk-margin-top uk-text-primary"><span uk-icon="nut"></span> {{ $data["subLegal"] }}</h4>
 
