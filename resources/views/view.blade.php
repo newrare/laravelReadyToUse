@@ -1,24 +1,22 @@
 @extends("template")
 
 @section("content")
-    <article class="uk-article">
-        <h1 class="uk-article-title"><i class="uk-icon-eye"></i> {{ $data["titlePage"] }}</h1>
-        <p class="uk-article-meta">{{ $data["titleMessage"] }}</p>
-    </article>
+    <h1 class="uk-heading-bullet uk-margin-remove">{{ $data["titlePage"] }}</h1>
+    <small>{{ $data["titleMessage"] }}</small>
 
-    <table class="uk-table uk-table-hover uk-table-striped">
+    <table class="uk-table uk-table-hover uk-table-striped uk-table-divider">
         <thead>
             <tr>
-                <th class="uk-text-bold">{{ $data["key"] }}</th>
-                <th class="uk-text-bold">{{ $data["value"] }}</th>
+                <th>{{ $data["key"] }}</th>
+                <th>{{ $data["value"] }}</th>
             </tr>
         </thead>
 
         <tbody>
             @foreach ($data["reply"] as $key => $item)
                 <tr>
-                    <th class="uk-text-muted">{{ $key }}</th>
-                    <th class="uk-text-muted">{{ $item }}</th>
+                    <td>{{ $key }}</td>
+                    <td>{{ $item }}</td>
                 </tr>
             @endforeach
         </tbody>
