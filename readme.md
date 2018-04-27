@@ -90,7 +90,6 @@ php <yourProject>/database/bdd.php CREATE user <yourDatabaseName> <yourDatabaseP
 php <yourProject>/database/bdd.php CREATE blog <yourDatabaseName> <yourDatabasePassword>
 ```
 
-
 Ps: Edit **bdd.php** file if you used another database userName.
 
 4/ Copy and edit your config (Domain name, MySql, Mail, Google API, etc)
@@ -99,9 +98,9 @@ cp <yourProject>/.env.example <yourProject>/.env
 vim <yourProject>/.env
 ```
 
-5/ Test LaravelReadyToUse and create your first *<userName>*. Go to your URL (your domain name or IP) and clik on button *Create an account*.
+5/ Test LaravelReadyToUse and create your first userName. Go to your URL (your domain name or IP) and clik on button *Create an account*.
 
-6/ Set your *<userName>* to admin:
+6/ Set your userName to admin:
 ```bash
 php <yourProject>/laravelReadyToUse/database/userIsAdmin.php <yourDatabaseName> <userName> 1 <yourDatabasePassword>
 ```
