@@ -40,6 +40,22 @@ function messageError()
     return true;
 }
 
+//remove error form when focus is active
+$(":input").focus(function(){
+    var allClassName = this.className;
+
+    var regex = /uk-form-danger/i;
+
+    if(allClassName.match(regex))
+    {
+        $(this).removeClass("uk-form-danger");
+
+        var pMessage = $(this).next();
+
+        pMessage.remove();
+    }
+});
+
 //button remove (AJAX METHOD DELETE)
 $(".ajaxTrash").click(function(){
     var urlId = $(this).attr("name");
