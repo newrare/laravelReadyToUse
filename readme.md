@@ -1,4 +1,4 @@
-<p align="center"><img src="http://51.254.119.126:8080/image/72.png"></p>
+<p align="center"><img src="https://plik.root.gg/file/0NWM7r5AAxWN0vAA/Ht9KiYcqy0fJQsNE/72.png"></p>
 
 <p align="center">
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
@@ -148,29 +148,16 @@ Add a new language in array **allLang** to **<yourProject>/app/Http/Controllers/
 
 All pages and functions of the web application also works in API (return JSON). You can build an Android or IOS app in parallel. LaravelReadyToUse becomes the logical engine.
 
-Example Entry point:
 |Method |Entry Point                                        |Information                                                                            |
 |-------|---------------------------------------------------|---------------------------------------------------------------------------------------|
 |GET    |http://www.yourDomainName.tld/                     |show home's page                                                                       |
 |GET    |http://www.yourDomainName.tld/lang/en/edit         |set session app to English                                                             |
 |GET    |http://www.yourDomainName.tld/lang/fr/edit         |set session app to French                                                              |
-
-View:
-|Method |Entry Point                                        |Information                                                                            |
-|-------|---------------------------------------------------|---------------------------------------------------------------------------------------|
 |GET    |http://www.yourDomainName.tld/view                 |show view's page: list of views                                                        |
 |GET    |http://www.yourDomainName.tld/view/home            |show element of viewName: here home                                                    |
-
-Login:
-|Method |Entry Point                                        |Information                                                                            |
-|-------|---------------------------------------------------|---------------------------------------------------------------------------------------|
 |GET    |http://www.yourDomainName.tld/connection           |show connection's page                                                                 |
 |POST   |http://www.yourDomainName.tld/connection           |log in user [login, pass]                                                              |
 |GET    |http://www.yourDomainName.tld/connection/off/edit  |set session for logout user                                                            |
-
-User:
-|Method |Entry Point                                        |Information                                                                            |
-|-------|---------------------------------------------------|---------------------------------------------------------------------------------------|
 |GET    |http://www.yourDomainName.tld/account              |show account's page (session on: show options | session off: show create user)         |
 |POST   |http://www.yourDomainName.tld/account              |create a new user [login, pass, email]                                                 |
 |GET    |http://www.yourDomainName.tld/account/email/edit   |send a new mail validation                                                             |
