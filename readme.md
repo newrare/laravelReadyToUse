@@ -73,9 +73,14 @@ This application need PHP 7 or more for working (Laravel work also with [Compose
 
 ### Install
 
-1/ Clone the project:
+1/ Clone the project, update www-data right and install dependence:
 ```bash
 git clone git://github.com/newrare/laravelReadyToUse.git <yourProject>
+
+sudo chown -R www-data <yourProject>/storage/ <yourProject>/bootstrap/
+sudo chmod -R 775 <yourProject>/storage/ <yourProject>/bootstrap/
+
+composer update
 ```
 
 2/ Create a folder for save user's avatars:
@@ -92,8 +97,10 @@ php <yourProject>/database/bdd.php CREATE blog <yourDatabaseName> <yourDatabaseP
 
 Ps: Edit **bdd.php** file if you used another database userName.
 
-4/ Copy and edit your config (Domain name, MySql, Mail, Google API, etc)
+4/ Generate app key and copy your config (Domain name, MySql, Mail, Google API, etc)
 ```bash
+cd <yourProject>
+php artisan key:generate
 cp <yourProject>/.env.example <yourProject>/.env
 vim <yourProject>/.env
 ```
