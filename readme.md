@@ -26,7 +26,7 @@ Ps: See **composer.json** file for many informations or update your need.
 
 ### Demo
 
-You can find a [Demo](http://51.254.119.126:8080/) for LaravelReadyToUse.
+You can find a [Demo](http://51.254.119.126:8081/) for LaravelReadyToUse.
 
 
 
