@@ -55,7 +55,6 @@ class GoogleController extends Controller
             $User->socialNetwork    = $idGoogle;
             $User->urlAvatar        = str_replace("?sz=50", "?sz=97", $UserGoogle->getAvatar());
             $User->dateRegistration = date("Y-m-d");
-            $User->sharing          = 1;
             $User->lang             = Session::get("lang");
             $User->isAdmin          = 0;
 
