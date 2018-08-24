@@ -64,20 +64,20 @@ class Handler extends ExceptionHandler
         }
 
         //other error
-        if($_SERVER["SERVER_PORT"] == 80)
+        if(APP_DEBUG === true)
         {
-            //only for the Prod
-            return self::reply("503");
-        }
-        else
-        {
-            //only for the Dev : print all errors
+            //print all errors
             if($exception instanceof ModelNotFoundException)
             {
                 $exception = new NotFoundHttpException($e->getMessage(), $exception);
             }
 
             return parent::render($request, $exception);
+        }
+        else
+        {
+            //no print error, use it in Prod
+            return self::reply("503");
         }
     }
 
