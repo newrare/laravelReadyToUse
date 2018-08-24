@@ -109,7 +109,7 @@ vim <yourProject>/.env
 
 6/ Set your userName to admin:
 ```bash
-php <yourProject>/laravelReadyToUse/database/userIsAdmin.php <yourDatabaseName> <userName> 1 <yourDatabasePassword>
+php <yourProject>/database/userIsAdmin.php <yourDatabaseName> <userName> 1 <yourDatabasePassword>
 ```
 
 
