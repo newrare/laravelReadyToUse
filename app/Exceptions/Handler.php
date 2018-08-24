@@ -64,7 +64,7 @@ class Handler extends ExceptionHandler
         }
 
         //other error
-        if(APP_DEBUG === true)
+        if(env("APP_DEBUG") === true)
         {
             //print all errors
             if($exception instanceof ModelNotFoundException)
