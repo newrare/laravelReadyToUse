@@ -77,8 +77,8 @@ This application need PHP 7 or more for working (Laravel work also with [Compose
 ```bash
 git clone git://github.com/newrare/laravelReadyToUse.git <yourProject>
 
-sudo chown -R www-data <yourProject>/storage/ <yourProject>/bootstrap/
-sudo chmod -R 775 <yourProject>/storage/ <yourProject>/bootstrap/
+sudo chown -R www-data <yourProject>/storage/* <yourProject>/bootstrap/*
+sudo chmod -R 775 <yourProject>/storage/* <yourProject>/bootstrap/*
 
 composer update
 ```
@@ -86,7 +86,8 @@ composer update
 2/ Create a folder for save user's avatars:
 ```bash
 mkdir <yourProject>/public/image/cover
-sudo chmod 775 <yourProject>/public/image/cover
+sudo chown -R www-data <yourProject>/public/*
+sudo chmod -R 775 <yourProject>/public/*
 ```
 
 3/ Create a database in *root*:
