@@ -86,10 +86,12 @@ sudo chmod -R ug+rwx storage bootstrap/cache public/image/cover
 composer update
 php artisan key:generate
 ```
+
 2/ Create tables user and blog in Database:
 ```bash
 php database/bdd.php CREATE user <yourDatabaseName> <yourDatabasePassword> <yourMysqlUser>
 php database/bdd.php CREATE blog <yourDatabaseName> <yourDatabasePassword> <yourMysqlUser>
+```
 
 3/ Generate app key and copy your config (Domain name, MySql, Mail, Google API, etc)
 ```bash
