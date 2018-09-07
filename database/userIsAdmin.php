@@ -16,7 +16,7 @@
     }
 
     //connection
-    $Connection = new mysqli("localhost", "root", $pass, $table);
+    $Connection = new mysqli("localhost", "julien", $pass, $table);
 
     if($Connection->connect_error)
     {

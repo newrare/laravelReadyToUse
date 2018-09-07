@@ -26,7 +26,7 @@ Ps: See **composer.json** file for many informations or update your need.
 
 ### Demo
 
-You can find a [Demo](http://51.254.119.126:8081/) for LaravelReadyToUse.
+You can find a [Demo](http://51.254.119.126:8080/) for LaravelReadyToUse.
 
 
 
@@ -73,44 +73,37 @@ This application need PHP 7 or more for working (Laravel work also with [Compose
 
 ### Install
 
-1/ Clone the project, update www-data right and install dependence:
+1/ Clone the project, update right and install dependence:
 ```bash
 git clone git://github.com/newrare/laravelReadyToUse.git <yourProject>
 
-sudo chown -R www-data <yourProject>/storage/* <yourProject>/bootstrap/*
-sudo chmod -R 775 <yourProject>/storage/* <yourProject>/bootstrap/*
+cd <yourProject>
+cp .env.example .env
+mkdir public/image/cover
+sudo chown -R www-data storage bootstrap/cache public/image/cover
+sudo chmod -R ug+rwx storage bootstrap/cache public/image/cover
 
 composer update
+php artisan key:generate
 ```
-
-2/ Create a folder for save user's avatars:
+2/ Create a database in *root*:
 ```bash
-mkdir <yourProject>/public/image/cover
-sudo chown -R www-data <yourProject>/public/*
-sudo chmod -R 775 <yourProject>/public/*
-```
-
-3/ Create a database in *root*:
-```bash
-php <yourProject>/database/bdd.php CREATE user <yourDatabaseName> <yourDatabasePassword>
-php <yourProject>/database/bdd.php CREATE blog <yourDatabaseName> <yourDatabasePassword>
+php database/bdd.php CREATE user <yourDatabaseName> <yourDatabasePassword>
+php database/bdd.php CREATE blog <yourDatabaseName> <yourDatabasePassword>
 ```
 
 Ps: Edit **bdd.php** file if you used another database userName.
 
-4/ Generate app key and copy your config (Domain name, MySql, Mail, Google API, etc)
+3/ Generate app key and copy your config (Domain name, MySql, Mail, Google API, etc)
 ```bash
-cd <yourProject>
-php artisan key:generate
-cp <yourProject>/.env.example <yourProject>/.env
 vim <yourProject>/.env
 ```
 
-5/ Test LaravelReadyToUse and create your first userName. Go to your URL (your domain name or IP) and clik on button *Create an account*.
+4/ Test LaravelReadyToUse and create your first userName. Go to your URL (your domain name or IP) and clik on button *Create an account*.
 
-6/ Set your userName to admin:
+5/ Set your userName to admin:
 ```bash
-php <yourProject>/database/userIsAdmin.php <yourDatabaseName> <userName> 1 <yourDatabasePassword>
+php database/userIsAdmin.php <yourDatabaseName> <userName> 1 <yourDatabasePassword>
 ```
 
 

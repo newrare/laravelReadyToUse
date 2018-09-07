@@ -218,11 +218,25 @@ class AccountController extends Controller
             //save new image
             $timeNoCache = time();
 
-            $pathImage = env("APP_ENV") ."public/image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
+            if (substr(env("APP_ENV"), -1) == "/")
+            {
+                $pathImage = env("APP_ENV") ."public/image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
+            }
+            else
+            {
+                $pathImage = env("APP_ENV") ."/public/image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
+            }
 
             Image::make(Input::get("userUrlAvatar"))->resize(96, 96)->save($pathImage);
 
-            $User->urlAvatar = env("APP_URL") . "image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
+            if (substr(env("APP_URL"), -1) == "/")
+            {
+                $User->urlAvatar = env("APP_URL") . "image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
+            }
+            else
+            {
+                $User->urlAvatar = env("APP_URL") . "/image/cover/avatar_" . $User->id . "_" . $timeNoCache . ".jpg";
+            }
         }
 
         //update User and save it

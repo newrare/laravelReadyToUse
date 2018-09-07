@@ -26,7 +26,7 @@
     foreach ($tabBase as $value)
     {
         //connection
-        $Connection = new mysqli("localhost", "root", $pass, $value);
+        $Connection = new mysqli("localhost", "julien", $pass, $value);
 
         if($Connection->connect_error)
         {
