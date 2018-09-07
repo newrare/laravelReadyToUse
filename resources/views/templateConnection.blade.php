@@ -43,7 +43,7 @@
                 </div>
 
                 <div>
-                    <a href="/google" class="uk-button uk-button-danger uk-width-1 uk-text-nowrap">{{ $shareData["googleConnection"] }}</a>
+                    <a href="/google" class="uk-button uk-button-danger uk-width-1-1 uk-text-nowrap">{{ $shareData["googleConnection"] }}</a>
                 </div>
             </div>
         <!-- /formValidationOrGoogle -->

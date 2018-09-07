@@ -2,7 +2,7 @@
     return array(
         "200"   => "Done",
         "202"   => "Success",
-        "204"   => "Success, we sent an email",
+        "204"   => "Email sent",
         "400"   => "Bad Request",
         "401"   => "Please, login in first",
         "403"   => "Bad login or password",

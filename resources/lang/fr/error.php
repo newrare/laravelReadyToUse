@@ -2,7 +2,7 @@
     return array(
         "200"   => "Fait",
         "202"   => "Action réussie",
-        "204"   => "Action réussie, nous vous avons envoyé un nouvel mail",
+        "204"   => "Email envoyé",
         "400"   => "Mauvaise requête",
         "401"   => "Connectez-vous en premier s'il vous plait",
         "403"   => "Mauvais identifiant ou mot de passe",
