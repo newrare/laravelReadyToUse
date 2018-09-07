@@ -17,7 +17,8 @@
 
     if(isset($argv[5]))
     {
-        $option = $argv[5]; //ex: "admin TINYINT(1) NULL"
+        $option     = $argv[5]; //ex: "admin TINYINT(1) NULL"
+        $userMysql  = $argv[6]; //ex: julien
     }
 
     $tabBase = explode(",", $baseList);
@@ -26,7 +27,7 @@
     foreach ($tabBase as $value)
     {
         //connection
-        $Connection = new mysqli("localhost", "julien", $pass, $value);
+        $Connection = new mysqli("localhost", $userMysql, $pass, $value);
 
         if($Connection->connect_error)
         {

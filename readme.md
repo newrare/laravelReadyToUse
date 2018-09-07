@@ -86,17 +86,14 @@ sudo chmod -R ug+rwx storage bootstrap/cache public/image/cover
 composer update
 php artisan key:generate
 ```
-2/ Create a database in *root*:
+2/ Create tables user and blog in Database:
 ```bash
-php database/bdd.php CREATE user <yourDatabaseName> <yourDatabasePassword>
-php database/bdd.php CREATE blog <yourDatabaseName> <yourDatabasePassword>
-```
-
-Ps: Edit **bdd.php** file if you used another database userName.
+php database/bdd.php CREATE user <yourDatabaseName> <yourDatabasePassword> <yourMysqlUser>
+php database/bdd.php CREATE blog <yourDatabaseName> <yourDatabasePassword> <yourMysqlUser>
 
 3/ Generate app key and copy your config (Domain name, MySql, Mail, Google API, etc)
 ```bash
-vim <yourProject>/.env
+vim .env
 ```
 
 4/ Test LaravelReadyToUse and create your first userName. Go to your URL (your domain name or IP) and clik on button *Create an account*.
