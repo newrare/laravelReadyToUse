@@ -73,9 +73,9 @@ This application need PHP 7 or more for working (Laravel work also with [Compose
 
 ### Install
 
-1/ Clone the project, update right and install dependence:
+1/ Clone the project, install dependence, add vital files and update right:
 ```bash
-git clone git://github.com/newrare/laravelReadyToUse.git <yourProject>
+git clone https://github.com/newrare/laravelReadyToUse.git <yourProject>
 
 cd <yourProject>
 
@@ -101,9 +101,11 @@ php artisan migrate --path=database/migrations/blog/
 vim .env
 ```
 
-4/ Test LaravelReadyToUse and create your first user. Go to your URL (your domain name or IP) and clik on button *Create an account*.
+### Test and command
 
-5/ Set an user to admin:
+Test LaravelReadyToUse and create your first user. Go to your URL (your domain name or IP) and clik on button *Create an account*.
+
+In console, you can set an user to admin app with this command line:
 ```bash
 php artisan action:setUser
 ```
