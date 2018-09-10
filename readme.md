@@ -78,31 +78,34 @@ This application need PHP 7 or more for working (Laravel work also with [Compose
 git clone git://github.com/newrare/laravelReadyToUse.git <yourProject>
 
 cd <yourProject>
-cp .env.example .env
-mkdir public/image/cover
-sudo chown -R www-data storage bootstrap/cache public/image/cover
-sudo chmod -R ug+rwx storage bootstrap/cache public/image/cover
 
 composer update
+
+cp .env.example .env
 php artisan key:generate
+
+mkdir public/image/cover
+touch storage/logs/laravel.log
+sudo chown -R www-data storage bootstrap/cache public/image/cover
+sudo chmod -R ug+rwx storage bootstrap/cache public/image/cover
 ```
 
 2/ Create tables user and blog in Database:
 ```bash
-php database/bdd.php CREATE user <yourDatabaseName> <yourDatabasePassword> <yourMysqlUser>
-php database/bdd.php CREATE blog <yourDatabaseName> <yourDatabasePassword> <yourMysqlUser>
+php artisan migrate --path=database/migrations/user/
+php artisan migrate --path=database/migrations/blog/
 ```
 
-3/ Generate app key and copy your config (Domain name, MySql, Mail, Google API, etc)
+3/ Set your personal config (Domain, url, name, MySql, Mail, Google API, etc)
 ```bash
 vim .env
 ```
 
-4/ Test LaravelReadyToUse and create your first userName. Go to your URL (your domain name or IP) and clik on button *Create an account*.
+4/ Test LaravelReadyToUse and create your first user. Go to your URL (your domain name or IP) and clik on button *Create an account*.
 
-5/ Set your userName to admin:
+5/ Set an user to admin:
 ```bash
-php database/userIsAdmin.php <yourDatabaseName> <userName> 1 <yourDatabasePassword>
+php artisan action:setUser
 ```
 
 
@@ -118,6 +121,7 @@ Config:
 - routes/web.php (Routes Web and API)
 
 Back:
+- app/Console/Commands (command line used by artisan)
 - app/Http/Controllers/* (Controllers)
 - app/Http/Classes/* (Classes)
 - app/Http/Models/* (Database Model)
