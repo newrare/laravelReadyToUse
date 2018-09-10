@@ -9,5 +9,6 @@
         "404"   => "Cet élément n'existe pas",
         "405"   => "Cette méthode n'existe pas",
         "409"   => "Cet élément est en conflit avec vos données",
+        "415"   => "Ce type de requète n'est pas supporté",
         "503"   => "Service indisponible"
     );

@@ -38,6 +38,7 @@ class ViewElement
                 "404"   => trans("error.404"),
                 "405"   => trans("error.405"),
                 "409"   => trans("error.409"),
+                "415"   => trans("error.415"),
                 "503"   => trans("error.503")
             );
         }
