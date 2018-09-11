@@ -14,5 +14,6 @@
         "langValue"         => "fr",
         "my"                => "Moi",
         "googleConnection"  => "Google Connexion",
-        "add"               => "Ajouter"
+        "add"               => "Ajouter",
+        "token"             => "Clef API"
     );

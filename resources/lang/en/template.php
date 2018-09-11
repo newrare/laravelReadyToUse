@@ -15,5 +15,6 @@
         "langValue"         => "en",
         "my"                => "My",
         "googleConnection"  => "Sign up with Google",
-        "add"               => "Add"
+        "add"               => "Add",
+        "token"             => "Token API"
     );

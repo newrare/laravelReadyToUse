@@ -66,7 +66,8 @@ class ViewElement
                 "remove"            => trans("template.remove"),
                 "edit"              => trans("template.edit"),
                 "add"               => trans("template.add"),
-                "blog"              => trans("blog.titlePage")
+                "blog"              => trans("blog.titlePage"),
+                "token"             => trans("template.token")
             );
         }
         elseif($view == "pageError")
@@ -191,6 +192,15 @@ class ViewElement
             return array(
                 "titlePage"     => trans("lost.titlePage"),
                 "titleMessage"  => trans("lost.titleMessage"),
+                "email"         => trans("account.email"),
+                "buttonSend"    => trans("button.send")
+            );
+        }
+        elseif($view == "token")
+        {
+            return array(
+                "titlePage"     => trans("token.titlePage"),
+                "titleMessage"  => trans("token.titleMessage"),
                 "email"         => trans("account.email"),
                 "buttonSend"    => trans("button.send")
             );

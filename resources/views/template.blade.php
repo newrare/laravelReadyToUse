@@ -65,6 +65,7 @@
                                     <ul class="uk-nav uk-dropdown-nav">
                                         <li><a href="/"                                 ><span uk-icon="home"       ></span> {{ $shareData["home"] }}</a></li>
                                         <li><a href="/account/{{ session('idUser') }}"  ><span uk-icon="cog"        ></span> {{ $shareData["accountOption"] }}</a></li>
+                                        <li><a href="/token"                            ><span uk-icon="lock"       ></span> {{ $shareData["token"] }}</a></li>
                                         <li><a href="/connection/off"                   ><span uk-icon="sign-out"   ></span> {{ $shareData["logOut"] }}</a></li>
                                     </ul>
                                 </div>
@@ -75,8 +76,8 @@
 
                                 <div uk-dropdown="mode: hover">
                                     <ul class="uk-nav uk-dropdown-nav">
-                                        <li><a href="/lang/en/edit"><span uk-icon="location"></span> English</a></li>
-                                        <li><a href="/lang/fr/edit"><span uk-icon="location"></span> Français</a></li>
+                                        <li><a href="/lang/en"><span uk-icon="location"></span> English</a></li>
+                                        <li><a href="/lang/fr"><span uk-icon="location"></span> Français</a></li>
                                     </ul>
                                 </div>
                             @endif
