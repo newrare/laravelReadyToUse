@@ -7,7 +7,7 @@ use App\Http\Classes\ViewElement;
 
 class NotJavascriptController extends Controller
 {
-    public function getPage()
+    public function index()
     {
         $result = ViewElement::getData("notJavascript");
 

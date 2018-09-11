@@ -63,9 +63,9 @@
 
                                 <div uk-dropdown="mode: hover">
                                     <ul class="uk-nav uk-dropdown-nav">
-                                        <li><a href="/"                     ><span uk-icon="home"       ></span> {{ $shareData["home"] }}</a></li>
-                                        <li><a href="/account"              ><span uk-icon="cog"        ></span> {{ $shareData["accountOption"] }}</a></li>
-                                        <li><a href="/connection/off/edit"  ><span uk-icon="sign-out"   ></span> {{ $shareData["logOut"] }}</a></li>
+                                        <li><a href="/"                                 ><span uk-icon="home"       ></span> {{ $shareData["home"] }}</a></li>
+                                        <li><a href="/account/{{ session('idUser') }}"  ><span uk-icon="cog"        ></span> {{ $shareData["accountOption"] }}</a></li>
+                                        <li><a href="/connection/off"                   ><span uk-icon="sign-out"   ></span> {{ $shareData["logOut"] }}</a></li>
                                     </ul>
                                 </div>
                             @else

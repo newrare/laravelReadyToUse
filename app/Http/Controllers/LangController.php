@@ -11,8 +11,8 @@ use Session;
 
 class LangController extends Controller
 {
-    //GET /lang/<idLang>/edit
-    public function edit($lang)
+    //GET /lang/{codeLang}
+    public function change($lang)
     {
         $allLang = array("en", "fr");
 

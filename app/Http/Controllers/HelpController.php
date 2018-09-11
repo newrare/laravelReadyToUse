@@ -6,18 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Classes\ViewElement;
 use App\Http\Classes\Reply;
 
-class ViewController extends Controller
+class HelpController extends Controller
 {
-    //GET /view
-    public function index()
+    //GET /help/view
+    public function viewIndex()
     {
         $result = ViewElement::allViewName();
 
         return Reply::make("view", 200, $result);
     }
 
-    //GET /view/<idView>
-    public function show($viewName)
+    //GET /help/view/{idView}
+    public function viewshow($viewName)
     {
         $allViewName = ViewElement::allViewName();
 

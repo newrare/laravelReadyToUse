@@ -16,7 +16,7 @@
         {!! Form::open(array("url" => $data["reply"]["urlUpdate"], "method" => "PUT", "class" => "uk-form uk-form-stacked")) !!}
             <!-- userEmailIsValid -->
                 @if($data["reply"]["userEmailIsValid"] == 0)
-                    <a class="uk-button uk-button-link" href="/account/email/edit">{{ $data["clickForValidEmail"] }}</a>
+                    <a class="uk-button uk-button-link" href="/email/valid">{{ $data["clickForValidEmail"] }}</a>
 
                     <hr />
                 @endif

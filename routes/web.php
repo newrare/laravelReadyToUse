@@ -1,22 +1,31 @@
 <?php
 
 Route::group(["middleware" => ["checkWeb"]], function () {
-    Route::get("/", "HomeController@index");
-    #Route::get("email/{idUser}/{codeEmail}",    "EmailController@getPage");
-    #Route::get("google",                        "GoogleController@redirectToProvider");
-    #Route::get("googleCallBack",                "GoogleController@handleProviderCallBack");
-    #Route::get("notJavascript",                 "NotJavascriptController@getPage");
+    Route::get  ("/",                           "HomeController@index"                      );
+    Route::get  ("/account",                    "AccountController@index"                   );
+    Route::post ("/account",                    "AccountController@store"                   );
+    Route::get  ("/account/{idUser}",           "AccountController@indexOption"             )->middleware("checkSession", "checkIdUser");
+    Route::put  ("/account/{idUser}",           "AccountController@update"                  )->middleware("checkSession", "checkIdUser");
+    //delete  /api/account/{idUser}
+    Route::get  ("/blog",                       "BlogController@index"                      );
+    Route::post ("/blog",                       "BlogController@store"                      )->middleware("checkSession", "checkAdmin");
+    Route::get  ("/blog/{idBlog}",              "BlogController@show"                       )->middleware("checkSession", "checkAdmin");
+    Route::put  ("/blog/{idBlog}",              "BlogController@update"                     )->middleware("checkSession", "checkAdmin");
+    //delete  /api/blog/{idBlog}
+    Route::get  ("/connection",                 "ConnectionController@index"                );
+    Route::post ("/connection",                 "ConnectionController@store"                );
+    Route::get  ("/connection/off",             "ConnectionController@logOut"               );
+    Route::get  ("/contact",                    "ContactController@index"                   );
+    Route::post ("/contact",                    "ContactController@store"                   );
+    Route::get  ("/email/valid",                "EmailController@valid"                     )->middleware("checkSession");
+    Route::get  ("/email/{idUser}/{codeEmail}", "EmailController@valided"                   );
+    Route::get  ("/google",                     "GoogleController@redirectToProvider"       );
+    Route::get  ("/googleCallBack",             "GoogleController@handleProviderCallBack"   );
+    Route::get  ("/help/view",                  "HelpController@viewIndex"                  );
+    Route::get  ("/help/view/{idView}",         "HelpController@viewShow"                   );
+    Route::get  ("/lang/{codeLang}",            "LangController@change"                     );
+    Route::get  ("/lost",                       "LostController@index"                      );
+    Route::post ("/lost",                       "LostController@store"                      );
+    Route::get  ("/notJavascript",              "NotJavascriptController@index"             );
+    Route::get  ("/service",                    "ServiceController@index"                   )->middleware("checkSession");
 });
-
-//web and api
-/*
-Route::resource("/",            "HomeController",       array("only" => array("index")));
-Route::resource("account",      "AccountController",    array("only" => array("index", "edit", "store", "update", "destroy")));
-Route::resource("blog",         "BlogController",       array("only" => array("index", "create", "show", "store", "update", "destroy")));
-Route::resource("connection",   "ConnectionController", array("only" => array("index", "edit", "store")));
-Route::resource("contact",      "ContactController",    array("only" => array("index", "store")));
-Route::resource("lang",         "LangController",       array("only" => array("edit")));
-Route::resource("lost",         "LostController",       array("only" => array("index", "store")));
-Route::resource("service",      "ServiceController",    array("only" => array("index")));
-Route::resource("view",         "ViewController",       array("only" => array("index", "show")));
-*/

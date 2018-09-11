@@ -13,12 +13,6 @@ class ServiceController extends Controller
     //GET /view
     public function index()
     {
-        //test if user is connected
-        if(!Session::has("idUser"))
-        {
-            return Reply::make("account", 401);
-        }
-
         return Reply::make("service", 200);
     }
 }

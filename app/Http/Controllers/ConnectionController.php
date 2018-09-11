@@ -62,27 +62,15 @@ class ConnectionController extends Controller
         }
     }
 
-    //GET /connection/<action>/edit
-    public function edit($off)
+    //GET /connection/off
+    public function logOut()
     {
-        if($off == "off")
-        {
-            $langSession = Session::get("lang");
+        $langSession = Session::get("lang");
 
-            Session::flush();
+        Session::flush();
 
-            Session::put("lang", $langSession);
+        Session::put("lang", $langSession);
 
-            if(strpos($_SERVER["HTTP_USER_AGENT"], "Mobile Safari/534.30") !== false)
-            {
-                return Reply::redirect("connection", 202);
-            }
-
-            return Reply::redirect("/", 202);
-        }
-        else
-        {
-            return Reply::make("pageError", 404);
-        }
+        return Reply::redirect("/", 202);
     }
 }

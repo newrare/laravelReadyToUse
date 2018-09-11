@@ -8,7 +8,6 @@ use App\Http\Classes\Reply;
 use App\Http\Classes\SendMail;
 use App\Http\Classes\Tools;
 use App\Http\Models\User;
-use App\Http\Models\Item;
 
 use Hash;
 use Image;
@@ -21,72 +20,37 @@ class AccountController extends Controller
     //GET /account
     public function index()
     {
-        if(Session::has("idUser"))
-        {
-            //get accountOption page
-            $User   = User::find(Session::get("idUser"));
-            $email  = trans("accountOption.email");
-            $avatar = $User->urlAvatar;
-
-            if($User->emailIsValid == 0)
-            {
-                $email = trans("accountOption.emailNoValid");
-            }
-
-            if(Tools::testUrl($avatar) !== true)
-            {
-                $avatar = null;
-            }
-
-            $reply = array(
-                "urlUpdate"         => "/account/" . $User->id,
-                "email"             => $email,
-                "userEmail"         => $User->email,
-                "userEmailIsValid"  => $User->emailIsValid,
-                "userUrlAvatar"     => $avatar,
-                "userLang"          => $User->lang
-            );
-
-            return Reply::make("accountOption", 200, $reply);
-        }
-        else
-        {
-            //get account connection page
-            $reply = array(
-                "isCreate" => true
-            );
-
-            return Reply::make("account", 200, $reply);
-        }
+        return Reply::make("account", 200);
     }
 
-    //GET /account/email/edit
-    public function edit($action)
+    //GET /account/{idUser}
+    public function indexOption($idUser)
     {
-        if($action == "email")
+        //get accountOption page
+        $User   = User::find($idUser);
+        $email  = trans("accountOption.email");
+        $avatar = $User->urlAvatar;
+
+        if($User->emailIsValid == 0)
         {
-            //test if user is connected
-            if(!Session::has("idUser"))
-            {
-                return Reply::make("connection", 401);
-            }
-
-            //test if idUser exist
-            if(!User::find(Session::get("idUser")))
-            {
-                return Reply::redirect("service", 400);
-            }
-
-            $User = User::find(Session::get("idUser"));
-
-            SendMail::validEmailAccount($User->email);
-
-            return Reply::redirect("account", 204);
+            $email = trans("accountOption.emailNoValid");
         }
-        else
+
+        if(Tools::testUrl($avatar) !== true)
         {
-            return Reply::make("pageError", 404);
+            $avatar = null;
         }
+
+        $reply = array(
+            "urlUpdate"         => "/account/" . $User->id,
+            "email"             => $email,
+            "userEmail"         => $User->email,
+            "userEmailIsValid"  => $User->emailIsValid,
+            "userUrlAvatar"     => $avatar,
+            "userLang"          => $User->lang
+        );
+
+        return Reply::make("accountOption", 200, $reply);
     }
 
     //POST /account
@@ -133,28 +97,11 @@ class AccountController extends Controller
         return Reply::redirect("service", 202);
     }
 
-    //PUT /account/<idUser>
+    //PUT /account/{idUser}
     public function update($idUser)
     {
-        //test if user is connected
-        if(!Session::has("idUser"))
-        {
-            return Reply::make("connection", 401);
-        }
-
-        //test if idUser exist
-        if(!User::find($idUser))
-        {
-            return Reply::redirect("service", 400);
-        }
-
+        //get User
         $User = User::find($idUser);
-
-        //test if userSession is same to idUser (or admin)
-        if( ($User->isAdmin == 0) && (Session::get("idUser") != $idUser) )
-        {
-            return Reply::redirect("service", 400);
-        }
 
         //rules for check input
         $rules = array(
@@ -261,44 +208,17 @@ class AccountController extends Controller
             SendMail::validEmailAccount($User->email);
         }
 
-        return Reply::redirect("account", 202);
+        return Reply::redirect("account/" . $idUser, 202);
     }
 
-    //DELETE /account/<idUser>
+    //DELETE /account/{idUser}
     public function destroy($idUser)
     {
-        //test if user is connected
-        if(!Session::has("idUser"))
-        {
-            return Reply::make("connection", 401);
-        }
-
-        //test if idUser exist
-        if(!User::find($idUser))
-        {
-            return Reply::redirect("service", 400);
-        }
-
-        //get userSession and UserToKill
-        $UserSession    = User::find(Session::get("idUser"));
-        $UserToKill     = User::find($idUser);
-
-        //test if UserSession is same to idUser (or if UserSession is admin)
-        if( ($UserSession->isAdmin == 0) && (Session::get("idUser") != $idUser) )
-        {
-            return Reply::redirect("service", 400);
-        }
+        //get User
+        $User = User::find($idUser);
 
         //remove User
-        Record::remove($UserToKill, "Remove an user account.");
-
-        //remove all items for this User
-        $ListItem = Item::where("idUser", $idUser)->get();
-
-        foreach ($ListItem as $Item)
-        {
-            Record::remove($Item, "Remove all items for this user because this account is deleted.");
-        }
+        Record::remove($User, "Remove an user account.");
 
         //restart session
         $langSession = Session::get("lang");
