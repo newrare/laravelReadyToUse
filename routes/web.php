@@ -29,4 +29,5 @@ Route::group(["middleware" => ["checkWeb"]], function () {
     Route::get  ("/notJavascript",              "NotJavascriptController@index"             );
     Route::get  ("/service",                    "ServiceController@index"                   )->middleware("checkSession");
     Route::get  ("/token",                      "TokenController@index"                     )->middleware("checkSession");
+    Route::post ("/token",                      "TokenController@store"                     )->middleware("checkSession");
 });

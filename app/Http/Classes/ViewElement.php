@@ -201,8 +201,9 @@ class ViewElement
             return array(
                 "titlePage"     => trans("token.titlePage"),
                 "titleMessage"  => trans("token.titleMessage"),
-                "email"         => trans("account.email"),
-                "buttonSend"    => trans("button.send")
+                "tokenName"     => trans("token.tokenName"),
+                "tokenId"       => trans("token.tokenId"),
+                "tokenKey"      => trans("token.tokenKey")
             );
         }
         elseif($view == "service")
