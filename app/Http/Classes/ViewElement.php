@@ -167,7 +167,6 @@ class ViewElement
                 "email"                 => trans("accountOption.email"),
                 "emailNoValid"          => trans("accountOption.emailNoValid"),
                 "avatar"                => trans("accountOption.avatar"),
-                "sharing"               => trans("accountOption.sharing"),
                 "yes"                   => trans("accountOption.yes"),
                 "no"                    => trans("accountOption.no"),
                 "lang"                  => trans("accountOption.lang"),

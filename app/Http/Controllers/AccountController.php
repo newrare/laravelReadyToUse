@@ -91,7 +91,7 @@ class AccountController extends Controller
         Session::put("userLogin", $User->login);
 
         //send email
-        SendMail::validEmailAccount($User->email);
+        SendMail::userView($User, "createAccount");
 
         //return collection
         return Reply::redirect("service", 202);
@@ -205,7 +205,7 @@ class AccountController extends Controller
 
         if($sendMail == 1)
         {
-            SendMail::validEmailAccount($User->email);
+            SendMail::userView($User, "createAccount");
         }
 
         return Reply::redirect("account/" . $idUser, 202);

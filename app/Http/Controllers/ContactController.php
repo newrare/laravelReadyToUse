@@ -49,7 +49,7 @@ class ContactController extends Controller
         }
 
         //send mail
-        SendMail::directSend(Input::get("contactMail"), Input::get("contactSubject"), Input::get("contactMessage"));
+        SendMail::direct(Input::get("contactMail"), Input::get("contactSubject"), Input::get("contactMessage"));
 
         return Reply::back(202);
     }

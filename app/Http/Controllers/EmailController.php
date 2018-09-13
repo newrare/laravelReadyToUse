@@ -8,6 +8,7 @@ use App\Http\Classes\Reply;
 use App\Http\Classes\SendMail;
 use App\Http\Models\User;
 
+use App;
 use Session;
 
 class EmailController extends Controller
@@ -19,7 +20,7 @@ class EmailController extends Controller
         $User = User::find(Session::get("idUser"));
 
         //send email validation
-        SendMail::validEmailAccount($User->email);
+        SendMail::userView($User, "createAccount");
 
         return Reply::redirect("account/" . Session::get("idUser"), 204);
     }
@@ -49,14 +50,14 @@ class EmailController extends Controller
             //save it
             Record::save($User, "Email is valid.");
 
-            if(Session::has("idUser"))
-            {
-                return Reply::redirect("service", 202);
-            }
-            else
-            {
-                return Reply::redirect("/", 202);
-            }
+            //set session
+            Session::put("idUser",      $User->id);
+            Session::put("userLogin",   $User->login);
+            Session::put("lang",        $User->lang);
+
+            App::setLocale($User->lang);
+
+            return Reply::redirect("account/". $User->id, 202);
         }
         else
         {

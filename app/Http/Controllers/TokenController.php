@@ -17,7 +17,7 @@ class TokenController extends Controller
     public function index()
     {
         //get all token api
-        $ListApi = Api::where("idUser", Session::get("idUser"))->orderBy("name", "desc")->get();
+        $ListApi = Api::where("idUser", Session::get("idUser"))->orderBy("name")->get();
 
         //return result
         $reply = array(
@@ -32,7 +32,7 @@ class TokenController extends Controller
      {
         //check token name
         $rules = array(
-            "tokenName" => "required|max:100"
+            "tokenName" => "required|max:20"
         );
 
         $Validation = Validator::make(Input::all(), $rules);
@@ -43,8 +43,8 @@ class TokenController extends Controller
         }
 
 		//create new token ID and key
-        $tokenId 	= substr(str_shuffle(str_repeat("23456789aAbBDdeEfFGghHijJMmnNPpqQRrtTYy", 50 )), 0, 50);
-		$tokenKey 	= substr(str_shuffle(str_repeat("23456789aAbBDdeEfFGghHijJMmnNPpqQRrtTYy", 100)), 0, 100);
+        $tokenId 	= substr(str_shuffle(str_repeat("23456789aAbBDdeEfFGghHijJMmnNPpqQRrtTYy", 10)), 0, 10);
+		$tokenKey 	= substr(str_shuffle(str_repeat("23456789aAbBDdeEfFGghHijJMmnNPpqQRrtTYy", 20)), 0, 20);
 
         //get list account
         Input::get("tokenName");

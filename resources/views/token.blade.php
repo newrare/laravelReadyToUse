@@ -33,12 +33,30 @@
     </div>
 
 	@foreach($data["reply"]["ListApi"] as $api)
-        <div class="uk-box-shadow-medium uk-padding uk-article uk-margin-top">
-            <h3 class="uk-margin-remove">{{{ $api["name"] }}}</h3>
+        <div class="uk-box-shadow-medium uk-card uk-card-body uk-margin-top">
+            <div class="uk-clearfix">
+                <div class="uk-float-left">
+                    <h4>{{{ $api["name"] }}}</h4>
+                </div>
 
-            <p class="uk-article-meta uk-margin-remove">{{ $api["tokenId"] }}</p>
+                <div class="uk-float-right">
+                    <a href="#" uk-icon="icon: trash" uk-tooltip="{{ $shareData['remove'] }}" name="/token/{{ $api['id'] }}"  class="uk-icon-button ajaxTrash"></a>
+                </div>
+            </div>
 
-			<p class="uk-article-meta uk-margin-remove">{{ $api["tokenKey"] }}</p>
+            <table class="uk-table uk-table-hover uk-table-striped uk-table-divider">
+                <tbody>
+                    <tr>
+                        <td class="uk-text-success"><small>{{ $data["tokenId"] }}</small></td>
+                        <td><small>{{ $api["tokenId"] }}</small></td>
+                    </tr>
+
+                    <tr>
+                        <td class="uk-text-success"><small>{{ $data["tokenKey"] }}</small></td>
+                        <td><small>{{ $api["tokenKey"] }}</small></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     @endforeach
 @stop

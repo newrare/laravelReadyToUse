@@ -4,51 +4,53 @@ namespace App\Http\Classes;
 
 use App\Http\Models\User;
 
+use App;
 use Log;
 use Mail;
 use Session;
 
 class SendMail
 {
-    //argument : stringMailTo
-    public static function validEmailAccount($mailTo)
+    //argument: ObjectUser, stringView
+    public static function userView($User, $view)
     {
-        //get elements in session for create mail
-        $mailLang = Session::get("lang");
-        $mailUser = Session::get("userLogin");
-
-        //path for view mail
-        $directory = "email." . Session::get("lang") . ".createAccount";
+        //get variable for function Mail
+        $directory  = "email." . $User->lang . "." . $view;
+        $login      = $User->login;
+        $email      = $User->email;
 
         //data dynamic inside mail
-        $toMail = strrev($mailTo);
+        $toMail = strrev($email);
         $mailEncrypt = base64_encode($toMail);
         $mailEncrypt = str_replace("=", "_", $mailEncrypt);
-        $mailEncrypt = Session::get("idUser") . "/" . $mailEncrypt;
+        $mailEncrypt = $User->id . "/" . $mailEncrypt;
 
         $data = array(
-            "lang"          => $mailLang,
-            "userLogin"     => $mailUser,
+            "lang"          => $User->lang,
+            "userLogin"     => $login,
             "mailEncrypt"   => $mailEncrypt
         );
 
+        //set app
+        App::setLocale($User->lang);
+
         //send
-        Mail::send($directory, $data, function($m) use ($mailTo, $mailUser){
-            $m->to($mailTo, $mailUser)->subject(trans("email.createAccount"));
+        Mail::send($directory, $data, function($m) use ($email, $login, $view){
+            $m->to($email, $login)->subject(trans("email." . $view));
         });
 
         //log
         Log::info('Send Email to user', array(
-                "idUser"    => Session::get("idUser"),
-                "userLogin" => $mailUser,
-                "mailTo"    => $mailTo
+            "idUser"    => $User->id,
+            "userLogin" => $User->login,
+            "mailTo"    => $User->email
         ));
 
         return true;
     }
 
     //argument : stringMailFrom, stringSubject, stringMessage
-    public static function directSend($mailFrom, $mailSubject, $mailMessage)
+    public static function direct($mailFrom, $mailSubject, $mailMessage)
     {
         $ListUser = User::where("isAdmin", 1)->get();
 
@@ -72,26 +74,6 @@ class SendMail
                 $m->to($mailTo, $mailUser)->subject(trans("email.directSend") . $mailSubject);
             });
         }
-
-        return true;
-    }
-
-    //argument : ObjectUser, stringNewCode, $stringListLogin
-    public static function lostPassword($mailTo, $newCode, $stringUser)
-    {
-        $directory  = "email." . Session::get("lang") . ".lost";
-
-        //data dynamic inside mail
-        $data = array(
-            "lang"      => Session::get("lang"),
-            "userLogin" => $stringUser,
-            "newCode"   => $newCode
-        );
-
-        //send
-        Mail::send($directory, $data, function($m) use ($mailTo, $stringUser){
-            $m->to($mailTo, $stringUser)->subject(trans("email.lostPassword"));
-        });
 
         return true;
     }

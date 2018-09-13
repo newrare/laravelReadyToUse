@@ -1,5 +1,5 @@
 <?php
     return array(
         "titlePage"     => "Lost password",
-        "titleMessage"  => "Get a new passord by Email"
+        "titleMessage"  => "Create a new passord by Email"
     );

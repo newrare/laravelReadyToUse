@@ -1,10 +1,10 @@
 @extends('email.template')
 
 @section('contents')
-    Bonjour{{ $userLogin }},<br /><br />
+    Bonjour {{ $userLogin }},<br /><br />
 
-    Voici votre nouveau mot de passe de connexion :<br />
-    {{ $newCode }}<br /><br />
+    Utilisez ce lien pour mettre à jour votre mot de passe personnel :<br />
+    <a href="{{ env('APP_URL') }}/email/{{ $mailEncrypt }}">{{ env('APP_URL') }}/email/{{ $mailEncrypt }}</a><br /><br />
 
     Cordialement,<br />
     L'équipe {{ env('APP_NAME') }}.

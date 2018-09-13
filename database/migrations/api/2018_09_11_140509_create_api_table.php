@@ -11,9 +11,9 @@ class CreateApiTable extends Migration
         Schema::create("api", function (Blueprint $table) {
             $table->increments("id");
             $table->integer("idUser");
-            $table->string("name");
-            $table->char("tokenId", 50);
-            $table->char("tokenKey", 100);
+            $table->char("name", 20);
+            $table->char("tokenId", 10);
+            $table->char("tokenKey", 20);
         });
     }
 

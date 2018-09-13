@@ -48,9 +48,9 @@ class ConnectionController extends Controller
         if(Hash::check(Input::get("pass"), $User->password))
         {
             //set session
-            Session::put("idUser", $User->id);
-            Session::put("userLogin", $User->login);
-            Session::put("lang", $User->lang);
+            Session::put("idUser",      $User->id);
+            Session::put("userLogin",   $User->login);
+            Session::put("lang",        $User->lang);
 
             App::setLocale($User->lang);
 
