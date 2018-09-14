@@ -11,7 +11,7 @@ use Session;
 class HomeController extends Controller
 {
     //GET /
-    public function index()
+    public function page()
     {
         $mailValue = "";
 

@@ -1,10 +1,11 @@
 <?php
 
 Route::group(["middleware" => ["checkWeb"]], function () {
-    Route::get  ("/",                           "HomeController@index"                      );
+    Route::get  ("/",                           "HomeController@page"                       );
     Route::get  ("/account",                    "AccountController@index"                   );
+
     Route::post ("/account",                    "AccountController@store"                   );
-    Route::get  ("/account/{idUser}",           "AccountController@indexOption"             )->middleware("checkSession", "checkIdUser");
+    Route::get  ("/account/{idUser}",           "AccountController@show"                    )->middleware("checkSession", "checkIdUser");
     Route::put  ("/account/{idUser}",           "AccountController@update"                  )->middleware("checkSession", "checkIdUser");
     //delete  /api/account/{idUser}
     Route::get  ("/blog",                       "BlogController@index"                      );

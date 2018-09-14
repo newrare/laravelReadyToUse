@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\SetUserAdmin::class
+        Commands\SetUserAdmin::class,
+        Commands\Api::class
     ];
 
     /**

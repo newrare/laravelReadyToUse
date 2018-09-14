@@ -18,13 +18,23 @@ use Validator;
 class AccountController extends Controller
 {
     //GET /account
+    //GET /api/account
     public function index()
     {
-        return Reply::make("account", 200);
+        $api = array(
+            "id" => Session::get("idUser")
+        );
+
+        $reply = array(
+            "api" => $api
+        );
+
+        return Reply::make("account", 200, $reply);
     }
 
     //GET /account/{idUser}
-    public function indexOption($idUser)
+    //GET /api/account/{idUser}
+    public function show($idUser)
     {
         //get accountOption page
         $User   = User::find($idUser);
@@ -41,13 +51,21 @@ class AccountController extends Controller
             $avatar = null;
         }
 
+        $api = array(
+            "email"         => $User->email,
+            "emailIsValid"  => $User->emailIsValid,
+            "urlAvatar"     => $avatar,
+            "lang"          => $User->lang
+        );
+
         $reply = array(
             "urlUpdate"         => "/account/" . $User->id,
             "email"             => $email,
             "userEmail"         => $User->email,
             "userEmailIsValid"  => $User->emailIsValid,
             "userUrlAvatar"     => $avatar,
-            "userLang"          => $User->lang
+            "userLang"          => $User->lang,
+            "api"               => $api
         );
 
         return Reply::make("accountOption", 200, $reply);

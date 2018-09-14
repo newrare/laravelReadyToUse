@@ -13,14 +13,14 @@ class CheckIdUserMiddleware
 {
     public function handle($Request, Closure $Next)
     {
-        //get User
-        $User = User::find(Session::get("idUser"));
-
         //get id
         $idUser = $Request->route("idUser");
 
+        //get User
+        $User = User::find($idUser);
+
         //check user
-        if( ($User->isAdmin == 0) and (Session::get("idUser") != $idUser) )
+        if( ($User === null) or (($User->isAdmin == 0) and (Session::get("idUser") != $idUser)) )
         {
             return Reply::redirect("pageError", 403);
         }

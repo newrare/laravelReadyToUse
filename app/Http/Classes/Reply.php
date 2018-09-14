@@ -10,18 +10,22 @@ use Session;
 
 class Reply
 {
-    //argument : intCodeState, stringViewName, arrayViewElement, arrayReply (optional)
-    public static function json($code, $viewName, $viewElement, $reply = [])
+    //argument : intCodeState, arrayReply (optional)
+    public static function json($code, $reply = [])
     {
+        //check $reply
+        if(count($reply) == 0)
+        {
+            $reply["api"] = array();
+        }
+
+        //get message
         $error = ViewElement::getData("error");
 
         return array(
-            "lang"          => Session::get("lang"),
-            "codeState"     => $code,
-            "message"       => $error[$code],
-            "viewName"      => $viewName,
-            "viewElement"   => $viewElement,
-            "reply"         => $reply
+            "code"      => $code,
+            "message"   => $error[$code],
+            "result"    => $reply["api"]
         );
     }
 
@@ -34,7 +38,7 @@ class Reply
         if(Request::isJson())
         {
             return Response::json(
-                self::json($code, $viewName, $result, $reply),
+                self::json($code, $reply),
                 $code
             );
         }
@@ -64,15 +68,15 @@ class Reply
     {
         if(Request::isJson())
         {
-            $reply = array();
+            $api = array();
 
             if($code == 400)
             {
-                $reply = $Validation->messages();
+                $api = $Validation->messages();
             }
 
             return Response::json(
-                self::json($code, "", array(), $reply),
+                self::json($code, $api),
                 $code
             );
         }
@@ -95,15 +99,15 @@ class Reply
 
         if(Request::isJson())
         {
-            $reply = array();
+            $api = array();
 
             if($code == 400)
             {
-                $reply = $Validation->messages();
+                $api = $Validation->messages();
             }
 
             return Response::json(
-                self::json($code, "", array(), $reply),
+                self::json($code, $api),
                 $code
             );
         }
