@@ -10,7 +10,6 @@ use App\Http\Classes\Reply;
 use App\Http\Classes\ViewElement;
 
 use Request;
-use Response;
 use Session;
 
 class Handler extends ExceptionHandler
@@ -87,10 +86,7 @@ class Handler extends ExceptionHandler
 
         if(Request::isJson())
         {
-            return Response::json(
-                Reply::json($code, "pageError", $result),
-                $code
-            );
+            return Reply::json($code);
         }
         else
         {

@@ -10,47 +10,42 @@ use Session;
 
 class Reply
 {
-    //argument : intCodeState, arrayReply (optional)
-    public static function json($code, $reply = [])
+    //argument : intCodeState, arrayApi (optional)
+    public static function json($code, $api = [])
     {
-        //check $reply
-        if(count($reply) == 0)
-        {
-            $reply["api"] = array();
-        }
-
         //get message
         $error = ViewElement::getData("error");
 
-        return array(
+        $json = array(
             "code"      => $code,
             "message"   => $error[$code],
-            "result"    => $reply["api"]
+            "result"    => $api
         );
+
+        return Response::json($json, $code);
     }
 
-    //argument : stringViewName, intCodeState, arrayReply (optional)
-    public static function make($viewName, $code, $reply = [])
+    //argument : stringViewName, intCodeState, arrayWeb (optional), arrayApi (optional)
+    public static function make($viewName, $code, $web = [], $api = [])
     {
+        //check api
+        if(Request::isJson())
+        {
+            return self::json($code, $api);
+        }
+
         $result = ViewElement::getData($viewName);
         $error  = ViewElement::getData("error");
 
-        if(Request::isJson())
-        {
-            return Response::json(
-                self::json($code, $reply),
-                $code
-            );
-        }
         //ok without good message
-        elseif($code == 200)
+        if($code == 200)
         {
             //nothing
         }
         //ok with good message
         elseif($code == 202)
         {
-            $result["messageDone"] = $error[$code];
+            $result["messageDone"]  = $error[$code];
         }
         //ko with bad message
         else
@@ -58,7 +53,8 @@ class Reply
             $result["messageError"] = $error[$code];
         }
 
-        $result["reply"] = $reply;
+        $result["web"] = $web;
+        $result["api"] = $api;
 
         return view($viewName)->with("data", $result);
     }
@@ -66,6 +62,7 @@ class Reply
     //argument : intCodeState, objectValidation (optional)
     public static function back($code, $Validation = "")
     {
+        //check api
         if(Request::isJson())
         {
             $api = array();
@@ -75,12 +72,10 @@ class Reply
                 $api = $Validation->messages();
             }
 
-            return Response::json(
-                self::json($code, $api),
-                $code
-            );
+            return self::json($code, $api);
         }
-        elseif($code == 400)
+
+        if($code == 400)
         {
             return redirect()->back()->withErrors($Validation)->withInput();
         }
@@ -95,8 +90,7 @@ class Reply
     //argument : stringUrlInterne, intCodeState, objectValidation (optional)
     public static function redirect($urlInterne, $code, $Validation = "")
     {
-        $error = ViewElement::getData("error");
-
+        //check api
         if(Request::isJson())
         {
             $api = array();
@@ -106,12 +100,12 @@ class Reply
                 $api = $Validation->messages();
             }
 
-            return Response::json(
-                self::json($code, $api),
-                $code
-            );
+            return self::json($code, $api);
         }
-        elseif($code == 200)
+
+        $error = ViewElement::getData("error");
+
+        if($code == 200)
         {
             return redirect($urlInterne);
         }

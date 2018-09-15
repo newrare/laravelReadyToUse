@@ -16,6 +16,7 @@ use Validator;
 class BlogController extends Controller
 {
     //GET /blog
+    //GET /api/blog
     public function index()
     {
         //get admin
@@ -39,8 +40,13 @@ class BlogController extends Controller
         }
 
         //parse Blog list
+        $arrayIdBlog = array();
+
         foreach ($ListBlog as $Blog)
         {
+            //push id for api
+            array_push($arrayIdBlog, $Blog->id);
+
             //get user login
             $Blog->user = User::find($Blog->idUser)->login;
 
@@ -63,13 +69,19 @@ class BlogController extends Controller
             }
         }
 
-        //return result
-        $reply = array(
+        sort($arrayIdBlog);
+
+        //get web and api
+        $api = array(
+            "id" => $arrayIdBlog
+        );
+
+        $web = array(
             "isAdmin"   => $isAdmin,
             "ListBlog"  => $ListBlog
         );
 
-        return Reply::make("blog", 200, $reply);
+        return Reply::make("blog", 200, $web, $api);
     }
 
     //POST /blog

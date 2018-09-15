@@ -7,7 +7,6 @@ use App\Http\Models\Api;
 
 use Closure;
 use Request;
-use Response;
 use Session;
 
 class CheckTokenMiddleware
@@ -27,7 +26,7 @@ class CheckTokenMiddleware
         //check result
         if($Api === null)
         {
-            return Response::json(Reply::json("401"), "401");
+            return Reply::json("401");
         }
 
         //set session

@@ -19,7 +19,7 @@ class CheckAdminMiddleware
         //check user
         if($User->isAdmin == 0)
         {
-            return Reply::redirect("pageError", 403);
+            return Reply::redirect("error", 403);
         }
 
         return $Next($Request);

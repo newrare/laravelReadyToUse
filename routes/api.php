@@ -5,6 +5,7 @@
 Route::group(["middleware" => ["checkApi"]], function () {
     Route::get  ("/account",                    "AccountController@index"                       )->middleware("checkToken");
     Route::get  ("/account/{idUser}",           "AccountController@show"                        )->middleware("checkToken", "checkIdUser");
+    Route::get  ("/blog",                       "BlogController@index"                          )->middleware("checkToken");
     //Route::resource("/account", "AccountController", array("only" => array("index")));
     //Route::resource("api/account",      "AccountController",    array("only" => array("update", "destroy")));
     //Route::resource("api/blog",         "BlogController",       array("only" => array("index", "create", "show", "store", "update", "destroy")));

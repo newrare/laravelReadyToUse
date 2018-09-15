@@ -25,11 +25,7 @@ class AccountController extends Controller
             "id" => Session::get("idUser")
         );
 
-        $reply = array(
-            "api" => $api
-        );
-
-        return Reply::make("account", 200, $reply);
+        return Reply::make("account", 200, "", $api);
     }
 
     //GET /account/{idUser}
@@ -58,17 +54,12 @@ class AccountController extends Controller
             "lang"          => $User->lang
         );
 
-        $reply = array(
+        $web = array(
             "urlUpdate"         => "/account/" . $User->id,
             "email"             => $email,
-            "userEmail"         => $User->email,
-            "userEmailIsValid"  => $User->emailIsValid,
-            "userUrlAvatar"     => $avatar,
-            "userLang"          => $User->lang,
-            "api"               => $api
         );
 
-        return Reply::make("accountOption", 200, $reply);
+        return Reply::make("accountOption", 200, $web, $api);
     }
 
     //POST /account

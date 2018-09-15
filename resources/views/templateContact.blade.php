@@ -4,7 +4,7 @@
             <div class="uk-margin">
                 {!! Form::label("contactMail", $data["textContactMail"], array("class" => "uk-form-label", "id" => "infoTitle")) !!}
 
-                {!! Form::text("contactMail", $data["reply"]["mailValue"], array("class" => $errors->has("contactMail") ? "uk-input uk-form-danger" : "uk-input", "id" => "contactMail")) !!}
+                {!! Form::text("contactMail", $data["web"]["mailValue"], array("class" => $errors->has("contactMail") ? "uk-input uk-form-danger" : "uk-input", "id" => "contactMail")) !!}
 
                 @if($errors->has("contactMail"))
                     <p class="uk-text-small uk-text-danger uk-margin-small-top">

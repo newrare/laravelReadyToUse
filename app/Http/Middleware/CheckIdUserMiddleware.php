@@ -22,7 +22,7 @@ class CheckIdUserMiddleware
         //check user
         if( ($User === null) or (($User->isAdmin == 0) and (Session::get("idUser") != $idUser)) )
         {
-            return Reply::redirect("pageError", 403);
+            return Reply::redirect("error", 403);
         }
 
         return $Next($Request);

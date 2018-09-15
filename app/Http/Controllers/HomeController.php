@@ -22,10 +22,10 @@ class HomeController extends Controller
             $mailValue = $User->email;
         }
 
-        $reply = array(
+        $web = array(
             "mailValue" => $mailValue
         );
 
-        return Reply::make("home", 200, $reply);
+        return Reply::make("home", 200, $web);
     }
 }

@@ -6,7 +6,6 @@ use App\Http\Classes\Reply;
 
 use Closure;
 use Request;
-use Response;
 
 class CheckWebMiddleware
 {
@@ -14,7 +13,7 @@ class CheckWebMiddleware
     {
     	if(Request::isJson())
      	{
-            return Response::json(Reply::json("415"), "415");
+            return Reply::json("415");
         }
 
         return $Next($Request);
