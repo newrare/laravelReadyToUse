@@ -13,10 +13,29 @@ class CheckTokenMiddleware
 {
     public function handle($Request, Closure $Next)
     {
+        //get authorization
+        $auth = $Request->header("authorization");
+
+        if($auth === null)
+        {
+            return Reply::json("401");
+        }
+
         //get token
-        $auth       = $Request->header("authorization");
-        $typeToken  = explode(" ", $auth);
-        $token      = explode(":", $typeToken[1]);
+        $typeToken = explode(" ", $auth);
+
+        if(count($typeToken) < 2)
+        {
+            return Reply::json("401");
+        }
+
+        $token = explode(":", $typeToken[1]);
+
+        if(count($token) < 2)
+        {
+            return Reply::json("401");
+        }
+
         $tokenId    = base64_decode($token[0]);
         $tokenKey   = base64_decode($token[1]);
 
