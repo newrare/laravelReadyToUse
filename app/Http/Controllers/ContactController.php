@@ -25,11 +25,11 @@ class ContactController extends Controller
             $mailValue = $User->email;
         }
 
-        $reply = array(
+        $web = array(
             "mailValue" => $mailValue
         );
 
-        return Reply::make("contact", 200, $reply);
+        return Reply::make("contact", 200, $web);
     }
 
     //POST /contact

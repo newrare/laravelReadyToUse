@@ -10,7 +10,7 @@ use Session;
 
 class ServiceController extends Controller
 {
-    //GET /view
+    //GET /service
     public function index()
     {
         return Reply::make("service", 200);

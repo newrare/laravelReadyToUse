@@ -3,37 +3,37 @@
 namespace App\Http\Middleware;
 
 use App\Http\Classes\Reply;
+use App\Http\Models\Api;
 use App\Http\Models\User;
 
 use Closure;
 use Request;
 use Session;
 
-class CheckIdUserMiddleware
+class CheckIdTokenMiddleware
 {
     public function handle($Request, Closure $Next)
     {
-        //get id
-        $idUser = $Request->route("idUser");
+        //get Token
+        $Api = Api::find($Request->route("idToken"));
+
+        if($Api === null)
+        {
+            return Reply::json("403");
+        }
 
         //get User
         $User = User::find(Session::get("idUser"));
-        $UserAsk = User::find($idUser);
 
         if($User === null)
         {
-            return Reply::redirect("error", 403);
-        }
-
-        if($UserAsk === null)
-        {
-            return Reply::redirect("error", 404);
+            return Reply::json("403");
         }
 
         //check user
-        if( ($User->isAdmin == 0) and ($User->id != $idUser) )
+        if( ($User->isAdmin == 0) and (Session::get("idUser") != $Api->idUser))
         {
-            return Reply::redirect("error", 403);
+            return Reply::json("403");
         }
 
         return $Next($Request);

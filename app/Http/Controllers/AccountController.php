@@ -21,8 +21,23 @@ class AccountController extends Controller
     //GET /api/account
     public function index()
     {
+        //check Session
+        if(!Session::has("idUser"))
+        {
+            return Reply::make("account", 200);
+        }
+
+        $User = User::find(Session::get("idUser"));
+
+        $result = Session::get("idUser");
+
+        if($User->isAdmin == 1)
+        {
+            $result = User::where("id", ">", 0)->pluck("id")->toArray();
+        }
+
         $api = array(
-            "id" => Session::get("idUser")
+            "id" => $result
         );
 
         return Reply::make("account", 200, "", $api);
@@ -63,6 +78,7 @@ class AccountController extends Controller
     }
 
     //POST /account
+    //POST /api/account
     public function store()
     {
         //create rules for check input

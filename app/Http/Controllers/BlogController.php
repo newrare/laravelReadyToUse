@@ -10,6 +10,7 @@ use App\Http\Models\Blog;
 use App\Http\Models\User;
 
 use Input;
+use Request;
 use Session;
 use Validator;
 
@@ -165,25 +166,19 @@ class BlogController extends Controller
         return Reply::redirect("/blog", 202);
     }
 
-    //GET /blog/{idBlog}
-    //or
-    //GET /blog/create
+    //GET /blog/{idBlog} /blog/create
+    //GET /api/blog/{idBlog}
     public function show($idBlog)
     {
         //check action create in first
-        if($idBlog == "create")
+        if( ($idBlog == "create") and (!Request::isJson()) )
         {
-            $reply = array(
+            $web = array(
                 "formUrl"       => "/blog",
                 "formMethod"    => "POST",
-                "lang"          => Session::get("lang"),
-                "message"       => "",
-                "messageTitle"  => "",
-                "urlImage"      => "",
-                "urlVideo"      => ""
             );
 
-            return Reply::make("blogCreate", 200, $reply);
+            return Reply::make("blogCreate", 200, $web);
         }
 
         //get Blog
@@ -195,9 +190,14 @@ class BlogController extends Controller
             return Reply::make("pageError", 404);
         }
 
-        $reply = array(
+        //create result web
+        $web = array(
             "formUrl"       => "/blog/" . $idBlog,
-            "formMethod"    => "PUT",
+            "formMethod"    => "PUT"
+        );
+
+        //create result api
+        $api = array(
             "lang"          => $Blog->lang,
             "message"       => $Blog->message,
             "messageTitle"  => $Blog->messageTitle,
@@ -205,7 +205,7 @@ class BlogController extends Controller
             "urlVideo"      => $Blog->urlVideo
         );
 
-        return Reply::make("blogCreate", 200, $reply);
+        return Reply::make("blogCreate", 200, $web, $api);
     }
 
     //PUT /blog/{idBlog}

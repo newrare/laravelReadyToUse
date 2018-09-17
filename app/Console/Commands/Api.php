@@ -56,6 +56,35 @@ class Api extends Command
 			"Authorization: Basic " . $tokenId . ":" . $tokenKey,
         ));
 
+        //post method
+        if($method == "POST")
+        {
+            $arrayPost = array();
+
+            $data = explode(",", $data);
+
+            foreach($data as $input)
+            {
+                $temp = explode("=", $input);
+
+                $arrayPost[$temp[0]] = $temp[1];
+            }
+
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrayPost));
+        }
+
+        //put method
+        if($method == "PUT")
+        {
+        }
+
+        //delete method
+        if($method == "DELETE")
+        {
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+        }
+
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, true);
 
@@ -70,6 +99,13 @@ class Api extends Command
         $json           = json_decode($stringJson);
         $jsonEncode     = json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         $result         = str_replace("\\", "", $jsonEncode);
+
+        //check result
+        if($result == "null")
+        {
+            $this->error("Error.");
+            exit;
+        }
 
         //show result api
         $this->info($result);

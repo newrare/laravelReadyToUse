@@ -5,17 +5,17 @@
     <small>{{ $data["titleMessage"] }}</small>
 
     <!-- avatar -->
-        @if(isset($data["reply"]["userUrlAvatar"]))
+        @if(isset($data["api"]["urlAvatar"]))
             <div class="uk-container uk-margin-top">
-                <img class="uk-border-circle" src="{{ $data['reply']['userUrlAvatar'] }}" alt="Avatar" onError="this.src='/image/72.png';" />
+                <img class="uk-border-circle" src="{{ $data['api']['urlAvatar'] }}" alt="Avatar" onError="this.src='/image/72.png';" />
             </div>
         @endif
     <!-- /avatar -->
 
     <div class="uk-card uk-card-default uk-card-body uk-box-shadow-medium uk-margin-top">
-        {!! Form::open(array("url" => $data["reply"]["urlUpdate"], "method" => "PUT", "class" => "uk-form uk-form-stacked")) !!}
+        {!! Form::open(array("url" => $data["web"]["urlUpdate"], "method" => "PUT", "class" => "uk-form uk-form-stacked")) !!}
             <!-- userEmailIsValid -->
-                @if($data["reply"]["userEmailIsValid"] == 0)
+                @if($data["api"]["emailIsValid"] == 0)
                     <a class="uk-button uk-button-link" href="/email/valid">{{ $data["clickForValidEmail"] }}</a>
 
                     <hr />
@@ -24,9 +24,9 @@
 
             <!-- userEmail -->
                 <div class="uk-margin">
-                    {!! Form::label("userEmail", $data["reply"]["email"], array("class" => "uk-form-label", "id" => "userEmail")) !!}
+                    {!! Form::label("userEmail", $data["email"], array("class" => "uk-form-label", "id" => "userEmail")) !!}
 
-                    {!! Form::text("userEmail", $data["reply"]["userEmail"], array("class" => $errors->has("userEmail") ? "uk-input uk-form-danger" : "uk-input", "id" => "userEmail")) !!}
+                    {!! Form::text("userEmail", $data["api"]["email"], array("class" => $errors->has("userEmail") ? "uk-input uk-form-danger" : "uk-input", "id" => "userEmail")) !!}
 
                     @if($errors->has("userEmail"))
                         <p class="uk-text-small uk-text-danger uk-margin-small-top uk-margin-small-bottom">
@@ -54,7 +54,7 @@
                 <div class="uk-margin">
                     {!! Form::label("userUrlAvatar", $data["avatar"], array("class" => "uk-form-label", "id" => "userUrlAvatar")) !!}
 
-                    {!! Form::text("userUrlAvatar", $data["reply"]["userUrlAvatar"], array("class" => $errors->has("userUrlAvatar") ? "uk-input uk-form-danger" : "uk-input", "id" => "userUrlAvatar")) !!}
+                    {!! Form::text("userUrlAvatar", $data["api"]["urlAvatar"], array("class" => $errors->has("userUrlAvatar") ? "uk-input uk-form-danger" : "uk-input", "id" => "userUrlAvatar")) !!}
 
                     @if($errors->has("userUrlAvatar"))
                         <p class="uk-text-small uk-text-danger uk-margin-small-top uk-margin-small-bottom">
@@ -68,7 +68,7 @@
                 <div class="uk-margin">
                     {!! Form::label("userLang", $data["lang"], array("class" => "uk-form-label", "id" => "userLang")) !!}
 
-                    {!! Form::select("userLang", array("fr" => "Français", "en" => "English"), $data["reply"]["userLang"], array("class" => $errors->has("userLang") ? "uk-select uk-form-danger" : "uk-select", "id" => "userLang")) !!}
+                    {!! Form::select("userLang", array("fr" => "Français", "en" => "English"), $data["api"]["lang"], array("class" => $errors->has("userLang") ? "uk-select uk-form-danger" : "uk-select", "id" => "userLang")) !!}
 
                     @if($errors->has("userLang"))
                         <p class="uk-text-small uk-text-danger uk-margin-small-top uk-margin-small-bottom">

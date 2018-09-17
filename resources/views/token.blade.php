@@ -32,7 +32,7 @@
         {!! Form::close() !!}
     </div>
 
-	@foreach($data["reply"]["ListApi"] as $api)
+	@foreach($data["web"]["ListApi"] as $api)
         <div class="uk-box-shadow-medium uk-card uk-card-body uk-margin-top">
             <div class="uk-clearfix">
                 <div class="uk-float-left">
