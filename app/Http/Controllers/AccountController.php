@@ -63,6 +63,7 @@ class AccountController extends Controller
         }
 
         $api = array(
+            "login"         => $User->login,
             "email"         => $User->email,
             "emailIsValid"  => $User->emailIsValid,
             "urlAvatar"     => $avatar,
@@ -236,14 +237,14 @@ class AccountController extends Controller
         return Reply::redirect("account/" . $idUser, 202);
     }
 
-    //DELETE /account/{idUser}
+    //DELETE /api/account/{idUser}
     public function destroy($idUser)
     {
         //get User
         $User = User::find($idUser);
 
         //remove User
-        Record::remove($User, "Remove an user account.");
+        Record::remove($User, "Remove an user account by user or admin.");
 
         //restart session
         $langSession = Session::get("lang");
@@ -252,6 +253,6 @@ class AccountController extends Controller
 
         Session::put("lang", $langSession);
 
-        return Reply::redirect("/", 202);
+        return Reply::json("202");
     }
 }

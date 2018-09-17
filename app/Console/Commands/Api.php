@@ -61,13 +61,22 @@ class Api extends Command
         {
             $arrayPost = array();
 
-            $data = explode(",", $data);
-
-            foreach($data as $input)
+            if($data != "")
             {
-                $temp = explode("=", $input);
+                $data = explode(",", $data);
 
-                $arrayPost[$temp[0]] = $temp[1];
+                foreach($data as $input)
+                {
+                    $temp = explode("=", $input);
+
+                    if(count($temp) < 2)
+                    {
+                        $this->error("Data error.");
+                        exit;
+                    }
+
+                    $arrayPost[$temp[0]] = $temp[1];
+                }
             }
 
             curl_setopt($ch, CURLOPT_POST, true);

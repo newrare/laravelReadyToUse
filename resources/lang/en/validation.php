@@ -7,7 +7,7 @@
         "date_format"   => "The date must be set to: YYYY-MM-DD (ex: 2000-12-31)",
         "email"         => "This email is not valid",
         "exists"        => "This element does not exist in our databases",
-        "in"            => "This element is  invalid",
+        "in"            => "This element is invalid",
         "integer"       => "This element must be an integer",
         "max"           => [ "string"   => "This input may not be greater than :max characters" ],
         "min"           => [ "string"   => "This input must be at least :min characters" ],

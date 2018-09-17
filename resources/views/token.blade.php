@@ -9,15 +9,15 @@
             <div class="uk-grid-small uk-child-width-expand@s" uk-grid>
                 <!-- tokenNameInput -->
                     <div>
-                        {!! Form::text("tokenName", "", array(
-                            "class"         => $errors->has("tokenName") ? "uk-input uk-form-danger" : "uk-input",
-                            "id"            => "tokenName",
-                            "placeholder"   => $data["tokenName"]
+                        {!! Form::text("name", "", array(
+                            "class"         => $errors->has("name") ? "uk-input uk-form-danger" : "uk-input",
+                            "id"            => "name",
+                            "placeholder"   => $data["name"]
                         )) !!}
 
-                        @if($errors->has("tokenName"))
+                        @if($errors->has("name"))
                             <p class="uk-text-small uk-text-danger uk-margin-small-top">
-                                <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("tokenName") }}
+                                <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("name") }}
                             </p>
                         @endif
                     </div>

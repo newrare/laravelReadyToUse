@@ -19,7 +19,8 @@ class LostController extends Controller
         return Reply::make("lost", 200);
     }
 
-    //PUT /lost
+    //POST /lost
+    //POST /api/lost
     public function store()
     {
         //check email

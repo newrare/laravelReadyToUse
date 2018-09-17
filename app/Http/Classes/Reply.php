@@ -16,9 +16,17 @@ class Reply
         //get message
         $error = ViewElement::getData("error");
 
+        $message = $error[$code];
+
+        //update code for api
+        if( ($code == 204) or ($code == 202) )
+        {
+            $code = 200;
+        }
+
         $json = array(
             "code"      => $code,
-            "message"   => $error[$code],
+            "message"   => $message,
             "result"    => $api
         );
 

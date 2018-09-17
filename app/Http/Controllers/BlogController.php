@@ -86,6 +86,7 @@ class BlogController extends Controller
     }
 
     //POST /blog
+    //POST /api/blog
     public function store()
     {
         //create rules for check input

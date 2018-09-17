@@ -200,7 +200,7 @@ class ViewElement
             return array(
                 "titlePage"     => trans("token.titlePage"),
                 "titleMessage"  => trans("token.titleMessage"),
-                "tokenName"     => trans("token.tokenName"),
+                "name"          => trans("token.tokenName"),
                 "tokenId"       => trans("token.tokenId"),
                 "tokenKey"      => trans("token.tokenKey")
             );

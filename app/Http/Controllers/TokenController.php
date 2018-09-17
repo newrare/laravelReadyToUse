@@ -44,11 +44,12 @@ class TokenController extends Controller
     }
 
     //POST /token
+    //POST /api/token
     public function store()
     {
         //check token name
         $rules = array(
-            "tokenName" => "required|max:20"
+            "name" => "required|max:20"
         );
 
         $Validation = Validator::make(Input::all(), $rules);
@@ -62,14 +63,11 @@ class TokenController extends Controller
         $tokenId 	= substr(str_shuffle(str_repeat("23456789aAbBDdeEfFGghHijJMmnNPpqQRrtTYy", 10)), 0, 10);
 		$tokenKey 	= substr(str_shuffle(str_repeat("23456789aAbBDdeEfFGghHijJMmnNPpqQRrtTYy", 20)), 0, 20);
 
-        //get list account
-        Input::get("tokenName");
-
-		//save new blog
+		//save new token
         $Api = new Api;
 
         $Api->idUser    = Session::get("idUser");
-        $Api->name 		= Input::get("tokenName");
+        $Api->name 		= Input::get("name");
         $Api->tokenId 	= $tokenId;
         $Api->tokenKey  = $tokenKey;
 

@@ -33,6 +33,7 @@ class ContactController extends Controller
     }
 
     //POST /contact
+    //POST /api/contact
     public function store()
     {
         $rules = array(
