@@ -22,7 +22,7 @@ class EmailController extends Controller
         //send email validation
         SendMail::userView($User, "createAccount");
 
-        return Reply::redirect("account/" . Session::get("idUser"), 204);
+        return Reply::redirect("account/" . $User->id, 204);
     }
 
     //GET /email/{idUser}/{codeEmail}

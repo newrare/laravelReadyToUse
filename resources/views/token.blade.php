@@ -40,8 +40,10 @@
                 </div>
 
                 <div class="uk-float-right">
-                    <a href="#" uk-icon="icon: trash" uk-tooltip="{{ $shareData['remove'] }}" name="/token/{{ $api['id'] }}"  class="uk-icon-button ajaxTrash"></a>
-                </div>
+					{!! Form::open(array("url" => "/token/" . $api["id"], "method" => "DELETE", "class" => "uk-form", "id" => "remove" . $api['id'])) !!}
+                    	<a href="#" uk-icon="icon: trash" uk-tooltip="{{ $shareData['remove'] }}" name="{{ 'remove' . $api['id'] }}"  class="uk-icon-button submitTrash"></a>
+               		{!! Form::close() !!}
+				</div>
             </div>
 
             <table class="uk-table uk-table-hover uk-table-striped uk-table-divider">

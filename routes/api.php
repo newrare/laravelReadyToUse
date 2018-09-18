@@ -11,6 +11,7 @@ Route::group(["middleware" => ["checkApi", "checkToken", "checkUser"]], function
     Route::get   ("/blog",              "BlogController@index"      );
     Route::post  ("/blog",              "BlogController@store"      )->middleware("checkAdmin");
     Route::get   ("/blog/{idBlog}",     "BlogController@show"       )->middleware("checkIdBlog", "checkAdmin");
+    Route::put   ("/blog/{idBlog}",     "BlogController@update"     )->middleware("checkIdBlog", "checkAdmin");
     Route::delete("/blog/{idBlog}",     "BlogController@destroy"    )->middleware("checkIdBlog", "checkAdmin");
     Route::post  ("/contact",           "ContactController@store"   );
     Route::post  ("/lost",              "LostController@store"      );

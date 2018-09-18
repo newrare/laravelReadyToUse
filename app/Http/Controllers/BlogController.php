@@ -204,6 +204,7 @@ class BlogController extends Controller
     }
 
     //PUT /blog/{idBlog}
+    //PUT /api/blog/{idBlog}
     public function update($idBlog)
     {
         //get Blog
@@ -276,6 +277,20 @@ class BlogController extends Controller
             if($videoError !== null)
             {
                 $Validation->errors()->add("urlVideo", $videoError);
+            }
+
+			//add input info for api
+            if(Request::isJson())
+            {
+                if($imageError === null)
+                {
+                    $Validation->errors()->add("urlImage", "(Optional)");
+                }
+
+				if($videoError === null)
+                {
+                    $Validation->errors()->add("urlVideo", "(Optional)");
+                }
             }
 
             return Reply::back(400, $Validation);

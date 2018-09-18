@@ -56,15 +56,9 @@ $(":input").focus(function(){
     }
 });
 
-//button remove (AJAX METHOD DELETE)
-$(".ajaxTrash").click(function(){
-    var urlId = $(this).attr("name");
+//submit a DELETE
+$(".submitTrash").click(function(){
+    var formId = $(this).attr("name");
 
-    $.ajax({
-        url         : urlId,
-        contentType : "application/json",
-        type        : "DELETE",
-        error       : function(data) { console.warn(data); messageError(); },
-        success     : function(data) { console.info(data); location.reload(); messageDone(); }
-    });
+    document.getElementById(formId).submit();
 });

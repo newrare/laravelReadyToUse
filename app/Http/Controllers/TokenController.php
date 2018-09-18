@@ -99,6 +99,7 @@ class TokenController extends Controller
         return Reply::json("202", $api);
     }
 
+    //DELETE /token/{idToken}
     //DELETE /api/token/{idToken}
     public function destroy($idToken)
     {
@@ -108,12 +109,12 @@ class TokenController extends Controller
         //check it
         if($Api === null)
         {
-            return Reply::json("404");
+            return Reply::redirect("/token", "404");
         }
 
         //delete it
         Record::remove($Api, "Api deleted by user or admin.");
 
-        return Reply::json("202");
+        return Reply::redirect("/token", "202");
     }
 }
