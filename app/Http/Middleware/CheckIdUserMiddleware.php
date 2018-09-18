@@ -16,21 +16,17 @@ class CheckIdUserMiddleware
         //get id
         $idUser = $Request->route("idUser");
 
-        //get User
-        $User = User::find(Session::get("idUser"));
+        //check User ask
         $UserAsk = User::find($idUser);
-
-        if($User === null)
-        {
-            return Reply::redirect("error", 403);
-        }
 
         if($UserAsk === null)
         {
             return Reply::redirect("error", 404);
         }
 
-        //check user
+        //check right
+        $User = User::find(Session::get("idUser"));
+
         if( ($User->isAdmin == 0) and ($User->id != $idUser) )
         {
             return Reply::redirect("error", 403);

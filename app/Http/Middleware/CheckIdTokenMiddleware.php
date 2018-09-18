@@ -22,16 +22,10 @@ class CheckIdTokenMiddleware
             return Reply::json("403");
         }
 
-        //get User
+        //check right
         $User = User::find(Session::get("idUser"));
 
-        if($User === null)
-        {
-            return Reply::json("403");
-        }
-
-        //check user
-        if( ($User->isAdmin == 0) and (Session::get("idUser") != $Api->idUser))
+        if( ($User->isAdmin == 0) and ($User->id != $Api->idUser) )
         {
             return Reply::json("403");
         }

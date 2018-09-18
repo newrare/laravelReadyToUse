@@ -185,12 +185,6 @@ class BlogController extends Controller
         //get Blog
         $Blog = Blog::find($idBlog);
 
-        //check Blog
-        if($Blog === null)
-        {
-            return Reply::make("pageError", 404);
-        }
-
         //create result web
         $web = array(
             "formUrl"       => "/blog/" . $idBlog,
@@ -214,12 +208,6 @@ class BlogController extends Controller
     {
         //get Blog
         $Blog = Blog::find($idBlog);
-
-        //check Blog
-        if($Blog === null)
-        {
-            return Reply::make("pageError", 404);
-        }
 
         //create rules
         $rules = array(
@@ -309,12 +297,6 @@ class BlogController extends Controller
     {
         //get Blog
         $Blog = Blog::find($idBlog);
-
-        //check Blog
-        if($Blog === null)
-        {
-            return Reply::make("pageError", 404);
-        }
 
         //delete it
         Record::remove($Blog, "Blog deleted by admin.");

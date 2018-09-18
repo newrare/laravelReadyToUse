@@ -14,69 +14,69 @@
 
     <div class="uk-card uk-card-default uk-card-body uk-box-shadow-medium uk-margin-top">
         {!! Form::open(array("url" => $data["web"]["urlUpdate"], "method" => "PUT", "class" => "uk-form uk-form-stacked")) !!}
-            <!-- userEmailIsValid -->
+            <!-- emailIsValid -->
                 @if($data["api"]["emailIsValid"] == 0)
                     <a class="uk-button uk-button-link" href="/email/valid">{{ $data["clickForValidEmail"] }}</a>
 
                     <hr />
                 @endif
-            <!-- /userEmailIsValid -->
+            <!-- /emailIsValid -->
 
-            <!-- userEmail -->
+            <!-- email -->
                 <div class="uk-margin">
-                    {!! Form::label("userEmail", $data["email"], array("class" => "uk-form-label", "id" => "userEmail")) !!}
+                    {!! Form::label("email", $data["email"], array("class" => "uk-form-label", "id" => "email")) !!}
 
-                    {!! Form::text("userEmail", $data["api"]["email"], array("class" => $errors->has("userEmail") ? "uk-input uk-form-danger" : "uk-input", "id" => "userEmail")) !!}
+                    {!! Form::text("email", $data["api"]["email"], array("class" => $errors->has("email") ? "uk-input uk-form-danger" : "uk-input", "id" => "email")) !!}
 
-                    @if($errors->has("userEmail"))
+                    @if($errors->has("email"))
                         <p class="uk-text-small uk-text-danger uk-margin-small-top uk-margin-small-bottom">
-                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("userEmail") }}
+                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("email") }}
                         </p>
                     @endif
                 </div>
-            <!-- /userEmail -->
+            <!-- /email -->
 
-            <!-- userPass -->
+            <!-- pass -->
                 <div class="uk-margin">
-                    {!! Form::label("userPass", $data["connectionPass"], array("class" => "uk-form-label", "id" => "userPass")) !!}
+                    {!! Form::label("pass", $data["connectionPass"], array("class" => "uk-form-label", "id" => "pass")) !!}
 
-                    {!! Form::password("userPass", array("placeholder" => "X X X X X X X X", "class" => $errors->has("userPass") ? "uk-input uk-form-danger" : "uk-input", "id" => "userPass")) !!}
+                    {!! Form::password("pass", array("placeholder" => "X X X X X X X X", "class" => $errors->has("pass") ? "uk-input uk-form-danger" : "uk-input", "id" => "pass")) !!}
 
-                    @if($errors->has("userPass"))
+                    @if($errors->has("pass"))
                         <p class="uk-text-small uk-text-danger uk-margin-small-top uk-margin-small-bottom">
-                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("userPass") }}
+                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("pass") }}
                         </p>
                     @endif
                 </div>
-            <!-- /userPass -->
+            <!-- /pass -->
 
-            <!-- userUrlAvatar -->
+            <!-- urlAvatar -->
                 <div class="uk-margin">
-                    {!! Form::label("userUrlAvatar", $data["avatar"], array("class" => "uk-form-label", "id" => "userUrlAvatar")) !!}
+                    {!! Form::label("urlAvatar", $data["avatar"], array("class" => "uk-form-label", "id" => "urlAvatar")) !!}
 
-                    {!! Form::text("userUrlAvatar", $data["api"]["urlAvatar"], array("class" => $errors->has("userUrlAvatar") ? "uk-input uk-form-danger" : "uk-input", "id" => "userUrlAvatar")) !!}
+                    {!! Form::text("urlAvatar", $data["api"]["urlAvatar"], array("class" => $errors->has("urlAvatar") ? "uk-input uk-form-danger" : "uk-input", "id" => "urlAvatar")) !!}
 
-                    @if($errors->has("userUrlAvatar"))
+                    @if($errors->has("urlAvatar"))
                         <p class="uk-text-small uk-text-danger uk-margin-small-top uk-margin-small-bottom">
-                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("userUrlAvatar") }}
+                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("urlAvatar") }}
                         </p>
                     @endif
                 </div>
-            <!-- userUrlAvatar-->
+            <!-- urlAvatar-->
 
-            <!-- userLang -->
+            <!-- lang -->
                 <div class="uk-margin">
-                    {!! Form::label("userLang", $data["lang"], array("class" => "uk-form-label", "id" => "userLang")) !!}
+                    {!! Form::label("lang", $data["lang"], array("class" => "uk-form-label", "id" => "lang")) !!}
 
-                    {!! Form::select("userLang", array("fr" => "Français", "en" => "English"), $data["api"]["lang"], array("class" => $errors->has("userLang") ? "uk-select uk-form-danger" : "uk-select", "id" => "userLang")) !!}
+                    {!! Form::select("lang", array("fr" => "Français", "en" => "English"), $data["api"]["lang"], array("class" => $errors->has("lang") ? "uk-select uk-form-danger" : "uk-select", "id" => "lang")) !!}
 
-                    @if($errors->has("userLang"))
+                    @if($errors->has("lang"))
                         <p class="uk-text-small uk-text-danger uk-margin-small-top uk-margin-small-bottom">
-                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("userLang") }}
+                            <span uk-icon="icon: bolt; ratio: 0.7"></span> {{ $shareData["error"] }} : {{ $errors->first("lang") }}
                         </p>
                     @endif
                 </div>
-            <!-- /userLang -->
+            <!-- /lang -->
 
             <!-- formValidation -->
                 <div class="uk-container uk-text-center uk-width-1-1">

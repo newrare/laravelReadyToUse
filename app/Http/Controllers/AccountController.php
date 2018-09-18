@@ -7,11 +7,14 @@ use App\Http\Classes\Record;
 use App\Http\Classes\Reply;
 use App\Http\Classes\SendMail;
 use App\Http\Classes\Tools;
+use App\Http\Models\Api;
+use App\Http\Models\Blog;
 use App\Http\Models\User;
 
 use Hash;
 use Image;
 use Input;
+use Request;
 use Session;
 use Validator;
 
@@ -71,8 +74,8 @@ class AccountController extends Controller
         );
 
         $web = array(
-            "urlUpdate"         => "/account/" . $User->id,
-            "email"             => $email,
+            "urlUpdate" => "/account/" . $User->id,
+            "email"     => $email,
         );
 
         return Reply::make("accountOption", 200, $web, $api);
@@ -124,6 +127,7 @@ class AccountController extends Controller
     }
 
     //PUT /account/{idUser}
+    //PUT /api/account/{idUser}
     public function update($idUser)
     {
         //get User
@@ -131,37 +135,37 @@ class AccountController extends Controller
 
         //rules for check input
         $rules = array(
-            "userEmail"     => "required|max:250|email",
-            "userLang"      => "required|in:fr,en"
+            "email" => "required|max:250|email",
+            "lang"  => "required|in:fr,en"
         );
 
-        //rules only if userPass is defined
-        if(Input::get("userPass") !== null)
+        //rules only if pass is defined
+        if(Input::get("pass") !== null)
         {
-            $rules["userPass"] = "min:8|max:20";
+            $rules["pass"] = "min:8|max:20";
 
-            $User->password = Hash::make(Input::get("userPass"));
+            $User->password = Hash::make(Input::get("pass"));
         }
 
         //rules for urlAvatar
         $imageError     = "";
         $updateImage    = 0;
 
-        if(Input::get("userUrlAvatar") !== null)
+        if(Input::get("urlAvatar") !== null)
         {
-            if(Input::get("userUrlAvatar") != $User->urlAvatar)
+            if(Input::get("urlAvatar") != $User->urlAvatar)
             {
-                $rules["userUrlAvatar"] = "required|url";
+                $rules["urlAvatar"] = "required|url";
 
                 //test url image
-                if(Tools::testUrl(Input::get("userUrlAvatar")) !== true)
+                if(Tools::testUrl(Input::get("urlAvatar")) !== true)
                 {
                     $imageError = trans("validation.badUrl");
                 }
                 else
                 {
                     //file is real image ?
-                    $tabImageInfo = getimagesize(Input::get("userUrlAvatar"));
+                    $tabImageInfo = getimagesize(Input::get("urlAvatar"));
 
                     if(!is_array($tabImageInfo))
                     {
@@ -181,7 +185,21 @@ class AccountController extends Controller
 
         if( ($Validation->fails()) || ($imageError != "") )
         {
-            $Validation->errors()->add("userUrlAvatar", $imageError);
+            if($imageError != "")
+            {
+                $Validation->errors()->add("urlAvatar", $imageError);
+            }
+
+            //add input info for api
+            if(Request::isJson())
+            {
+                $Validation->errors()->add("pass", "(Optional)");
+
+                if($imageError == "")
+                {
+                    $Validation->errors()->add("urlAvatar", "(Optional)");
+                }
+            }
 
             return Reply::back(400, $Validation);
         }
@@ -215,17 +233,17 @@ class AccountController extends Controller
         //update User and save it
         $sendMail = 0;
 
-        if($User->email != Input::get("userEmail"))
+        if($User->email != Input::get("email"))
         {
-            $User->email        = Input::get("userEmail");
+            $User->email        = Input::get("email");
             $User->emailIsValid = 0;
 
             $sendMail = 1;
         }
 
-        $User->lang = Input::get("userLang");
+        $User->lang = Input::get("lang");
 
-        Session::put("lang", Input::get("userLang"));
+        Session::put("lang", Input::get("lang"));
 
         Record::save($User, "User updated by user.");
 
@@ -240,11 +258,23 @@ class AccountController extends Controller
     //DELETE /api/account/{idUser}
     public function destroy($idUser)
     {
-        //get User
-        $User = User::find($idUser);
+        //get all Object
+        $User       = User::find($idUser);
+        $ListApi    =  Api::where("idUser", $idUser)->get();
+        $ListBlog   = Blog::where("idUser", $idUser)->get();
 
-        //remove User
+        //remove all Object
         Record::remove($User, "Remove an user account by user or admin.");
+
+        foreach($ListApi as $Api)
+        {
+            Record::remove($Api, "Remove an user account by user or admin.");
+        }
+
+        foreach($ListBlog as $Blog)
+        {
+            Record::remove($Blog, "Remove an user account by user or admin.");
+        }
 
         //restart session
         $langSession = Session::get("lang");

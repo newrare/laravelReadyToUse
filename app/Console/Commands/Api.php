@@ -29,9 +29,26 @@ class Api extends Command
         $this->info("Method : " . $method);
         $this->info("Url    : " . $url);
 
+        $arrayPost = array();
+
         if($data != "")
         {
             $this->info("Data   : " . $data);
+
+            $data = explode(",", $data);
+
+            foreach($data as $input)
+            {
+                $temp = explode("=", $input);
+
+                if(count($temp) < 2)
+                {
+                    $this->error("Data error.");
+                    exit;
+                }
+
+                $arrayPost[$temp[0]] = $temp[1];
+            }
         }
 
         //get token in bdd
@@ -56,29 +73,12 @@ class Api extends Command
 			"Authorization: Basic " . $tokenId . ":" . $tokenKey,
         ));
 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, true);
+
         //post method
         if($method == "POST")
         {
-            $arrayPost = array();
-
-            if($data != "")
-            {
-                $data = explode(",", $data);
-
-                foreach($data as $input)
-                {
-                    $temp = explode("=", $input);
-
-                    if(count($temp) < 2)
-                    {
-                        $this->error("Data error.");
-                        exit;
-                    }
-
-                    $arrayPost[$temp[0]] = $temp[1];
-                }
-            }
-
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrayPost));
         }
@@ -86,6 +86,8 @@ class Api extends Command
         //put method
         if($method == "PUT")
         {
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrayPost));
         }
 
         //delete method
@@ -93,9 +95,6 @@ class Api extends Command
         {
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
         }
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, true);
 
         //start command
         $resultCurl = curl_exec($ch);

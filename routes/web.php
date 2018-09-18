@@ -1,17 +1,17 @@
 <?php
 
-Route::group(["middleware" => ["checkWeb"]], function () {
+Route::group(["middleware" => ["checkUser", "checkWeb"]], function () {
     Route::get  ("/",                           "HomeController@page"                       );
     Route::get  ("/account",                    "AccountController@index"                   );
     Route::post ("/account",                    "AccountController@store"                   );
     Route::get  ("/account/{idUser}",           "AccountController@show"                    )->middleware("checkSession", "checkIdUser");
-Route::put  ("/account/{idUser}",           "AccountController@update"                  )->middleware("checkSession", "checkIdUser");
+    Route::put  ("/account/{idUser}",           "AccountController@update"                  )->middleware("checkSession", "checkIdUser");
     //delete  /api/account/{idUser}
     Route::get  ("/blog",                       "BlogController@index"                      );
     Route::post ("/blog",                       "BlogController@store"                      )->middleware("checkSession", "checkAdmin");
-    Route::get  ("/blog/{idBlog}",              "BlogController@show"                   )->middleware("checkSession", "checkAdmin");
-Route::put  ("/blog/{idBlog}",              "BlogController@update"                     )->middleware("checkSession", "checkAdmin");
-//delete  /api/blog/{idBlog}
+    Route::get  ("/blog/{idBlog}",              "BlogController@show"                   )->middleware("checkSession", "checkIdBlog", "checkAdmin");
+Route::put  ("/blog/{idBlog}",              "BlogController@update"                     )->middleware("checkSession", "checkIdBlog", "checkAdmin");
+    //delete  /api/blog/{idBlog}
     Route::get  ("/connection",                 "ConnectionController@index"                );
     Route::post ("/connection",                 "ConnectionController@store"                );
     Route::get  ("/connection/off",             "ConnectionController@logOut"               );
