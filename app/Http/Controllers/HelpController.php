@@ -5,12 +5,28 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Classes\ViewElement;
 use App\Http\Classes\Reply;
+use App\Http\Model\User;
+
+use Session;
 
 class HelpController extends Controller
 {
     //GET /help
     public function index()
     {
+        $arrayApi = array();
+
+       	//get admin
+        $isAdmin = 0;
+
+        if(Session::has("idUser"))
+        {
+            $User = User::find(Session::get("idUser"));
+
+            $isAdmin = $User->isAdmin;
+        } 
+
+        //read api file
         $fileApi = env("APP_ENV") . "/routes/api.php";
 
         if(substr(env("APP_ENV"), -1) == "/")
@@ -18,13 +34,47 @@ class HelpController extends Controller
             $fileApi = env("APP_ENV") . "routes/api.php";
         }
 
-        $fileSession = fopen($fileApi , "r");
+        $handle = fopen($fileApi, "r");
 
-var_dump($fileSession);
+        //explore file
+        if($handle)
+        {
+            while(($line = fgets($handle)) !== false)
+            {
+                //get only api route
+                if(preg_match("/^    Route/", $line))
+                {
+                    $table = array();
 
-        fclose($fileSession);
+                    //check admin
+                    if( (preg_match("/checkAdmin/", $line)) and ($isAdmin == 0) )
+                    {
+						continue;
+                    }
 
-        return Reply::make("help", 200);
+                    //get method
+                    $explode = explode("::", $line);
+
+                    $explode = explode("(", $explode[1]);
+
+                    $table["method"] = strtoupper(trim($explode[0]));
+
+                    //get uri
+                    $explode = explode(",", $explode[1]);
+
+                    $table["uri"] = str_replace('"', "", $explode[0]);
+
+                    array_push($arrayApi, $table);
+                }
+            }
+        }
+
+        //web result
+        $web = array(
+            "listApi" => $arrayApi
+        );
+
+        return Reply::make("help", 200, $web);
     }
 
     //GET /api/help/view

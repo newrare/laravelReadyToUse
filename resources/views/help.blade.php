@@ -18,8 +18,13 @@
         <p>If first step, create an <a href="/account">account</a> and go to top-right menu for create an <a href="/account">API Token</a>. Choose your personal name project and clik on add button. Copy the Token Id and Token Key in your code for use our API.</p>
 
         <p>Authorization and Call: we give us an example in PHP but you can use another language.</p>
-https://prismjs.com/#basic-usage
-        <pre><code>//PHP example
+
+<ul uk-tab>
+    <li class="uk-active"><a href="#">Token</a>dsddsdd</li>
+    <li><a href="#">Example</a>isd</li>
+</ul>
+        <pre><code class="language-php">
+//PHP example
 $method     = "GET";                            //choose your Call method: GET, POST, PUT or DELETE
 $url        = "";                               //url to call
 $tokenId    = base64_encode("YOUR_TOKEN_ID");   //enter your token id
@@ -66,5 +71,16 @@ curl_close($ch);
         </pre></code>
 
         <p>Call list</p>
+
+		<table class="uk-table uk-table-hover uk-table-striped uk-table-divider">
+        	<tbody>
+				@foreach($data["web"]["listApi"] as $api)
+                	<tr>
+						<td><small>{{ $api["method"] }}	</small></td>
+						<td><small>{{ $api["uri"] }}	</small></td>
+					</tr>
+				@endforeach
+            </tbody>
+        </table>
     </div>
 @stop

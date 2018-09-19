@@ -23,6 +23,10 @@
                 {!! HTML::style("/css/area.css") !!}
             @endif
 
+            @if($shareData["active"] == "/help")
+                {!! HTML::style("/css/prism.css") !!}
+            @endif
+
             {!! HTML::style("/css/uikit-3.0.0-beta.42.min.css") !!}
         <!-- /css -->
 
@@ -164,6 +168,10 @@
 
             {!! HTML::script("/js/uikit-3.0.0-beta.42.min.js") !!}
             {!! HTML::script("/js/uikit-icons-3.0.0-beta.42.min.js") !!}
+
+            @if($shareData["active"] == "/help")
+                {!! HTML::script("/js/prism.js") !!}
+            @endif
         <!-- /engineAndCss -->
 
         <!-- mainJs -->
