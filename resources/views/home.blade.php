@@ -88,13 +88,7 @@
         <!-- faq -->
             <h1 class="uk-heading-line uk-text-right uk-margin-xlarge-top"><span>{{ $data["subFaq"] }}</span></h1>
 
-            <dl class="uk-description-list">
-                <dt><span uk-icon="comment"></span> {{ $data["faqQ1"] }}</dt>
-                <dd>{{ $data["faqR1"] }}</dd>
-
-                <dt><span uk-icon="comment"></span> {{ $data["faqQ2"] }}</dt>
-                <dd>{{ $data["faqR2"] }}</dd>
-            </dl>
+            @include("templateFaq")
         <!-- /faq -->
 
         <!-- aboutUs -->

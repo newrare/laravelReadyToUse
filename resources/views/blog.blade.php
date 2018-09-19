@@ -30,8 +30,11 @@
             @if($data["web"]["isAdmin"] == 1)
                 <hr />
 
-                <a href="/blog/{{ $blog['id'] }}"   uk-icon="icon: pencil"  uk-tooltip="{{ $shareData['edit'] }}"                                   class="uk-icon-button"></a>
-                <a href="#"                         uk-icon="icon: trash"   uk-tooltip="{{ $shareData['remove'] }}" name="/blog/{{ $blog['id'] }}"  class="uk-icon-button ajaxTrash"></a>
+                {!! Form::open(array("url" => "/blog/" . $blog["id"], "method" => "DELETE", "class" => "uk-form", "id" => "remove" . $blog['id'])) !!}
+                    <a href="/blog/{{ $blog['id'] }}" uk-icon="icon: pencil" uk-tooltip="{{ $shareData['edit'] }}" class="uk-icon-button"></a>
+
+                    <a href="#" uk-icon="icon: trash" uk-tooltip="{{ $shareData['remove'] }}" name="{{ 'remove' . $blog['id'] }}" class="uk-icon-button submitTrash"></a>
+                {!! Form::close() !!}
             @endif
         </div>
     @endforeach

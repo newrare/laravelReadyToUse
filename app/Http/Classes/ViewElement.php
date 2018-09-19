@@ -20,7 +20,8 @@ class ViewElement
             "lost",
             "service",
             "blog",
-            "blogCreate"
+            "blogCreate",
+            "help"
         );
     }
 
@@ -67,7 +68,8 @@ class ViewElement
                 "edit"              => trans("template.edit"),
                 "add"               => trans("template.add"),
                 "blog"              => trans("blog.titlePage"),
-                "token"             => trans("template.token")
+                "token"             => trans("template.token"),
+                "help"              => trans("help.titlePage")
             );
         }
         elseif($view == "pageError")
@@ -229,6 +231,19 @@ class ViewElement
                 "lang"          => trans("blog.lang"),
                 "urlImage"      => trans("blog.urlImage"),
                 "urlVideo"      => trans("blog.urlVideo")
+            );
+        }
+        elseif($view == "help")
+        {
+            return array(
+                "titlePage"     => trans("help.titlePage"),
+                "titleMessage"  => trans("help.titleMessage"),
+                "subFaq"        => trans("faq.subFaq"),
+                "subApi"        => trans("home.subApi"),
+                "faqQ1"         => trans("faq.q1"),
+                "faqR1"         => trans("faq.r1"),
+                "faqQ2"         => trans("faq.q2"),
+                "faqR2"         => trans("faq.r2")
             );
         }
         else

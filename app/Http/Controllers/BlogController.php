@@ -308,6 +308,7 @@ class BlogController extends Controller
     }
 
     //DELETE /blog/{idBlog}
+    //DELETE /api/blog/{idBlog}
     public function destroy($idBlog)
     {
         //get Blog

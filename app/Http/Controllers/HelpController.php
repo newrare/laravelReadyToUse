@@ -8,28 +8,47 @@ use App\Http\Classes\Reply;
 
 class HelpController extends Controller
 {
-    //GET /help/view
-    public function viewIndex()
+    //GET /help
+    public function index()
     {
-        $result = ViewElement::allViewName();
+        $fileApi = env("APP_ENV") . "/routes/api.php";
 
-        return Reply::make("view", 200, $result);
+        if(substr(env("APP_ENV"), -1) == "/")
+        {
+            $fileApi = env("APP_ENV") . "routes/api.php";
+        }
+
+        $fileSession = fopen($fileApi , "r");
+
+var_dump($fileSession);
+
+        fclose($fileSession);
+
+        return Reply::make("help", 200);
     }
 
-    //GET /help/view/{idView}
-    public function viewshow($viewName)
+    //GET /api/help/view
+    public function viewName()
+    {
+        $api = ViewElement::allViewName();
+
+        return Reply::json(200, $api);
+    }
+
+    //GET /api/help/view/{viewName}
+    public function viewInfo($viewName)
     {
         $allViewName = ViewElement::allViewName();
 
         if(in_array($viewName, $allViewName))
         {
-            $result = ViewElement::getData($viewName);
+            $api = ViewElement::getData($viewName);
 
-            return Reply::make("view", 200, $result);
+            return Reply::json(200, $api);
         }
         else
         {
-            return Reply::make("view", 404);
+            return Reply::json(404);
         }
     }
 }
