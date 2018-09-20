@@ -35,23 +35,24 @@ You can find a [Demo](http://51.254.119.126:8080/) for LaravelReadyToUse.
 We have already create many services and Web pages. This included:
 - Language service (English and French)
 - Mail service (Contact, Lost password and Template)
-- API (all Web Pages and services)
-- Many checks (Forms, Javascript is active ?, page Error)
+- API (user action or admin for internal)
+- Many checks (Forms, Javascript is active ?, Error)
 - Admin user (for contact and manage options, update blog)
 
 And included many Classes:
-- Classe Reply (for return a result API or Web)
-- Classe Record (for save many Log)
+- Classe Reply (for return a result Web or API)
+- Classe Record (for save many object and Log it)
 - Classe SendMail (an easy way for send an email)
 - Classe Tools (check external link or create your personal tools)
-- Classe ViewElement (return the texts of the application, useful for and Android or IOS application)
+- Classe ViewElement (return the texts of the application. The admin can use the internal API for get text)
 
 And included pages:
 - Home example (with dynamic intro, informations, questions and legal informations)
 - Contact example
-- Login example (with modal and full page for connected your user or crate a new)
+- Login example (with modal and full page for connected your user or create a new account)
 - User example (when user is connected)
 - User's settings example (when user is connected)
+- User's settings API Token (for create a Token ID and Token KEY)
 - Blog example (with author, date, title, message, image and/or Youtube video)
 
 And web app included :
@@ -67,7 +68,7 @@ And web app included :
 
 ### You need
 
-This application need PHP 7 or more for working (Laravel work also with [Composer](https://github.com/composer/composer)). You can used a server MySql, a serveur Mail and a server NGNIX or Apache.
+This application need PHP 7 or more for working (Laravel work also with [Composer](https://github.com/composer/composer)). You need used a server Sql, a serveur Mail and a server Web.
 
 
 
@@ -94,6 +95,7 @@ sudo chmod -R ug+rwx storage bootstrap/cache public/image/cover
 ```bash
 php artisan migrate --path=database/migrations/user/
 php artisan migrate --path=database/migrations/blog/
+php artisan migrate --path=database/migrations/api/
 ```
 
 3/ Set your personal config (Domain, url, name, MySql, Mail, Google API, etc)
@@ -110,6 +112,25 @@ In console, you can set an user to admin app with this command line:
 php artisan action:setUser
 ```
 
+When you are on account (Web), create your first Token ID and Token KEY ([/token](http://51.254.119.126:8080/token)).
+
+For use a call API with a command line:
+```bash
+php artisan action:api <idUser> <method> <uri>
+or
+php artisan action:api <idUser> <method> <uri> <data>
+```
+
+Examples:
+```bash
+php artisan action:api 1 GET    /api/account/1
+php artisan action:api 1 POST   /api/account "login=test1234,pass=xxxxxxxx,email=test@test.com"
+php artisan action:api 2 PUT    /api/account/2 "email=test@test.com,lang=en"
+php artisan action:api 1 DELETE /api/account/1
+
+```
+Ps: If you use an id User with admin right, you can update all informations (other account).
+
 
 
 ### Map
@@ -120,7 +141,8 @@ The principals files and folders:
 
 Config:
 - config/app.php (Laravel aliases, drivers and providers)
-- routes/web.php (Routes Web and API)
+- routes/web.php (Routes Web)
+- routes/api.php (Routes API)
 
 Back:
 - app/Console/Commands (command line used by artisan)
@@ -150,59 +172,14 @@ Media public:
 
 ### Language
 
-Edit or add file to **<yourProject>/resources/lang/***
-Add a new language in array **allLang** to **<yourProject>/app/Http/Controllers/LangController.php**
+Edit or add file to **/resources/lang/***
+Add a new language in array **allLang** to **/app/Http/Controllers/LangController.php**
 
 
 
 ### API
 
-All pages and functions of the web application also works in API (return JSON). You can build an Android or IOS app in parallel. LaravelReadyToUse becomes the logical engine.
-
-|Method |Entry Point                                        |Information                                                                            |
-|-------|---------------------------------------------------|---------------------------------------------------------------------------------------|
-|GET    |http://www.yourDomainName.tld/                     |show home's page                                                                       |
-|GET    |http://www.yourDomainName.tld/lang/en/edit         |set session app to English                                                             |
-|GET    |http://www.yourDomainName.tld/lang/fr/edit         |set session app to French                                                              |
-|GET    |http://www.yourDomainName.tld/view                 |show view's page: list of views                                                        |
-|GET    |http://www.yourDomainName.tld/view/home            |show element of viewName: here home                                                    |
-|GET    |http://www.yourDomainName.tld/connection           |show connection's page                                                                 |
-|POST   |http://www.yourDomainName.tld/connection           |log in user [login, pass]                                                              |
-|GET    |http://www.yourDomainName.tld/connection/off/edit  |set session for logout user                                                            |
-|GET    |http://www.yourDomainName.tld/account              |show account's page (session on: show options | session off: show create user)         |
-|POST   |http://www.yourDomainName.tld/account              |create a new user [login, pass, email]                                                 |
-|GET    |http://www.yourDomainName.tld/account/email/edit   |send a new mail validation                                                             |
-|PUT    |http://www.yourDomainName.tld/account/1            |update user's setting: here for idUser=1 [userEmail, userPass, userUrlAvatar, userLang]|
-
-Example with a curl command:
-```bash
-curl -H "Content-Type: application/json" http://www.yourDomainName.tld/contact
-```
-Return that:
-```bash
-{
- "lang"         : "en",
- "codeState"    : 200,
- "message"      : "Done",
- "viewName"     : "contact",
- "viewElement"  : {
-    "titlePage"         : "Contact",
-    "titleMessage"      : "Send us your message, we will reply quickly",
-    "subContact"        : "Contact",
-    "textContactMail"   : "Your Email",
-    "textContactSub"    : "Subject",
-    "textContactMess"   : "Message",
-    "buttonSend"        : "Send"
- },
- "reply"        : {
-    "mailValue"         : ""
- }
-}
-```
-
-Ps: see all call in file **routes/web.php**
-
-**SECURITY**: For test and developement, we have add a exception in file **laravelReadyToUse/app/Http/Middleware/VerifyCsrfToken.php**. Remove this exception for the PROD and add a system token in your real project.
+See more informations and all routes with user Admin to web page [/help](http://51.254.119.126:8080/help).
 
 
 
@@ -210,9 +187,9 @@ Ps: see all call in file **routes/web.php**
 
 Why we created the ViewElements Classe ?
 
-This Classe is not necessary if you used only a Web application: in this case, bypass ViewElement. But if we need API, used this Classe for return your texts. So, you can create an APP Android or IOS without texts, used just many API calls for get your all contents.
+This Classe is not necessary if you used only a Web application: in this case, bypass or update ViewElement. But if we need API, used this Classe for return your texts. So, you can create an APP Android or IOS without texts, used just many API calls (/api/help/view) for get your all contents.
 
-For add or update page with this method, edit **<yourProject>/app/Http/Classes/ViewElement.php**.
+For add or update page with this method, edit **/app/Http/Classes/ViewElement.php**.
 
 
 
