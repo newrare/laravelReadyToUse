@@ -9,6 +9,7 @@ Route::group(["middleware" => ["checkUser", "checkWeb"]], function () {
     //delete   /api/account/{idUser}
     Route::get   ("/blog",                       "BlogController@index"                     );
     Route::post  ("/blog",                       "BlogController@store"                     )->middleware("checkSession", "checkAdmin");
+    Route::get   ("/blog/create",                "BlogController@create"                    )->middleware("checkSession", "checkAdmin");
     Route::get   ("/blog/{idBlog}",              "BlogController@show"                      )->middleware("checkSession", "checkIdBlog", "checkAdmin");
     Route::put   ("/blog/{idBlog}",              "BlogController@update"                    )->middleware("checkSession", "checkIdBlog", "checkAdmin");
     Route::delete("/blog/{idBlog}",              "BlogController@destroy"                   )->middleware("checkSession", "checkIdBlog", "checkAdmin");

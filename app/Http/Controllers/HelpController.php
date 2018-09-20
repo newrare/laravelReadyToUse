@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Classes\ViewElement;
 use App\Http\Classes\Reply;
-use App\Http\Model\User;
+use App\Http\Models\User;
 
 use Session;
 
@@ -24,7 +24,7 @@ class HelpController extends Controller
             $User = User::find(Session::get("idUser"));
 
             $isAdmin = $User->isAdmin;
-        } 
+        }
 
         //read api file
         $fileApi = env("APP_ENV") . "/routes/api.php";
@@ -62,7 +62,7 @@ class HelpController extends Controller
                     //get uri
                     $explode = explode(",", $explode[1]);
 
-                    $table["uri"] = str_replace('"', "", $explode[0]);
+                    $table["uri"] = "/api" . str_replace('"', "", $explode[0]);
 
                     array_push($arrayApi, $table);
                 }

@@ -11,6 +11,7 @@ use App\Http\Models\Api;
 use App\Http\Models\Blog;
 use App\Http\Models\User;
 
+use App;
 use Hash;
 use Image;
 use Input;
@@ -244,6 +245,8 @@ class AccountController extends Controller
         $User->lang = Input::get("lang");
 
         Session::put("lang", Input::get("lang"));
+
+        App::setLocale(Input::get("lang"));
 
         Record::save($User, "User updated by user.");
 

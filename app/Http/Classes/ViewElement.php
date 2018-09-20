@@ -236,14 +236,31 @@ class ViewElement
         elseif($view == "help")
         {
             return array(
-                "titlePage"     => trans("help.titlePage"),
-                "titleMessage"  => trans("help.titleMessage"),
-                "subFaq"        => trans("faq.subFaq"),
-                "subApi"        => trans("home.subApi"),
-                "faqQ1"         => trans("faq.q1"),
-                "faqR1"         => trans("faq.r1"),
-                "faqQ2"         => trans("faq.q2"),
-                "faqR2"         => trans("faq.r2")
+                "titlePage"         => trans("help.titlePage"),
+                "titleMessage"      => trans("help.titleMessage"),
+                "subFaq"            => trans("faq.subFaq"),
+                "subApi"            => trans("home.subApi"),
+                "faqQ1"             => trans("faq.q1"),
+                "faqR1"             => trans("faq.r1"),
+                "faqQ2"             => trans("faq.q2"),
+                "faqR2"             => trans("faq.r2"),
+                "method"            => trans("help.method"),
+                "uri"               => trans("help.uri"),
+                "message"           => trans("help.message"),
+                "call"              => trans("help.call"),
+                "token"             => trans("help.token"),
+                "header"            => trans("help.header"),
+                "argument"          => trans("help.argument"),
+                "code"              => trans("help.code"),
+                "result"            => trans("help.result"),
+                "note"              => trans("help.note"),
+                "messageToken"      => trans("help.messageToken"),
+                "messageHeader"     => trans("help.messageHeader"),
+                "messageHeaderToken"=> trans("help.messageHeaderToken"),
+                "messageHeaderBase" => trans("help.messageHeaderBase"),
+                "messageHeaderCurl" => trans("help.messageHeaderCurl"),
+                "messageHeaderNote" => trans("help.messageHeaderNote"),
+                "messageArgument"   => trans("help.messageArgument")
             );
         }
         else

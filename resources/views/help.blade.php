@@ -13,17 +13,95 @@
     <div class="uk-card uk-card-default uk-card-body uk-box-shadow-medium uk-margin-top">
         <h3 class="uk-card-title">{{ $data["subApi"] }}</h3>
 
-        <p>You can use our API for manage your account and options</p>
+        <p>{{ $data["message"] }}</p>
 
-        <p>If first step, create an <a href="/account">account</a> and go to top-right menu for create an <a href="/account">API Token</a>. Choose your personal name project and clik on add button. Copy the Token Id and Token Key in your code for use our API.</p>
+        <ul uk-tab>
+            <li class="uk-active">  <a href="#">{{ $data["call"] }}</a></li>
+            <li>                    <a href="#">{{ $data["token"] }}</a></li>
+            <li>                    <a href="#">{{ $data["header"] }}</a></li>
+            <li>                    <a href="#">{{ $data["argument"] }}</a></li>
+            <li>                    <a href="#">{{ $data["code"] }}</a></li>
+            <li>                    <a href="#">{{ $data["result"] }}</a></li>
+        </ul>
 
-        <p>Authorization and Call: we give us an example in PHP but you can use another language.</p>
+        <ul class="uk-switcher uk-margin">
+            <li>
+                <table class="uk-table uk-table-hover uk-table-striped uk-table-divider">
+                    <thead>
+                        <tr>
+                            <th class="uk-text-success">{{ $data["method"] }}</th>
+                            <th class="uk-text-success">{{ $data["uri"] }}</th>
+                        </tr>
+                    </thead>
 
-<ul uk-tab>
-    <li class="uk-active"><a href="#">Token</a>dsddsdd</li>
-    <li><a href="#">Example</a>isd</li>
-</ul>
-        <pre><code class="language-php">
+                    <tbody>
+                        @foreach($data["web"]["listApi"] as $api)
+                            <tr>
+                                <td><small>{{ $api["method"] }} </small></td>
+                                <td><small>{{ $api["uri"] }}    </small></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </li>
+
+            <li>
+                <p>{!! $data["messageToken"] !!}<br /><br /><br /><br /><br /><br /><br /></p>
+            </li>
+
+            <li>
+                <p>{!! $data["messageHeader"] !!}</p>
+
+                <p>{{ $data["messageHeaderToken"] }}</p>
+                <ul class="uk-list">
+                    <li><span class="uk-label">ID</span> foo</li>
+                    <li><span class="uk-label">KEY</span> bar</li>
+                </ul>
+
+                <p>{{ $data["messageHeaderBase"] }}</p>
+                <ul class="uk-list">
+                    <li><span class="uk-label">ID</span> Zm9v</li>
+                    <li><span class="uk-label">KEY</span> YmFy</li>
+                </ul>
+
+                <p>{{ $data["messageHeaderCurl"] }}</p>
+                <pre><code class="language-php">
+curl -i -H "Authorization:Basic Zm9v:YmFy" -H "Accept: application/json" -H "Content-Type: application/json"
+                </pre></code>
+
+                <span class="uk-label">{{ $data["note"] }}</span>
+                {!! $data["messageHeaderNote"] !!}
+            </li>
+
+            <li>
+                <p>{!! $data["messageArgument"] !!}</p>
+
+                <pre><code class="language-php">
+Method : PUT
+Uri    : /api/account/1
+{
+    "code": 400,
+    "message": "Bad Request",
+    "result": {
+        "email": [
+            "This input is necessary"
+        ],
+        "lang": [
+            "This input is necessary"
+        ],
+        "pass": [
+            "(Optional)"
+        ],
+        "urlAvatar": [
+            "(Optional)"
+        ]
+    }
+}
+                </pre></code>
+            </li>
+
+            <li>
+                <pre><code class="language-php">
 //PHP example
 $method     = "GET";                            //choose your Call method: GET, POST, PUT or DELETE
 $url        = "";                               //url to call
@@ -68,19 +146,25 @@ if($method == "DELETE")
 
 curl_exec($ch);
 curl_close($ch);
-        </pre></code>
+                </pre></code>
+            </li>
 
-        <p>Call list</p>
-
-		<table class="uk-table uk-table-hover uk-table-striped uk-table-divider">
-        	<tbody>
-				@foreach($data["web"]["listApi"] as $api)
-                	<tr>
-						<td><small>{{ $api["method"] }}	</small></td>
-						<td><small>{{ $api["uri"] }}	</small></td>
-					</tr>
-				@endforeach
-            </tbody>
-        </table>
+            <li>
+                <pre><code class="language-php">
+Method : GET
+Uri    : /api/blog
+{
+    "code": 200,
+    "message": "Done",
+    "result": {
+        "id": [
+            1,
+            2
+        ]
+    }
+}
+                </pre></code>
+            </li>
+        </ul>
     </div>
 @stop

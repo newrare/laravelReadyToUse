@@ -167,21 +167,21 @@ class BlogController extends Controller
         return Reply::redirect("/blog", 202);
     }
 
-    //GET /blog/{idBlog} /blog/create
+    //GET /blog/create
+    public function create()
+    {
+        $web = array(
+            "formUrl"       => "/blog",
+            "formMethod"    => "POST",
+        );
+
+        return Reply::make("blogCreate", 200, $web);
+    }
+
+    //GET /blog/{idBlog}
     //GET /api/blog/{idBlog}
     public function show($idBlog)
     {
-        //check action create in first
-        if( ($idBlog == "create") and (!Request::isJson()) )
-        {
-            $web = array(
-                "formUrl"       => "/blog",
-                "formMethod"    => "POST",
-            );
-
-            return Reply::make("blogCreate", 200, $web);
-        }
-
         //get Blog
         $Blog = Blog::find($idBlog);
 

@@ -52,7 +52,7 @@
                 <div class="uk-margin">
                     {!! Form::label("urlImage", $data["urlImage"], array("class" => "uk-form-label", "id" => "urlImage")) !!}
 
-                    {!! Form::text("urlImage", isset($data["api"]["urlImage"]) ? $data["api"]["urlimage"] : "", array("class" => $errors->has("urlImage") ? "uk-input uk-form-danger" : "uk-input", "id" => "urlImage")) !!}
+                    {!! Form::text("urlImage", isset($data["api"]["urlImage"]) ? $data["api"]["urlImage"] : "", array("class" => $errors->has("urlImage") ? "uk-input uk-form-danger" : "uk-input", "id" => "urlImage")) !!}
 
                     @if($errors->has("urlImage"))
                         <p class="uk-text-small uk-text-danger uk-margin-small-top">
