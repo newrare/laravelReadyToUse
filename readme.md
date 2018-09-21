@@ -91,17 +91,19 @@ sudo chown -R www-data storage bootstrap/cache public/image/cover
 sudo chmod -R ug+rwx storage bootstrap/cache public/image/cover
 ```
 
-2/ Create tables user and blog in Database:
+2/ Set your personal config (Domain, url, name, MySql, Mail, Google API, etc)
+```bash
+vim .env
+```
+
+2/ Create tables user, blog and api in Database:
 ```bash
 php artisan migrate --path=database/migrations/user/
 php artisan migrate --path=database/migrations/blog/
 php artisan migrate --path=database/migrations/api/
 ```
 
-3/ Set your personal config (Domain, url, name, MySql, Mail, Google API, etc)
-```bash
-vim .env
-```
+
 
 ### Test and command
 
