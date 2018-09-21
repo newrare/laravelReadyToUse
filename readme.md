@@ -96,7 +96,7 @@ sudo chmod -R ug+rwx storage bootstrap/cache public/image/cover
 vim .env
 ```
 
-2/ Create tables user, blog and api in Database:
+3/ Create tables user, blog and api in Database:
 ```bash
 php artisan migrate --path=database/migrations/user/
 php artisan migrate --path=database/migrations/blog/

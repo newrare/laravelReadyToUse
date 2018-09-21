@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //check and force https
-        if(preg_match("/^https/", env("APP_URL")))
+        if(preg_match("/^https:/", env("APP_URL")))
         {
             \URL::forceScheme('https');
         }
