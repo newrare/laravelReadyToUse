@@ -6,7 +6,7 @@
             <div class="uk-container uk-text-center uk-flex uk-flex-middle" uk-height-viewport="offset-top: true; offset-bottom: true">
                 <div class="uk-container">
                     <h1 class="uk-heading-primary uk-visible@s">{{ $data["titleMessage"] }}</h1>
-                    <h2 class="uk-hidden@s">{{ $data["titleMessage"] }}</h1>
+                    <h2 class="uk-hidden@s">{{ $data["titleMessage"] }}</h2>
 
                     <p class="uk-text-lead uk-visible@s">{{ $data["textApplication"] }}</p>
                     <p class="uk-hidden@s">{{ $data["textApplication"] }}</p>
