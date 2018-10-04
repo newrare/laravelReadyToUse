@@ -24,7 +24,7 @@
 
             <!-- email -->
                 <div class="uk-margin">
-                    {!! Form::label("email", $data["email"], array("class" => "uk-form-label", "id" => "email")) !!}
+                    {!! Form::label("email", $data["web"]["email"], array("class" => "uk-form-label", "id" => "email")) !!}
 
                     {!! Form::text("email", $data["api"]["email"], array("class" => $errors->has("email") ? "uk-input uk-form-danger" : "uk-input", "id" => "email")) !!}
 
