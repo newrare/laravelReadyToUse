@@ -83,13 +83,16 @@ class Reply
             return self::json($code, $api);
         }
 
+        $error = ViewElement::getData("error");
+
         if($code == 400)
         {
+            Session::flash("messageError", $error[$code]);
+
             return redirect()->back()->withErrors($Validation)->withInput();
         }
         else
         {
-            $error = ViewElement::getData("error");
 
             return redirect()->back()->with("messageDone", $error[$code]);
         }
@@ -123,6 +126,8 @@ class Reply
         }
         elseif( (isset($Validation)) && ($Validation != "") )
         {
+            Session::flash("messageError", $error[$code]);
+
             return redirect($urlInterne)->withErrors($Validation)->withInput();
         }
         //ko with bad message
